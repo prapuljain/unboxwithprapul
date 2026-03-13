@@ -527,12 +527,12 @@
 
 <!-- FILTER BAR -->
 <div class="filter-bar">
-  <div class="filter-chip active">All</div>
-  <div class="filter-chip">Speakers</div>
-  <div class="filter-chip">Earphones</div>
-  <div class="filter-chip">Accessories</div>
-  <div class="filter-chip">Gadgets</div>
-  <div class="filter-chip">Phones</div>
+  <div class="filter-chip active" onclick="filterProducts('all')">All</div>
+  <div class="filter-chip" onclick="filterProducts('speaker')">🔊 Speakers</div>
+  <div class="filter-chip" onclick="filterProducts('earbuds')">🎧 Earbuds</div>
+  <div class="filter-chip" onclick="filterProducts('phone')">📱 Phones</div>
+  <div class="filter-chip" onclick="filterProducts('laptop')">💻 Laptops</div>
+  <div class="filter-chip" onclick="filterProducts('upcoming')">🔜 Upcoming</div>
 </div>
 
 <!-- MAIN SECTION -->
@@ -543,7 +543,7 @@
   </div>
 
   <!-- HAMMER FEATURED CARD -->
-  <div class="featured-card">
+  <div class="featured-card" data-category="speaker">
     <div class="featured-img" style="background: #f5f5f5; padding:0; overflow:hidden;">
       <img src="hammer.png" style="width:100%; height:180px; object-fit:contain; padding:10px;" />
       <div class="badge-reviewed">✓ Reviewed</div>
@@ -572,7 +572,6 @@
   <div class="featured-card">
     <div class="featured-img" style="background: #f5f5f5; padding:0; overflow:hidden;">
       <img src="trimmer.png" style="width:100%; height:180px; object-fit:contain; padding:10px;" />
-      <div class="badge-reviewed">✓ Reviewed</div>
       <div class="badge-hot">⚡ Fast Charge</div>
     </div>
     <div class="featured-body">
@@ -597,38 +596,7 @@
     </div>
   </div>
 
-  <!-- COMING SOON MINI GRID -->
-
-
-    <div class="mini-card">
-      <div class="mini-img" style="background: linear-gradient(135deg, #0a0a0a, #1a1a1a);">📱</div>
-      <div class="mini-body">
-        <div class="mini-title">Poco M6 Pro</div>
-        <div class="mini-price">~₹11,999</div>
-        <a href="https://www.amazon.in/s?k=Poco+M6+Pro" target="_blank" class="mini-btn">🛒 Buy Now</a>
-      </div>
-    </div>
-
-    <div class="mini-card">
-      <div class="mini-img" style="background: linear-gradient(135deg, #0a0a0a, #1a1a1a);">📱</div>
-      <div class="mini-body">
-        <div class="mini-title">Samsung M15</div>
-        <div class="mini-price">~₹12,999</div>
-        <a href="https://www.amazon.in/s?k=Samsung+Galaxy+M15" target="_blank" class="mini-btn">🛒 Buy Now</a>
-      </div>
-    </div>
-
-    <div class="mini-card">
-      <div class="mini-img" style="background: linear-gradient(135deg, #0a0a0a, #1a1a1a);">📱</div>
-      <div class="mini-body">
-        <div class="mini-title">Moto G45 5G</div>
-        <div class="mini-price">~₹10,999</div>
-        <a href="https://www.amazon.in/s?k=Moto+G45+5G" target="_blank" class="mini-btn">🛒 Buy Now</a>
-      </div>
-    </div>
-  </div>
-
-</div>
+  
 
 <!-- INSTAGRAM FOLLOW BANNER -->
 <div class="follow-banner">
@@ -649,5 +617,29 @@
   </div>
 </footer>
 
+
+<script>
+function filterProducts(cat) {
+  // Update active chip
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  event.target.classList.add('active');
+
+  const cards = document.querySelectorAll('.featured-card');
+  const upcomingSection = document.getElementById('upcoming-section');
+
+  if (cat === 'all') {
+    cards.forEach(c => c.style.display = '');
+    if (upcomingSection) upcomingSection.style.display = '';
+  } else if (cat === 'upcoming') {
+    cards.forEach(c => c.style.display = 'none');
+    if (upcomingSection) upcomingSection.style.display = '';
+  } else {
+    cards.forEach(c => {
+      c.style.display = (c.dataset.category === cat) ? '' : 'none';
+    });
+    if (upcomingSection) upcomingSection.style.display = 'none';
+  }
+}
+</script>
 </body>
 </html>
