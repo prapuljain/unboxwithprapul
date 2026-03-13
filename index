@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UnboxWithPrapul – Budget Tech Deals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #f5f5f0;
+      --white: #ffffff;
+      --dark: #111111;
+      --accent: #ff4500;
+      --muted: #777;
+      --border: #e8e8e4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--dark);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-tag {
+      background: var(--accent);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+      letter-spacing: 0.5px;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #111 60%, #1f0a00);
+      padding: 36px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(255,69,0,0.3), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: white;
+      line-height: 1;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero-sub {
+      color: #aaa;
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: white;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: #666;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* FILTER BAR */
+    .filter-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .filter-bar::-webkit-scrollbar { display: none; }
+
+    .filter-chip {
+      padding: 6px 16px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: white;
+      color: var(--muted);
+      transition: all 0.15s;
+    }
+
+    .filter-chip.active, .filter-chip:hover {
+      background: var(--dark);
+      color: white;
+      border-color: var(--dark);
+    }
+
+    /* SECTION */
+    .section {
+      padding: 24px 16px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title span { color: var(--accent); }
+
+    /* FEATURED CARD */
+    .featured-card {
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      overflow: hidden;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      animation: fadeUp 0.5s ease 0.1s both;
+    }
+
+    .featured-img {
+      background: linear-gradient(135deg, #1a1a1a, #2d1200);
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      position: relative;
+    }
+
+    .badge-reviewed {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--accent);
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .badge-hot {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .featured-body { padding: 16px; }
+
+    .product-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .product-title {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .stars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .stars-icons { color: #f5a623; font-size: 13px; letter-spacing: -1px; }
+    .stars-count { font-size: 12px; color: var(--muted); font-weight: 600; }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .price-now {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 30px;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .price-was {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .price-off {
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .buy-buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .btn-amazon {
+      flex: 1;
+      padding: 12px;
+      background: #ff9900;
+      color: #111;
+      font-weight: 800;
+      font-size: 13px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .btn-amazon:hover { background: #e68a00; transform: scale(0.98); }
+
+    .btn-flipkart {
+      flex: 1;
+      padding: 12px;
+      background: #2874f0;
+      color: white;
+      font-weight: 800;
+      font-size: 13px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .btn-flipkart:hover { background: #1a5fd6; transform: scale(0.98); }
+
+    .btn-review {
+      padding: 12px 16px;
+      background: var(--dark);
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-review:hover { background: #333; }
+
+    /* MINI GRID */
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .mini-card {
+      background: var(--white);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+
+    .mini-card:nth-child(1) { animation: fadeUp 0.5s ease 0.2s both; }
+    .mini-card:nth-child(2) { animation: fadeUp 0.5s ease 0.3s both; }
+    .mini-card:nth-child(3) { animation: fadeUp 0.5s ease 0.35s both; }
+    .mini-card:nth-child(4) { animation: fadeUp 0.5s ease 0.4s both; }
+
+    .mini-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .mini-img {
+      background: linear-gradient(135deg, #1a1a1a, #111);
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      position: relative;
+    }
+
+    .coming-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .mini-body { padding: 10px; }
+
+    .mini-title {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .mini-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      color: var(--accent);
+      margin-top: 4px;
+    }
+
+    .mini-btn {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding: 8px;
+      background: var(--dark);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.15s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .mini-btn:hover { background: var(--accent); }
+
+    /* FOLLOW BANNER */
+    .follow-banner {
+      margin: 0 16px 24px;
+      max-width: 468px;
+      margin-left: auto;
+      margin-right: auto;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      animation: fadeUp 0.5s ease 0.4s both;
+    }
+
+    .follow-text h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .follow-text p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.8);
+      margin-top: 2px;
+    }
+
+    .follow-btn {
+      background: white;
+      color: #111;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 10px 18px;
+      border-radius: 99px;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: transform 0.15s;
+    }
+
+    .follow-btn:hover { transform: scale(1.05); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: #555;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">UNBOX<span>WITH</span>PRAPUL</div>
+  <span class="nav-tag">🇮🇳 Budget Tech</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">✦ Honest Reviews Only</div>
+  <h1>BEST PICKS<br/>UNDER <span>₹2000</span></h1>
+  <p class="hero-sub">Tested. Reviewed. Approved by Prapul.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Honest</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">₹2K</div>
+      <div class="stat-label">Budget Max</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">🇮🇳</div>
+      <div class="stat-label">India Only</div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-chip active">All</div>
+  <div class="filter-chip">Speakers</div>
+  <div class="filter-chip">Earphones</div>
+  <div class="filter-chip">Accessories</div>
+  <div class="filter-chip">Gadgets</div>
+  <div class="filter-chip">Under ₹500</div>
+</div>
+
+<!-- MAIN SECTION -->
+<div class="section">
+
+  <div class="section-header">
+    <div class="section-title">🔥 <span>Featured</span> Review</div>
+  </div>
+
+  <!-- HAMMER FEATURED CARD -->
+  <div class="featured-card">
+    <div class="featured-img">
+      🔊
+      <div class="badge-reviewed">✓ Reviewed</div>
+      <div class="badge-hot">🔥 Hot Pick</div>
+    </div>
+    <div class="featured-body">
+      <div class="product-category">Bluetooth Speaker</div>
+      <div class="product-title">HAMMER Drop X1</div>
+      <div class="stars">
+        <span class="stars-icons">★★★★☆</span>
+        <span class="stars-count">4.1 · Prapul's Rating</span>
+      </div>
+      <div class="price-row">
+        <div class="price-now">₹999</div>
+        <div class="price-was">₹1,499</div>
+        <div class="price-off">33% OFF</div>
+      </div>
+      <div class="buy-buttons">
+        <a href="https://amzn.in/d/08Xy21Ze" target="_blank" class="btn-amazon">🛒 Amazon</a>
+        <a href="https://www.flipkart.com/search?q=HAMMER+Drop+X1" target="_blank" class="btn-flipkart">🛍️ Flipkart</a>
+        <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="btn-review">▶</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMING SOON MINI GRID -->
+  <div class="section-header" style="margin-top:8px">
+    <div class="section-title">Coming <span>Soon</span></div>
+  </div>
+
+  <div class="mini-grid">
+    <div class="mini-card">
+      <div class="mini-img">🎧<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body">
+        <div class="mini-title">Budget Earphones</div>
+        <div class="mini-price">TBA</div>
+        <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="mini-btn">🔔 Notify Me</a>
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <div class="mini-img">⌚<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body">
+        <div class="mini-title">Smart Watch</div>
+        <div class="mini-price">TBA</div>
+        <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="mini-btn">🔔 Notify Me</a>
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <div class="mini-img">🔦<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body">
+        <div class="mini-title">Mini Torch</div>
+        <div class="mini-price">TBA</div>
+        <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="mini-btn">🔔 Notify Me</a>
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <div class="mini-img">🖱️<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body">
+        <div class="mini-title">Wireless Mouse</div>
+        <div class="mini-price">TBA</div>
+        <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="mini-btn">🔔 Notify Me</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- INSTAGRAM FOLLOW BANNER -->
+<div class="follow-banner">
+  <div class="follow-text">
+    <h3>📸 Follow for Reviews</h3>
+    <p>New budget tech drops every week!</p>
+  </div>
+  <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="follow-btn">Follow →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>🔗 Affiliate links — you pay the same price, I earn a small commission. Keeps the reviews going! 🙏</p>
+  <p style="margin-top:6px">Made by <a href="https://www.instagram.com/prapul.jain">@prapul.jain</a> · <a href="https://prapuljain.github.io">Portfolio</a></p>
+</footer>
+
+</body>
+</html>
