@@ -4,504 +4,110 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>UnboxWithPrapul – Best Budget Tech Picks</title>
-  <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RFV5RKYYF9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-RFV5RKYYF9');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFV5RKYYF9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RFV5RKYYF9');
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --bg: #f5f5f0;
-      --white: #ffffff;
-      --dark: #111111;
-      --accent: #ff4500;
-      --muted: #777;
-      --border: #e8e8e4;
-    }
-
+    :root { --bg: #f5f5f0; --white: #fff; --dark: #111; --accent: #ff4500; --muted: #777; --border: #e8e8e4; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--dark); font-family: 'Plus Jakarta Sans', sans-serif; }
 
-    body {
-      background: var(--bg);
-      color: var(--dark);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      min-height: 100vh;
-    }
-
-    /* NAV */
-    nav {
-      background: var(--dark);
-      padding: 0 20px;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      color: white;
-      letter-spacing: 1px;
-    }
-
+    nav { background: var(--dark); padding: 0 20px; position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: white; letter-spacing: 1px; }
     .nav-logo span { color: var(--accent); }
+    .nav-tag { background: var(--accent); color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 99px; }
 
-    .nav-tag {
-      background: var(--accent);
-      color: white;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 99px;
-      letter-spacing: 0.5px;
-    }
-
-    /* HERO */
-    .hero {
-      background: linear-gradient(135deg, #111 60%, #1f0a00);
-      padding: 36px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      animation: fadeUp 0.5s ease both;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -40px; right: -40px;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(255,69,0,0.3), transparent 70%);
-      border-radius: 50%;
-    }
-
-    .hero-eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 48px;
-      color: white;
-      line-height: 1;
-      letter-spacing: 1px;
-    }
-
+    .hero { background: linear-gradient(135deg, #111 60%, #1f0a00); padding: 36px 20px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,69,0,0.3), transparent 70%); border-radius: 50%; }
+    .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+    .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: white; line-height: 1; letter-spacing: 1px; }
     .hero h1 span { color: var(--accent); }
-
-    .hero-sub {
-      color: #aaa;
-      font-size: 13px;
-      margin-top: 8px;
-      font-weight: 500;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 20px;
-    }
-
+    .hero-sub { color: #aaa; font-size: 13px; margin-top: 8px; font-weight: 500; }
+    .hero-stats { display: flex; justify-content: center; gap: 24px; margin-top: 20px; }
     .stat { text-align: center; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: white; line-height: 1; }
+    .stat-label { font-size: 10px; color: #666; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 2px; }
 
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      color: white;
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 10px;
-      color: #666;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    /* FILTER BAR */
-    .filter-bar {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 20px;
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .filter-bar::-webkit-scrollbar { display: none; }
-
-    .filter-chip {
-      padding: 6px 16px;
-      border-radius: 99px;
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-      cursor: pointer;
-      border: 1.5px solid var(--border);
-      background: white;
-      color: var(--muted);
-      transition: all 0.15s;
-    }
-
-    .filter-chip.active, .filter-chip:hover {
-      background: var(--dark);
-      color: white;
-      border-color: var(--dark);
-    }
-
-    /* SECTION */
-    .section {
-      padding: 24px 16px;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      letter-spacing: 0.5px;
-    }
-
-    .section-title span { color: var(--accent); }
-
-    /* FEATURED CARD */
-    .featured-card {
-      background: var(--white);
-      border-radius: 20px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-      overflow: hidden;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
-      animation: fadeUp 0.5s ease 0.1s both;
-    }
-
-    .featured-img {
-      background: linear-gradient(135deg, #1a1a1a, #2d1200);
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 80px;
-      position: relative;
-    }
-
-    .badge-reviewed {
-      position: absolute;
-      top: 12px; left: 12px;
-      background: var(--accent);
-      color: white;
-      font-size: 10px;
-      font-weight: 800;
-      padding: 4px 10px;
-      border-radius: 6px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .badge-hot {
-      position: absolute;
-      top: 12px; right: 12px;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(4px);
-      color: white;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 6px;
-    }
-
-    .featured-body { padding: 16px; }
-
-    .product-category {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .product-title {
-      font-size: 18px;
-      font-weight: 800;
-      line-height: 1.2;
-    }
-
-    .stars {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 6px;
-    }
-
-    .stars-icons { color: #f5a623; font-size: 13px; letter-spacing: -1px; }
-    .stars-count { font-size: 12px; color: var(--muted); font-weight: 600; }
-
-    .price-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .price-now {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 30px;
-      color: var(--accent);
-      line-height: 1;
-    }
-
-    .price-was {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: line-through;
-    }
-
-    .price-off {
-      background: #e8f5e9;
-      color: #2e7d32;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 6px;
-    }
-
-    .buy-buttons {
-      display: flex;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .btn-amazon {
-      flex: 1;
-      padding: 12px;
-      background: #ff9900;
-      color: #111;
-      font-weight: 800;
-      font-size: 13px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      text-decoration: none;
-      text-align: center;
-      transition: all 0.15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .btn-amazon:hover { background: #e68a00; transform: scale(0.98); }
-
-    .btn-flipkart {
-      flex: 1;
-      padding: 12px;
-      background: #2874f0;
-      color: white;
-      font-weight: 800;
-      font-size: 13px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      text-decoration: none;
-      text-align: center;
-      transition: all 0.15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .btn-flipkart:hover { background: #1a5fd6; transform: scale(0.98); }
-
-    .btn-review {
-      padding: 12px 16px;
-      background: var(--dark);
-      color: white;
-      font-weight: 800;
-      font-size: 14px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      text-decoration: none;
-      text-align: center;
-      transition: all 0.15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn-review:hover { background: #333; }
-
-    /* MINI GRID */
-    .mini-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .mini-card {
-      background: var(--white);
+    .summer-hero-banner {
+      margin: 20px auto 0;
+      max-width: 400px;
+      background: linear-gradient(135deg, rgba(255,107,43,0.2), rgba(255,179,71,0.1));
+      border: 1.5px solid rgba(255,107,43,0.5);
       border-radius: 14px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: all 0.2s;
-    }
-
-    .mini-card:nth-child(1) { animation: fadeUp 0.5s ease 0.2s both; }
-    .mini-card:nth-child(2) { animation: fadeUp 0.5s ease 0.3s both; }
-    .mini-card:nth-child(3) { animation: fadeUp 0.5s ease 0.35s both; }
-    .mini-card:nth-child(4) { animation: fadeUp 0.5s ease 0.4s both; }
-
-    .mini-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-
-    .mini-img {
-      background: linear-gradient(135deg, #1a1a1a, #111);
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 44px;
-      position: relative;
-    }
-
-    .coming-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 800;
-      color: white;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .mini-body { padding: 10px; }
-
-    .mini-title {
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .mini-price {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      color: var(--accent);
-      margin-top: 4px;
-    }
-
-    .mini-btn {
-      display: block;
-      width: 100%;
-      margin-top: 8px;
-      padding: 8px;
-      background: var(--dark);
-      color: white;
-      font-size: 11px;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
+      padding: 16px 20px;
       cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      transition: background 0.15s;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .mini-btn:hover { background: var(--accent); }
-
-    /* FOLLOW BANNER */
-    .follow-banner {
-      margin: 0 16px 24px;
-      max-width: 468px;
-      margin-left: auto;
-      margin-right: auto;
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-      border-radius: 16px;
-      padding: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      animation: fadeUp 0.5s ease 0.4s both;
+      text-align: left;
+      transition: border-color 0.2s;
     }
+    .summer-hero-banner:hover { border-color: var(--accent); }
+    .summer-banner-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 4px; }
+    .summer-banner-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: white; line-height: 1; letter-spacing: 1px; }
+    .summer-banner-sub { font-size: 11px; color: #aaa; margin-top: 4px; }
 
-    .follow-text h3 {
-      font-size: 16px;
-      font-weight: 800;
-      color: white;
-    }
+    .filter-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; position: sticky; top: 56px; z-index: 40; }
+    .filter-bar::-webkit-scrollbar { display: none; }
+    .filter-chip { padding: 6px 16px; border-radius: 99px; font-size: 12px; font-weight: 700; white-space: nowrap; cursor: pointer; border: 1.5px solid var(--border); background: white; color: var(--muted); transition: all 0.15s; }
+    .filter-chip.active, .filter-chip:hover { background: var(--dark); color: white; border-color: var(--dark); }
 
-    .follow-text p {
-      font-size: 12px;
-      color: rgba(255,255,255,0.8);
-      margin-top: 2px;
-    }
+    .page-section { display: none; max-width: 500px; margin: 0 auto; padding: 20px 16px; }
+    .page-section.active { display: block; animation: fadeUp 0.3s ease both; }
 
-    .follow-btn {
-      background: white;
-      color: #111;
-      font-size: 12px;
-      font-weight: 800;
-      padding: 10px 18px;
-      border-radius: 99px;
-      text-decoration: none;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: transform 0.15s;
-    }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.5px; margin-bottom: 16px; }
+    .section-title span { color: var(--accent); }
+    .sub-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; margin: 16px 0 10px; }
 
-    .follow-btn:hover { transform: scale(1.05); }
+    .featured-card { background: var(--white); border-radius: 20px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 16px; border: 1px solid var(--border); }
+    .featured-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 80px; position: relative; }
+    .badge-reviewed { position: absolute; top: 12px; left: 12px; background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; }
+    .badge-hot { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.15); backdrop-filter: blur(4px); color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
+    .featured-body { padding: 16px; }
+    .product-category { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .product-title { font-size: 18px; font-weight: 800; line-height: 1.2; }
+    .stars { display: flex; align-items: center; gap: 4px; margin-top: 6px; }
+    .stars-icons { color: #f5a623; font-size: 13px; }
+    .stars-count { font-size: 12px; color: var(--muted); font-weight: 600; }
+    .price-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+    .price-now { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: var(--accent); line-height: 1; }
+    .price-was { font-size: 13px; color: var(--muted); text-decoration: line-through; }
+    .price-off { background: #e8f5e9; color: #2e7d32; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px; }
+    .buy-buttons { display: flex; gap: 8px; margin-top: 14px; }
+    .btn-amazon { flex: 1; padding: 12px; background: #ff9900; color: #111; font-weight: 800; font-size: 13px; border: none; border-radius: 10px; cursor: pointer; text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .btn-review { padding: 12px 16px; background: var(--dark); color: white; font-weight: 800; font-size: 14px; border: none; border-radius: 10px; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; }
 
-    /* FOOTER */
-    footer {
-      background: var(--dark);
-      color: #555;
-      text-align: center;
-      padding: 24px 20px;
-      font-size: 12px;
-      line-height: 1.7;
-    }
+    .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
+    .mini-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); overflow: hidden; transition: all 0.2s; }
+    .mini-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+    .mini-img { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 44px; position: relative; }
+    .coming-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: white; letter-spacing: 1px; text-transform: uppercase; }
+    .mini-body { padding: 10px; }
+    .mini-title { font-size: 13px; font-weight: 700; line-height: 1.2; }
+    .mini-price { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--accent); margin-top: 4px; }
+    .mini-btn { display: block; width: 100%; margin-top: 8px; padding: 8px; background: var(--dark); color: white; font-size: 11px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; text-align: center; text-decoration: none; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.15s; }
+    .mini-btn:hover { background: var(--accent); }
 
+    .follow-banner { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); border-radius: 16px; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 16px 0; }
+    .follow-text h3 { font-size: 16px; font-weight: 800; color: white; }
+    .follow-text p { font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 2px; }
+    .follow-btn { background: white; color: #111; font-size: 12px; font-weight: 800; padding: 10px 18px; border-radius: 99px; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+
+    .coming-placeholder { text-align: center; padding: 48px 20px; color: var(--muted); }
+    .coming-placeholder .icon { font-size: 48px; margin-bottom: 12px; }
+    .coming-placeholder h3 { font-weight: 700; font-size: 16px; color: var(--dark); }
+    .coming-placeholder p { font-size: 13px; margin-top: 6px; }
+
+    footer { background: var(--dark); color: #555; text-align: center; padding: 24px 20px; font-size: 12px; line-height: 1.7; }
     footer a { color: var(--accent); text-decoration: none; }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
@@ -518,56 +124,48 @@
   <h1>BEST BUDGET<br/><span>TECH PICKS</span></h1>
   <p class="hero-sub">Handpicked by Prapul. Best value for every budget.</p>
   <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Honest</div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Honest</div></div>
+    <div class="stat"><div class="stat-num">💰</div><div class="stat-label">Best Value</div></div>
+    <div class="stat"><div class="stat-num">🇮🇳</div><div class="stat-label">India Only</div></div>
+  </div>
+
+  <!-- SUMMER BANNER -->
+  <div class="summer-hero-banner" onclick="showSection('summer', document.getElementById('chip-summer'))">
+    <div>
+      <div class="summer-banner-label">🌞 Season Special</div>
+      <div class="summer-banner-title">SUMMER ESSENTIALS</div>
+      <div class="summer-banner-sub">Fans · Coolers · Sunglasses · More ↓</div>
     </div>
-    <div class="stat">
-      <div class="stat-num">💰</div>
-      <div class="stat-label">Best Value</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">🇮🇳</div>
-      <div class="stat-label">India Only</div>
-    </div>
+    <div style="font-size:40px;">☀️</div>
   </div>
 </div>
 
 <!-- FILTER BAR -->
 <div class="filter-bar">
-  <div class="filter-chip active" onclick="filterProducts('all')">All</div>
-  <div class="filter-chip" onclick="filterProducts('speaker')">🔊 Speakers</div>
-  <div class="filter-chip" onclick="filterProducts('earbuds')">🎧 Earbuds</div>
-  <div class="filter-chip" onclick="filterProducts('phone')">📱 Phones</div>
-  <div class="filter-chip" onclick="filterProducts('laptop')">💻 Laptops</div>
-  <div class="filter-chip" onclick="filterProducts('upcoming')">🔜 Upcoming</div>
+  <div class="filter-chip active" id="chip-featured" onclick="showSection('featured', this)">🔥 Featured</div>
+  <div class="filter-chip" id="chip-summer" onclick="showSection('summer', this)">☀️ Summer</div>
+  <div class="filter-chip" id="chip-speakers" onclick="showSection('speakers', this)">🔊 Speakers</div>
+  <div class="filter-chip" id="chip-earbuds" onclick="showSection('earbuds', this)">🎧 Earbuds</div>
+  <div class="filter-chip" id="chip-phones" onclick="showSection('phones', this)">📱 Phones</div>
+  <div class="filter-chip" id="chip-laptops" onclick="showSection('laptops', this)">💻 Laptops</div>
 </div>
 
-<!-- MAIN SECTION -->
-<div class="section">
+<!-- 🔥 FEATURED -->
+<div id="section-featured" class="page-section active">
+  <div class="section-title">🔥 <span>Featured</span> Reviews</div>
 
-  <div class="section-header">
-    <div class="section-title">🔥 <span>Featured</span> Review</div>
-  </div>
-
-  <!-- HAMMER FEATURED CARD -->
-  <div class="featured-card" data-category="speaker">
-    <div class="featured-img" style="background: #f5f5f5; padding:0; overflow:hidden;">
-      <img src="hammer.png" style="width:100%; height:180px; object-fit:contain; padding:10px;" />
+  <div class="featured-card">
+    <div class="featured-img" style="background:#f5f5f5; padding:0; overflow:hidden;">
+      <img src="hammer.png" style="width:100%; height:180px; object-fit:contain; padding:10px;"/>
       <div class="badge-reviewed">✓ Reviewed</div>
       <div class="badge-hot">🔥 Hot Pick</div>
     </div>
     <div class="featured-body">
       <div class="product-category">Bluetooth Speaker</div>
       <div class="product-title">HAMMER Drop X1</div>
-      <div class="stars">
-        <span class="stars-icons">★★★★☆</span>
-        <span class="stars-count">4.1 · Prapul's Rating</span>
-      </div>
+      <div class="stars"><span class="stars-icons">★★★★☆</span><span class="stars-count">4.1 · Prapul's Rating</span></div>
       <div class="price-row">
-        <div class="price-now">₹499</div>
-        <div class="price-was">₹3,499</div>
-        <div class="price-off">86% OFF</div>
+        <div class="price-now">₹499</div><div class="price-was">₹3,499</div><div class="price-off">86% OFF</div>
       </div>
       <div class="buy-buttons">
         <a href="https://amzn.to/4s2V9ip" target="_blank" class="btn-amazon">🛒 Amazon</a>
@@ -576,26 +174,18 @@
     </div>
   </div>
 
-  <!-- XIAOMI TRIMMER CARD -->
   <div class="featured-card">
-    <div class="featured-img" style="background: #f5f5f5; padding:0; overflow:hidden;">
-      <img src="trimmer.png" style="width:100%; height:180px; object-fit:contain; padding:10px;" />
+    <div class="featured-img" style="background:#f5f5f5; padding:0; overflow:hidden;">
+      <img src="trimmer.png" style="width:100%; height:180px; object-fit:contain; padding:10px;"/>
       <div class="badge-hot">⚡ Fast Charge</div>
     </div>
     <div class="featured-body">
       <div class="product-category">Beard Trimmer</div>
       <div class="product-title">MI Xiaomi Beard Trimmer 2C</div>
-      <div class="stars">
-        <span class="stars-icons">★★★★★</span>
-        <span class="stars-count">4.5 · Prapul's Rating</span>
-      </div>
-      <div style="font-size:12px; color:#777; margin-top:6px; line-height:1.5">
-        USB Type-C · 40 Length Settings · 90 Min Runtime · 0.5mm Precision
-      </div>
+      <div class="stars"><span class="stars-icons">★★★★★</span><span class="stars-count">4.5 · Prapul's Rating</span></div>
+      <div style="font-size:12px; color:#777; margin-top:6px; line-height:1.5">USB Type-C · 40 Length Settings · 90 Min Runtime · 0.5mm Precision</div>
       <div class="price-row">
-        <div class="price-now">₹999</div>
-        <div class="price-was">₹1,999</div>
-        <div class="price-off">50% OFF</div>
+        <div class="price-now">₹999</div><div class="price-was">₹1,999</div><div class="price-off">50% OFF</div>
       </div>
       <div class="buy-buttons">
         <a href="https://amzn.to/4cLSdC8" target="_blank" class="btn-amazon">🛒 Amazon</a>
@@ -604,49 +194,139 @@
     </div>
   </div>
 
-  
-
-<!-- INSTAGRAM FOLLOW BANNER -->
-<div class="follow-banner">
-  <div class="follow-text">
-    <h3>📸 Follow for Reviews</h3>
-    <p>New budget tech drops every week!</p>
+  <div class="follow-banner">
+    <div class="follow-text"><h3>📸 Follow for Reviews</h3><p>New budget tech drops every week!</p></div>
+    <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="follow-btn">Follow →</a>
   </div>
-  <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="follow-btn">Follow →</a>
+</div>
+
+<!-- ☀️ SUMMER -->
+<div id="section-summer" class="page-section">
+  <div class="section-title">☀️ <span>Summer</span> Essentials</div>
+
+  <div class="sub-label">🤏 Mini Handheld Fans</div>
+  <div class="mini-grid">
+    <div class="mini-card">
+      <div class="mini-img" style="background:linear-gradient(135deg,#ff6b2b,#ffb347);">🌀<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body"><div class="mini-title">Portronics Toofan Mini 2</div><div class="mini-price">~₹599</div><a href="https://www.amazon.in/s?k=Portronics+Toofan+Mini+2" target="_blank" class="mini-btn">🛒 Buy Now</a></div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-img" style="background:linear-gradient(135deg,#f77f00,#d62828);">🌀<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body"><div class="mini-title">JISULIFE Life7 3-in-1</div><div class="mini-price">~₹1,499</div><a href="https://www.amazon.in/s?k=JISULIFE+Life7" target="_blank" class="mini-btn">🛒 Buy Now</a></div>
+    </div>
+  </div>
+
+  <div class="sub-label">❄️ Air Coolers — Small</div>
+  <div class="mini-grid">
+    <div class="mini-card">
+      <div class="mini-img" style="background:linear-gradient(135deg,#00b4d8,#0077b6);">❄️<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body"><div class="mini-title">Bajaj PX25 Torque 24L</div><div class="mini-price">~₹4,999</div><a href="https://www.amazon.in/s?k=Bajaj+PX25+Torque" target="_blank" class="mini-btn">🛒 Buy Now</a></div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-img" style="background:linear-gradient(135deg,#48cae4,#023e8a);">❄️<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body"><div class="mini-title">Kenstar Little HC 20L</div><div class="mini-price">~₹5,499</div><a href="https://www.amazon.in/s?k=Kenstar+Little+HC" target="_blank" class="mini-btn">🛒 Buy Now</a></div>
+    </div>
+  </div>
+
+  <div class="sub-label">❄️ Air Coolers — Large (80L+)</div>
+  <div class="mini-grid">
+    <div class="mini-card">
+      <div class="mini-img" style="background:linear-gradient(135deg,#0096c7,#023e8a);">🧊<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body"><div class="mini-title">Crompton Optimus 80L</div><div class="mini-price">~₹9,999</div><a href="https://www.amazon.in/s?k=Crompton+Optimus+80L" target="_blank" class="mini-btn">🛒 Buy Now</a></div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-img" style="background:linear-gradient(135deg,#0077b6,#03045e);">🧊<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body"><div class="mini-title">Havells KoolStorm 80L</div><div class="mini-price">~₹12,999</div><a href="https://www.amazon.in/s?k=Havells+KoolStorm+80L" target="_blank" class="mini-btn">🛒 Buy Now</a></div>
+    </div>
+    <div class="mini-card" style="grid-column:span 2;">
+      <div class="mini-img" style="background:linear-gradient(135deg,#8338ec,#3a86ff);height:80px;">🧊<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body"><div class="mini-title">Bajaj DMH 90 Neo 85L</div><div class="mini-price">~₹11,999</div><a href="https://www.amazon.in/s?k=Bajaj+DMH+90+Neo" target="_blank" class="mini-btn">🛒 Buy Now</a></div>
+    </div>
+  </div>
+
+  <div class="sub-label">🕶️ Sunglasses</div>
+  <div class="mini-grid">
+    <div class="mini-card">
+      <div class="mini-img" style="background:linear-gradient(135deg,#f77f00,#d62828);">🕶️<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body"><div class="mini-title">Vincent Chase Polarized</div><div class="mini-price">~₹500</div><a href="https://www.amazon.in/s?k=Vincent+Chase+Polarized" target="_blank" class="mini-btn">🛒 Buy Now</a></div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-img" style="background:linear-gradient(135deg,#3d405b,#f2cc8f);">🕶️<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body"><div class="mini-title">Fastrack UV400</div><div class="mini-price">~₹1,200</div><a href="https://www.amazon.in/s?k=Fastrack+UV400+sunglasses" target="_blank" class="mini-btn">🛒 Buy Now</a></div>
+    </div>
+  </div>
+
+  <div class="sub-label">💧 Water Bottles</div>
+  <div class="mini-grid">
+    <div class="mini-card">
+      <div class="mini-img" style="background:linear-gradient(135deg,#2dc653,#007f5f);">💧<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body"><div class="mini-title">Milton Thermosteel Flip</div><div class="mini-price">~₹400</div><a href="https://www.amazon.in/s?k=Milton+Thermosteel+Flip+Lid" target="_blank" class="mini-btn">🛒 Buy Now</a></div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-img" style="background:linear-gradient(135deg,#40916c,#1b4332);">💧<div class="coming-overlay">Coming Soon</div></div>
+      <div class="mini-body"><div class="mini-title">SOLIMO Steel Bottle</div><div class="mini-price">~₹799</div><a href="https://www.amazon.in/s?k=SOLIMO+Stainless+Steel+Bottle" target="_blank" class="mini-btn">🛒 Buy Now</a></div>
+    </div>
+  </div>
+
+  <div class="follow-banner">
+    <div class="follow-text"><h3>📸 Follow for Updates</h3><p>Affiliate links dropping soon!</p></div>
+    <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="follow-btn">Follow →</a>
+  </div>
+</div>
+
+<!-- 🔊 SPEAKERS -->
+<div id="section-speakers" class="page-section">
+  <div class="section-title">🔊 Budget <span>Speakers</span></div>
+  <div class="featured-card">
+    <div class="featured-img" style="background:#f5f5f5; padding:0; overflow:hidden;">
+      <img src="hammer.png" style="width:100%; height:180px; object-fit:contain; padding:10px;"/>
+      <div class="badge-reviewed">✓ Reviewed</div>
+    </div>
+    <div class="featured-body">
+      <div class="product-category">Bluetooth Speaker</div>
+      <div class="product-title">HAMMER Drop X1</div>
+      <div class="stars"><span class="stars-icons">★★★★☆</span><span class="stars-count">4.1 · Prapul's Rating</span></div>
+      <div class="price-row"><div class="price-now">₹499</div><div class="price-was">₹3,499</div><div class="price-off">86% OFF</div></div>
+      <div class="buy-buttons">
+        <a href="https://amzn.to/4s2V9ip" target="_blank" class="btn-amazon">🛒 Amazon</a>
+        <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="btn-review">▶</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 🎧 EARBUDS -->
+<div id="section-earbuds" class="page-section">
+  <div class="coming-placeholder"><div class="icon">🎧</div><h3>Coming Soon!</h3><p>Follow on Instagram to get notified</p><a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="mini-btn" style="display:inline-block;margin-top:16px;padding:10px 24px;width:auto;">🔔 Follow @UnboxWithPrapul</a></div>
+</div>
+
+<!-- 📱 PHONES -->
+<div id="section-phones" class="page-section">
+  <div class="coming-placeholder"><div class="icon">📱</div><h3>Coming Soon!</h3><p>Follow on Instagram to get notified</p><a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="mini-btn" style="display:inline-block;margin-top:16px;padding:10px 24px;width:auto;">🔔 Follow @UnboxWithPrapul</a></div>
+</div>
+
+<!-- 💻 LAPTOPS -->
+<div id="section-laptops" class="page-section">
+  <div class="coming-placeholder"><div class="icon">💻</div><h3>Coming Soon!</h3><p>Follow on Instagram to get notified</p><a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="mini-btn" style="display:inline-block;margin-top:16px;padding:10px 24px;width:auto;">🔔 Follow @UnboxWithPrapul</a></div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <p style="font-size:14px; color:#aaa; margin-bottom:12px">✨ Every link here is picked with love — just trying to save your money & time! 🙏</p>
   <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:8px">
-    <a href="https://www.instagram.com/unboxwithprapul" target="_blank" style="color:#e1306c; font-weight:700; text-decoration:none; font-size:13px">📸 @UnboxWithPrapul</a>
-    <a href="https://www.instagram.com/prapul.jain" target="_blank" style="color:#e1306c; font-weight:700; text-decoration:none; font-size:13px">📸 @prapul.jain</a>
-    <a href="https://www.youtube.com/@prapul_jain" target="_blank" style="color:#ff0000; font-weight:700; text-decoration:none; font-size:13px">▶️ YouTube</a>
+    <a href="https://www.instagram.com/unboxwithprapul" target="_blank">📸 @UnboxWithPrapul</a>
+    <a href="https://www.instagram.com/prapul.jain" target="_blank">📸 @prapul.jain</a>
+    <a href="https://www.youtube.com/@prapul_jain" target="_blank" style="color:#ff0000;">▶️ YouTube</a>
   </div>
 </footer>
 
-
 <script>
-function filterProducts(cat) {
-  // Update active chip
+function showSection(id, chip) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-  event.target.classList.add('active');
-
-  const cards = document.querySelectorAll('.featured-card');
-  const upcomingSection = document.getElementById('upcoming-section');
-
-  if (cat === 'all') {
-    cards.forEach(c => c.style.display = '');
-    if (upcomingSection) upcomingSection.style.display = '';
-  } else if (cat === 'upcoming') {
-    cards.forEach(c => c.style.display = 'none');
-    if (upcomingSection) upcomingSection.style.display = '';
-  } else {
-    cards.forEach(c => {
-      c.style.display = (c.dataset.category === cat) ? '' : 'none';
-    });
-    if (upcomingSection) upcomingSection.style.display = 'none';
-  }
+  document.getElementById('section-' + id).classList.add('active');
+  if (chip) chip.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.filter-bar').offsetTop - 56, behavior: 'smooth' });
 }
 </script>
 </body>
