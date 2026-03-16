@@ -182,12 +182,27 @@ setInterval(function() { slideSG((sgSlide + 1) % 3); }, 3000);
 
 <!-- SUMMER -->
 <div id="section-summer" class="page-section">
-  <div class="section-title">☀️ <span>Summer</span> Essentials</div>
 
-  <div class="sub-label">🤏 Mini Handheld Fans</div>
-  <div class="mini-grid">
+  <!-- Category nav pills -->
+  <div style="display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; margin-bottom:20px; padding-bottom:4px;">
+    <div style="padding:6px 14px; background:#111; color:white; border-radius:99px; font-size:11px; font-weight:700; white-space:nowrap; cursor:pointer;" onclick="scrollToCategory('cat-fans')">🌀 Fans</div>
+    <div style="padding:6px 14px; background:#f5f5f0; color:#555; border:1px solid #e8e8e4; border-radius:99px; font-size:11px; font-weight:700; white-space:nowrap; cursor:pointer;" onclick="scrollToCategory('cat-coolers')">❄️ Coolers</div>
+    <div style="padding:6px 14px; background:#f5f5f0; color:#555; border:1px solid #e8e8e4; border-radius:99px; font-size:11px; font-weight:700; white-space:nowrap; cursor:pointer;" onclick="scrollToCategory('cat-shades')">🕶️ Shades</div>
+    <div style="padding:6px 14px; background:#f5f5f0; color:#555; border:1px solid #e8e8e4; border-radius:99px; font-size:11px; font-weight:700; white-space:nowrap; cursor:pointer;" onclick="scrollToCategory('cat-bottles')">💧 Bottles</div>
+    <div style="padding:6px 14px; background:#f5f5f0; color:#555; border:1px solid #e8e8e4; border-radius:99px; font-size:11px; font-weight:700; white-space:nowrap; cursor:pointer;" onclick="scrollToCategory('cat-protect')">🧴 Protection</div>
+  </div>
+
+  <!-- FANS -->
+  <div id="cat-fans" style="background:linear-gradient(135deg,#ff6b2b,#ffb347); border-radius:12px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+    <span style="font-size:20px;">🌀</span>
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:white; letter-spacing:0.5px; line-height:1;">HANDHELD FANS</div>
+      <div style="font-size:10px; color:rgba(255,255,255,0.8);">Stay cool on the go</div>
+    </div>
+  </div>
+  <div class="mini-grid" style="margin-bottom:20px;">
     <div class="mini-card">
-      <div class="mini-img" style="background:#f0f0f0; padding:0; position:relative;">
+      <div class="mini-img" style="background:#f0f0f0; padding:0; position:relative; overflow:hidden;">
         <div id="fan-slider" style="display:flex; transition:transform 0.4s ease; width:300%; height:100px;">
           <img src="fan1.png" style="width:33.33%; height:100px; object-fit:contain; padding:6px; flex-shrink:0;"/>
           <img src="fan2.png" style="width:33.33%; height:100px; object-fit:cover; flex-shrink:0;"/>
@@ -200,11 +215,11 @@ setInterval(function() { slideSG((sgSlide + 1) % 3); }, 3000);
         </div>
       </div>
       <div class="mini-body">
-        <div class="mini-title">ARCTICOOL Portable Mini Fan</div>
+        <div class="mini-title">ARCTICOOL Mini Fan</div>
         <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.3 · 6,500+ reviews</div>
-        <div style="font-size:10px; color:#777; margin-top:1px;">3 Speeds · 2000mAh · USB-C · 2-10hrs</div>
+        <div style="font-size:10px; color:#777; margin-top:1px;">2000mAh · USB-C · 2-10hrs</div>
         <div class="mini-price">₹549</div>
-        <a href="https://amzn.to/4bgoiAI" target="_blank" class="mini-btn">🛒 Buy on Amazon</a>
+        <a href="https://amzn.to/4bgoiAI" target="_blank" class="mini-btn">🛒 Buy Now</a>
       </div>
     </div>
     <div class="mini-card">
@@ -212,34 +227,36 @@ setInterval(function() { slideSG((sgSlide + 1) % 3); }, 3000);
         <img src="nuuk.png" style="width:100%; height:100px; object-fit:contain; padding:6px;"/>
       </div>
       <div class="mini-body">
-        <div class="mini-title">NUUK BFF Personal Fan</div>
+        <div class="mini-title">NUUK BFF Fan</div>
         <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.4 · 10,000+ reviews</div>
-        <div style="font-size:10px; color:#777; margin-top:1px;">13000 RPM · 3600mAh · 10hrs · 100-Speed</div>
+        <div style="font-size:10px; color:#777; margin-top:1px;">3600mAh · 10hrs · 100-Speed</div>
         <div class="mini-price">₹2,299</div>
-        <a href="https://amzn.to/4cRbSR0" target="_blank" class="mini-btn">🛒 Buy on Amazon</a>
+        <a href="https://amzn.to/4cRbSR0" target="_blank" class="mini-btn">🛒 Buy Now</a>
       </div>
     </div>
   </div>
 
-  <div class="sub-label">❄️ Air Coolers — Small</div>
-  <div class="mini-grid">
+  <!-- COOLERS -->
+  <div id="cat-coolers" style="background:linear-gradient(135deg,#00b4d8,#0077b6); border-radius:12px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+    <span style="font-size:20px;">❄️</span>
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:white; letter-spacing:0.5px; line-height:1;">AIR COOLERS</div>
+      <div style="font-size:10px; color:rgba(255,255,255,0.8);">Best picks for every room size</div>
+    </div>
+  </div>
+  <div class="mini-grid" style="margin-bottom:20px;">
     <div class="mini-card">
       <div class="mini-img" style="background:#f5f5f5; padding:0; overflow:hidden;">
         <img src="bajaj_cooler.png" style="width:100%; height:100px; object-fit:contain; padding:6px;"/>
       </div>
       <div class="mini-body">
-        <div class="mini-title">Bajaj PX97 Torque 36L</div>
+        <div class="mini-title">Bajaj PX97 36L</div>
         <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.1 · 8,000+ reviews</div>
-        <div style="font-size:10px; color:#777; margin-top:1px;">30ft Air Throw · Inverter Compatible</div>
+        <div style="font-size:10px; color:#777; margin-top:1px;">30ft Throw · Inverter Compatible</div>
         <div class="mini-price">₹5,799</div>
-        <a href="https://amzn.to/3NwvPlI" target="_blank" class="mini-btn">🛒 Buy on Amazon</a>
+        <a href="https://amzn.to/3NwvPlI" target="_blank" class="mini-btn">🛒 Buy Now</a>
       </div>
     </div>
-
-  </div>
-
-  <div class="sub-label">❄️ Air Coolers — Large (80L+)</div>
-  <div class="mini-grid">
     <div class="mini-card">
       <div class="mini-img" style="background:#f5f5f5; padding:0; overflow:hidden;">
         <img src="crompton_cooler.png" style="width:100%; height:100px; object-fit:contain; padding:6px;"/>
@@ -247,30 +264,38 @@ setInterval(function() { slideSG((sgSlide + 1) % 3); }, 3000);
       <div class="mini-body">
         <div class="mini-title">Crompton Ozone 88L</div>
         <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.0 · 17,115 reviews</div>
-        <div style="font-size:10px; color:#777; margin-top:1px;">4-Way Deflection · Honeycomb Pads · Auto Fill</div>
+        <div style="font-size:10px; color:#777; margin-top:1px;">4-Way · Honeycomb · Auto Fill</div>
         <div class="mini-price">₹10,149</div>
-        <a href="https://amzn.to/4rwspgL" target="_blank" class="mini-btn">🛒 Buy on Amazon</a>
+        <a href="https://amzn.to/4rwspgL" target="_blank" class="mini-btn">🛒 Buy Now</a>
       </div>
     </div>
-
     <div class="mini-card" style="grid-column:span 2;">
-      <div class="mini-img" style="background:#f5f5f5; padding:0; overflow:hidden; height:80px;">
-        <img src="bajaj_90l.png" style="width:100%; height:80px; object-fit:contain; padding:6px;"/>
-      </div>
-      <div class="mini-body">
-        <div class="mini-title">Bajaj DMH90 Neo 90L</div>
-        <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.1 · 5,200+ reviews</div>
-        <div style="font-size:10px; color:#777; margin-top:1px;">90ft Air Throw · Big Ice Chamber · Inverter</div>
-        <div class="mini-price">₹10,999</div>
-        <a href="https://amzn.to/4bIMzj3" target="_blank" class="mini-btn">🛒 Buy on Amazon</a>
+      <div style="display:flex; align-items:center; gap:12px; padding:10px;">
+        <img src="bajaj_90l.png" style="width:70px; height:70px; object-fit:contain; flex-shrink:0;"/>
+        <div style="flex:1;">
+          <div style="font-size:13px; font-weight:700;">Bajaj DMH90 Neo 90L</div>
+          <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.1 · 5,200+ reviews</div>
+          <div style="font-size:10px; color:#777; margin-top:1px;">90ft Air Throw · Big Ice Chamber · Inverter</div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-top:6px;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:#ff4500;">₹10,999</div>
+            <a href="https://amzn.to/4bIMzj3" target="_blank" class="mini-btn" style="width:auto; padding:6px 14px; margin-top:0;">🛒 Buy</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="sub-label">🕶️ Sunglasses</div>
-  <div class="mini-grid">
+  <!-- SUNGLASSES -->
+  <div id="cat-shades" style="background:linear-gradient(135deg,#3d405b,#f2cc8f); border-radius:12px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+    <span style="font-size:20px;">🕶️</span>
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:white; letter-spacing:0.5px; line-height:1;">SUNGLASSES</div>
+      <div style="font-size:10px; color:rgba(255,255,255,0.8);">Look cool, stay protected</div>
+    </div>
+  </div>
+  <div class="mini-grid" style="margin-bottom:20px;">
     <div class="mini-card">
-      <div class="mini-img" style="background:#f5f5f5; padding:0; position:relative;">
+      <div class="mini-img" style="background:#f5f5f5; padding:0; position:relative; overflow:hidden;">
         <div id="sg-slider" style="display:flex; transition:transform 0.4s ease; width:300%; height:100px;">
           <img src="sunglass1.png" style="width:33.33%; height:100px; object-fit:contain; padding:6px; flex-shrink:0;"/>
           <img src="sunglass2.png" style="width:33.33%; height:100px; object-fit:cover; flex-shrink:0;"/>
@@ -283,11 +308,11 @@ setInterval(function() { slideSG((sgSlide + 1) % 3); }, 3000);
         </div>
       </div>
       <div class="mini-body">
-        <div class="mini-title">Vincent Chase Polarized</div>
+        <div class="mini-title">Vincent Chase</div>
         <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.2 · 25,000+ reviews</div>
-        <div style="font-size:10px; color:#777; margin-top:1px;">100% UV Protected · Men & Women</div>
+        <div style="font-size:10px; color:#777; margin-top:1px;">Polarized · UV Protected</div>
         <div class="mini-price">₹547</div>
-        <a href="https://amzn.to/4cRdMB8" target="_blank" class="mini-btn">🛒 Buy on Amazon</a>
+        <a href="https://amzn.to/4cRdMB8" target="_blank" class="mini-btn">🛒 Buy Now</a>
       </div>
     </div>
     <div class="mini-card">
@@ -297,15 +322,22 @@ setInterval(function() { slideSG((sgSlide + 1) % 3); }, 3000);
       <div class="mini-body">
         <div class="mini-title">Fastrack Wayfarer</div>
         <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.3 · 12,000+ reviews</div>
-        <div style="font-size:10px; color:#777; margin-top:1px;">100% UV Protected · Men</div>
+        <div style="font-size:10px; color:#777; margin-top:1px;">UV Protected · Men</div>
         <div class="mini-price">₹950</div>
-        <a href="https://amzn.to/4uNc6PM" target="_blank" class="mini-btn">🛒 Buy on Amazon</a>
+        <a href="https://amzn.to/4uNc6PM" target="_blank" class="mini-btn">🛒 Buy Now</a>
       </div>
     </div>
   </div>
 
-  <div class="sub-label">💧 Water Bottles</div>
-  <div class="mini-grid">
+  <!-- BOTTLES -->
+  <div id="cat-bottles" style="background:linear-gradient(135deg,#2dc653,#007f5f); border-radius:12px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+    <span style="font-size:20px;">💧</span>
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:white; letter-spacing:0.5px; line-height:1;">WATER BOTTLES</div>
+      <div style="font-size:10px; color:rgba(255,255,255,0.8);">Hydrate in style</div>
+    </div>
+  </div>
+  <div class="mini-grid" style="margin-bottom:20px;">
     <div class="mini-card">
       <div class="mini-img" style="background:#f5f5f5; padding:0; overflow:hidden;">
         <img src="bottle1.png" style="width:100%; height:100px; object-fit:contain; padding:6px;"/>
@@ -313,9 +345,9 @@ setInterval(function() { slideSG((sgSlide + 1) % 3); }, 3000);
       <div class="mini-body">
         <div class="mini-title">Folding Silicone Bottle</div>
         <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.1 · 5,000+ reviews</div>
-        <div style="font-size:10px; color:#777; margin-top:1px;">600ml · Leak-Proof · Travel Ready</div>
+        <div style="font-size:10px; color:#777; margin-top:1px;">600ml · Leak-Proof · Foldable</div>
         <div class="mini-price">₹365</div>
-        <a href="https://amzn.to/4sdT3fD" target="_blank" class="mini-btn">🛒 Buy on Amazon</a>
+        <a href="https://amzn.to/4sdT3fD" target="_blank" class="mini-btn">🛒 Buy Now</a>
       </div>
     </div>
     <div class="mini-card">
@@ -325,31 +357,40 @@ setInterval(function() { slideSG((sgSlide + 1) % 3); }, 3000);
       <div class="mini-body">
         <div class="mini-title">HE VENTI Power Bottle</div>
         <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.2 · 8,000+ reviews</div>
-        <div style="font-size:10px; color:#777; margin-top:1px;">760ml · BPA Free · Leak-Proof · Sipper</div>
+        <div style="font-size:10px; color:#777; margin-top:1px;">760ml · BPA Free · Sipper</div>
         <div class="mini-price">₹660</div>
-        <a href="https://amzn.to/4rwtEwr" target="_blank" class="mini-btn">🛒 Buy on Amazon</a>
+        <a href="https://amzn.to/4rwtEwr" target="_blank" class="mini-btn">🛒 Buy Now</a>
       </div>
     </div>
   </div>
 
-  <div class="sub-label">🧴 Sun Protection</div>
-  <div class="mini-grid">
+  <!-- SUN PROTECTION -->
+  <div id="cat-protect" style="background:linear-gradient(135deg,#ff006e,#fb5607); border-radius:12px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+    <span style="font-size:20px;">🧴</span>
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:white; letter-spacing:0.5px; line-height:1;">SUN PROTECTION</div>
+      <div style="font-size:10px; color:rgba(255,255,255,0.8);">Shield yourself from UV rays</div>
+    </div>
+  </div>
+  <div class="mini-grid" style="margin-bottom:20px;">
     <div class="mini-card" style="grid-column:span 2;">
-      <div class="mini-img" style="background:#f5f5f5; padding:0; overflow:hidden; height:80px;">
-        <img src="arm_sleeve.png" style="width:100%; height:80px; object-fit:contain; padding:6px;"/>
-      </div>
-      <div class="mini-body">
-        <div class="mini-title">V.E UV Arm Sleeves</div>
-        <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.3 · 15,000+ reviews</div>
-        <div style="font-size:10px; color:#777; margin-top:1px;">UPF 50 · Biking · Cricket · Cycling</div>
-        <div class="mini-price">₹269</div>
-        <a href="https://amzn.to/4s8SVOs" target="_blank" class="mini-btn">🛒 Buy on Amazon</a>
+      <div style="display:flex; align-items:center; gap:12px; padding:10px;">
+        <img src="arm_sleeve.png" style="width:70px; height:70px; object-fit:contain; flex-shrink:0;"/>
+        <div style="flex:1;">
+          <div style="font-size:13px; font-weight:700;">V.E UV Arm Sleeves</div>
+          <div style="font-size:10px; color:#f5a623; margin-top:2px;">★ 4.3 · 15,000+ reviews</div>
+          <div style="font-size:10px; color:#777; margin-top:1px;">UPF 50 · Cricket · Cycling · Outdoor</div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-top:6px;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:#ff4500;">₹269</div>
+            <a href="https://amzn.to/4s8SVOs" target="_blank" class="mini-btn" style="width:auto; padding:6px 14px; margin-top:0;">🛒 Buy</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="follow-banner">
-    <div class="follow-text"><h3>📸 Follow for Updates</h3><p>Affiliate links dropping soon!</p></div>
+    <div class="follow-text"><h3>📸 Follow for Updates</h3><p>More deals dropping soon!</p></div>
     <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="follow-btn">Follow →</a>
   </div>
 </div>
@@ -408,6 +449,10 @@ function showSection(id, chip) {
   window.scrollTo({ top: document.querySelector('.filter-bar').offsetTop - 56, behavior: 'smooth' });
 }
 
+function scrollToCategory(id) {
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior: "smooth", block: "start"});
+}
 var fanSlide = 0;
 function slideFan(idx) {
   fanSlide = idx;
