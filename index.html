@@ -4,42 +4,22 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>UnboxWithPrapul – Best Budget Tech Picks</title>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFV5RKYYF9">
-var fanSlide = 0;
-function slideFan(idx) {
-  fanSlide = idx;
-  document.getElementById('fan-slider').style.transform = 'translateX(-' + (idx * 33.33) + '%)';
-  document.querySelectorAll('.fan-dot').forEach((d, i) => d.style.opacity = i === idx ? '1' : '0.4');
-}
-// Auto slide
-setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFV5RKYYF9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-RFV5RKYYF9');
-  
-var fanSlide = 0;
-function slideFan(idx) {
-  fanSlide = idx;
-  document.getElementById('fan-slider').style.transform = 'translateX(-' + (idx * 33.33) + '%)';
-  document.querySelectorAll('.fan-dot').forEach((d, i) => d.style.opacity = i === idx ? '1' : '0.4');
-}
-// Auto slide
-setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
-</script>
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root { --bg: #f5f5f0; --white: #fff; --dark: #111; --accent: #ff4500; --muted: #777; --border: #e8e8e4; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: var(--bg); color: var(--dark); font-family: 'Plus Jakarta Sans', sans-serif; }
-
     nav { background: var(--dark); padding: 0 20px; position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; height: 56px; }
     .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: white; letter-spacing: 1px; }
     .nav-logo span { color: var(--accent); }
     .nav-tag { background: var(--accent); color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 99px; }
-
     .hero { background: linear-gradient(135deg, #111 60%, #1f0a00); padding: 36px 20px; text-align: center; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,69,0,0.3), transparent 70%); border-radius: 50%; }
     .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
@@ -50,39 +30,20 @@ setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
     .stat { text-align: center; }
     .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: white; line-height: 1; }
     .stat-label { font-size: 10px; color: #666; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 2px; }
-
-    .summer-hero-banner {
-      margin: 20px auto 0;
-      max-width: 400px;
-      background: linear-gradient(135deg, rgba(255,107,43,0.2), rgba(255,179,71,0.1));
-      border: 1.5px solid rgba(255,107,43,0.5);
-      border-radius: 14px;
-      padding: 16px 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      text-align: left;
-      transition: border-color 0.2s;
-    }
+    .summer-hero-banner { margin: 20px auto 0; max-width: 400px; background: linear-gradient(135deg, rgba(255,107,43,0.2), rgba(255,179,71,0.1)); border: 1.5px solid rgba(255,107,43,0.5); border-radius: 14px; padding: 16px 20px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; transition: border-color 0.2s; }
     .summer-hero-banner:hover { border-color: var(--accent); }
     .summer-banner-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 4px; }
     .summer-banner-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: white; line-height: 1; letter-spacing: 1px; }
     .summer-banner-sub { font-size: 11px; color: #aaa; margin-top: 4px; }
-
     .filter-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; position: sticky; top: 56px; z-index: 40; }
     .filter-bar::-webkit-scrollbar { display: none; }
     .filter-chip { padding: 6px 16px; border-radius: 99px; font-size: 12px; font-weight: 700; white-space: nowrap; cursor: pointer; border: 1.5px solid var(--border); background: white; color: var(--muted); transition: all 0.15s; }
     .filter-chip.active, .filter-chip:hover { background: var(--dark); color: white; border-color: var(--dark); }
-
     .page-section { display: none; max-width: 500px; margin: 0 auto; padding: 20px 16px; }
     .page-section.active { display: block; animation: fadeUp 0.3s ease both; }
-
     .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.5px; margin-bottom: 16px; }
     .section-title span { color: var(--accent); }
     .sub-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; margin: 16px 0 10px; }
-
     .featured-card { background: var(--white); border-radius: 20px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 16px; border: 1px solid var(--border); }
     .featured-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 80px; position: relative; }
     .badge-reviewed { position: absolute; top: 12px; left: 12px; background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; }
@@ -100,43 +61,36 @@ setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
     .buy-buttons { display: flex; gap: 8px; margin-top: 14px; }
     .btn-amazon { flex: 1; padding: 12px; background: #ff9900; color: #111; font-weight: 800; font-size: 13px; border: none; border-radius: 10px; cursor: pointer; text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: 'Plus Jakarta Sans', sans-serif; }
     .btn-review { padding: 12px 16px; background: var(--dark); color: white; font-weight: 800; font-size: 14px; border: none; border-radius: 10px; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; }
-
     .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
     .mini-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); overflow: hidden; transition: all 0.2s; }
     .mini-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-    .mini-img { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 44px; position: relative; }
+    .mini-img { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 44px; position: relative; overflow: hidden; }
     .coming-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: white; letter-spacing: 1px; text-transform: uppercase; }
     .mini-body { padding: 10px; }
     .mini-title { font-size: 13px; font-weight: 700; line-height: 1.2; }
     .mini-price { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--accent); margin-top: 4px; }
     .mini-btn { display: block; width: 100%; margin-top: 8px; padding: 8px; background: var(--dark); color: white; font-size: 11px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; text-align: center; text-decoration: none; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.15s; }
     .mini-btn:hover { background: var(--accent); }
-
     .follow-banner { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); border-radius: 16px; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 16px 0; }
     .follow-text h3 { font-size: 16px; font-weight: 800; color: white; }
     .follow-text p { font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 2px; }
     .follow-btn { background: white; color: #111; font-size: 12px; font-weight: 800; padding: 10px 18px; border-radius: 99px; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
-
     .coming-placeholder { text-align: center; padding: 48px 20px; color: var(--muted); }
     .coming-placeholder .icon { font-size: 48px; margin-bottom: 12px; }
     .coming-placeholder h3 { font-weight: 700; font-size: 16px; color: var(--dark); }
     .coming-placeholder p { font-size: 13px; margin-top: 6px; }
-
     footer { background: var(--dark); color: #555; text-align: center; padding: 24px 20px; font-size: 12px; line-height: 1.7; }
     footer a { color: var(--accent); text-decoration: none; }
-
     @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">UNBOX<span>WITH</span>PRAPUL</div>
   <span class="nav-tag">🇮🇳 Best Tech Picks</span>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-eyebrow">✦ Handpicked For You</div>
   <h1>BEST BUDGET<br/><span>TECH PICKS</span></h1>
@@ -146,8 +100,6 @@ setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
     <div class="stat"><div class="stat-num">💰</div><div class="stat-label">Best Value</div></div>
     <div class="stat"><div class="stat-num">🇮🇳</div><div class="stat-label">India Only</div></div>
   </div>
-
-  <!-- SUMMER BANNER -->
   <div class="summer-hero-banner" onclick="showSection('summer', document.getElementById('chip-summer'))">
     <div>
       <div class="summer-banner-label">🌞 Season Special</div>
@@ -158,7 +110,6 @@ setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
   </div>
 </div>
 
-<!-- FILTER BAR -->
 <div class="filter-bar">
   <div class="filter-chip active" id="chip-featured" onclick="showSection('featured', this)">🔥 Featured</div>
   <div class="filter-chip" id="chip-summer" onclick="showSection('summer', this)">☀️ Summer</div>
@@ -168,10 +119,9 @@ setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
   <div class="filter-chip" id="chip-laptops" onclick="showSection('laptops', this)">💻 Laptops</div>
 </div>
 
-<!-- 🔥 FEATURED -->
+<!-- FEATURED -->
 <div id="section-featured" class="page-section active">
   <div class="section-title">🔥 <span>Featured</span> Reviews</div>
-
   <div class="featured-card">
     <div class="featured-img" style="background:#f5f5f5; padding:0; overflow:hidden;">
       <img src="hammer.png" style="width:100%; height:180px; object-fit:contain; padding:10px;"/>
@@ -182,16 +132,13 @@ setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
       <div class="product-category">Bluetooth Speaker</div>
       <div class="product-title">HAMMER Drop X1</div>
       <div class="stars"><span class="stars-icons">★★★★☆</span><span class="stars-count">4.1 · Prapul's Rating</span></div>
-      <div class="price-row">
-        <div class="price-now">₹499</div><div class="price-was">₹3,499</div><div class="price-off">86% OFF</div>
-      </div>
+      <div class="price-row"><div class="price-now">₹499</div><div class="price-was">₹3,499</div><div class="price-off">86% OFF</div></div>
       <div class="buy-buttons">
         <a href="https://amzn.to/4s2V9ip" target="_blank" class="btn-amazon">🛒 Amazon</a>
         <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="btn-review">▶</a>
       </div>
     </div>
   </div>
-
   <div class="featured-card">
     <div class="featured-img" style="background:#f5f5f5; padding:0; overflow:hidden;">
       <img src="trimmer.png" style="width:100%; height:180px; object-fit:contain; padding:10px;"/>
@@ -202,37 +149,34 @@ setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
       <div class="product-title">MI Xiaomi Beard Trimmer 2C</div>
       <div class="stars"><span class="stars-icons">★★★★★</span><span class="stars-count">4.5 · Prapul's Rating</span></div>
       <div style="font-size:12px; color:#777; margin-top:6px; line-height:1.5">USB Type-C · 40 Length Settings · 90 Min Runtime · 0.5mm Precision</div>
-      <div class="price-row">
-        <div class="price-now">₹999</div><div class="price-was">₹1,999</div><div class="price-off">50% OFF</div>
-      </div>
+      <div class="price-row"><div class="price-now">₹999</div><div class="price-was">₹1,999</div><div class="price-off">50% OFF</div></div>
       <div class="buy-buttons">
         <a href="https://amzn.to/4cLSdC8" target="_blank" class="btn-amazon">🛒 Amazon</a>
         <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="btn-review">▶</a>
       </div>
     </div>
   </div>
-
   <div class="follow-banner">
     <div class="follow-text"><h3>📸 Follow for Reviews</h3><p>New budget tech drops every week!</p></div>
     <a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="follow-btn">Follow →</a>
   </div>
 </div>
 
-<!-- ☀️ SUMMER -->
+<!-- SUMMER -->
 <div id="section-summer" class="page-section">
   <div class="section-title">☀️ <span>Summer</span> Essentials</div>
 
   <div class="sub-label">🤏 Mini Handheld Fans</div>
   <div class="mini-grid">
     <div class="mini-card">
-      <div class="mini-img" style="background:#f0f0f0; padding:0; overflow:hidden; position:relative;">
-        <div id="fan-slider" style="display:flex; transition:transform 0.4s ease; width:300%;">
+      <div class="mini-img" style="background:#f0f0f0; padding:0; position:relative;">
+        <div id="fan-slider" style="display:flex; transition:transform 0.4s ease; width:300%; height:100px;">
           <img src="fan1.png" style="width:33.33%; height:100px; object-fit:contain; padding:6px; flex-shrink:0;"/>
           <img src="fan2.png" style="width:33.33%; height:100px; object-fit:cover; flex-shrink:0;"/>
           <img src="fan3.png" style="width:33.33%; height:100px; object-fit:cover; flex-shrink:0;"/>
         </div>
         <div style="position:absolute; bottom:4px; left:0; right:0; display:flex; justify-content:center; gap:4px;">
-          <div class="fan-dot active-dot" onclick="slideFan(0)" style="width:6px;height:6px;border-radius:50%;background:white;opacity:1;cursor:pointer;"></div>
+          <div class="fan-dot" onclick="slideFan(0)" style="width:6px;height:6px;border-radius:50%;background:white;opacity:1;cursor:pointer;"></div>
           <div class="fan-dot" onclick="slideFan(1)" style="width:6px;height:6px;border-radius:50%;background:white;opacity:0.4;cursor:pointer;"></div>
           <div class="fan-dot" onclick="slideFan(2)" style="width:6px;height:6px;border-radius:50%;background:white;opacity:0.4;cursor:pointer;"></div>
         </div>
@@ -308,7 +252,7 @@ setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
   </div>
 </div>
 
-<!-- 🔊 SPEAKERS -->
+<!-- SPEAKERS -->
 <div id="section-speakers" class="page-section">
   <div class="section-title">🔊 Budget <span>Speakers</span></div>
   <div class="featured-card">
@@ -329,22 +273,21 @@ setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
   </div>
 </div>
 
-<!-- 🎧 EARBUDS -->
+<!-- EARBUDS -->
 <div id="section-earbuds" class="page-section">
   <div class="coming-placeholder"><div class="icon">🎧</div><h3>Coming Soon!</h3><p>Follow on Instagram to get notified</p><a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="mini-btn" style="display:inline-block;margin-top:16px;padding:10px 24px;width:auto;">🔔 Follow @UnboxWithPrapul</a></div>
 </div>
 
-<!-- 📱 PHONES -->
+<!-- PHONES -->
 <div id="section-phones" class="page-section">
   <div class="coming-placeholder"><div class="icon">📱</div><h3>Coming Soon!</h3><p>Follow on Instagram to get notified</p><a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="mini-btn" style="display:inline-block;margin-top:16px;padding:10px 24px;width:auto;">🔔 Follow @UnboxWithPrapul</a></div>
 </div>
 
-<!-- 💻 LAPTOPS -->
+<!-- LAPTOPS -->
 <div id="section-laptops" class="page-section">
   <div class="coming-placeholder"><div class="icon">💻</div><h3>Coming Soon!</h3><p>Follow on Instagram to get notified</p><a href="https://www.instagram.com/unboxwithprapul" target="_blank" class="mini-btn" style="display:inline-block;margin-top:16px;padding:10px 24px;width:auto;">🔔 Follow @UnboxWithPrapul</a></div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <p style="font-size:14px; color:#aaa; margin-bottom:12px">✨ Every link here is picked with love — just trying to save your money & time! 🙏</p>
   <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:8px">
@@ -367,10 +310,9 @@ var fanSlide = 0;
 function slideFan(idx) {
   fanSlide = idx;
   document.getElementById('fan-slider').style.transform = 'translateX(-' + (idx * 33.33) + '%)';
-  document.querySelectorAll('.fan-dot').forEach((d, i) => d.style.opacity = i === idx ? '1' : '0.4');
+  document.querySelectorAll('.fan-dot').forEach(function(d, i) { d.style.opacity = i === idx ? '1' : '0.4'; });
 }
-// Auto slide
-setInterval(() => slideFan((fanSlide + 1) % 3), 2500);
+setInterval(function() { slideFan((fanSlide + 1) % 3); }, 2500);
 </script>
 </body>
 </html>
