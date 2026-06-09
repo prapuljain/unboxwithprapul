@@ -510,17 +510,8 @@ function getDomain(url) {
 }
 
 async function loadHomeNews() {
-  try {
-    const res = await fetch('https://gnews.io/api/v4/search?q=technology+gadgets&lang=en&max=5&apikey=' + GNEWS_KEY);
-    const data = await res.json();
-    if (data.articles && data.articles.length > 0) {
-      renderHomeNews(data.articles);
-    } else {
-      loadRSSNews();
-    }
-  } catch(e) {
-    loadRSSNews();
-  }
+  // Use RSS2JSON - more reliable, no CORS issues
+  loadRSSNews();
 }
 
 async function loadRSSNews() {
