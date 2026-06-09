@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech News – UnboxWithPrapul</title>
+  <meta name="description" content="Latest tech and gadget news from around the world, curated by UnboxWithPrapul."/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --bg: #f5f5f0; --white: #fff; --dark: #111; --accent: #ff4500; --muted: #777; --border: #e8e8e4; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--dark); font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    nav { background: var(--dark); padding: 0 20px; position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: white; letter-spacing: 1px; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-tag { background: var(--accent); color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 99px; text-decoration: none; }
+
+    .hero { background: linear-gradient(135deg, #111 60%, #1a0500); padding: 28px 20px; text-align: center; }
+    .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+    .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: white; line-height: 1; }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub { color: #aaa; font-size: 13px; margin-top: 6px; }
+
+    .filter-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; position: sticky; top: 56px; z-index: 40; }
+    .filter-bar::-webkit-scrollbar { display: none; }
+    .filter-chip { padding: 5px 14px; border-radius: 99px; font-size: 12px; font-weight: 700; white-space: nowrap; cursor: pointer; border: 1.5px solid var(--border); background: white; color: var(--muted); transition: all 0.15s; }
+    .filter-chip.active, .filter-chip:hover { background: var(--dark); color: white; border-color: var(--dark); }
+
+    .container { max-width: 680px; margin: 0 auto; padding: 20px 16px 60px; }
+
+    .live-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,69,0,0.1); border: 1px solid rgba(255,69,0,0.3); border-radius: 99px; padding: 4px 12px; font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 16px; }
+    .live-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .news-grid { display: flex; flex-direction: column; gap: 12px; }
+
+    .news-card { background: var(--white); border-radius: 16px; border: 1px solid var(--border); overflow: hidden; display: flex; gap: 0; transition: all 0.2s; cursor: pointer; text-decoration: none; color: var(--dark); }
+    .news-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); border-color: rgba(255,69,0,0.3); }
+
+    .news-img { width: 110px; min-width: 110px; height: 100px; object-fit: cover; background: #eee; }
+    .news-img-placeholder { width: 110px; min-width: 110px; height: 100px; background: linear-gradient(135deg, #1a1a1a, #333); display: flex; align-items: center; justify-content: center; font-size: 32px; }
+
+    .news-body { padding: 12px; flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; }
+    .news-source { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .news-title { font-size: 13px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .news-time { font-size: 10px; color: var(--muted); margin-top: 6px; }
+
+    .news-card.featured { flex-direction: column; }
+    .news-card.featured .news-img { width: 100%; min-width: unset; height: 180px; }
+    .news-card.featured .news-img-placeholder { width: 100%; min-width: unset; height: 180px; }
+    .news-card.featured .news-title { font-size: 16px; -webkit-line-clamp: 2; }
+
+    .category-label { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.5px; margin: 20px 0 10px; }
+    .category-label span { color: var(--accent); }
+
+    .loading { text-align: center; padding: 40px 20px; color: var(--muted); }
+    .loading-spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 12px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error-box { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; color: var(--muted); }
+    .error-box a { color: var(--accent); }
+
+    .tag { display: inline-block; background: rgba(255,69,0,0.08); color: var(--accent); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 4px; }
+
+    footer { background: var(--dark); color: #555; text-align: center; padding: 20px; font-size: 12px; line-height: 1.7; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .news-card { animation: fadeUp 0.4s ease both; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://unboxwithprapul.in" class="nav-logo">UNBOX<span>WITH</span>PRAPUL</a>
+  <a href="https://unboxwithprapul.in" class="nav-tag">🛒 Shop Deals</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">⚡ Updated Live</div>
+  <h1>TECH <span>NEWS</span></h1>
+  <p class="hero-sub">Global gadgets & tech — all in one place</p>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-chip active" onclick="loadNews('all', this)">🌐 All</div>
+  <div class="filter-chip" onclick="loadNews('phones', this)">📱 Phones</div>
+  <div class="filter-chip" onclick="loadNews('ai', this)">🤖 AI</div>
+  <div class="filter-chip" onclick="loadNews('laptops', this)">💻 Laptops</div>
+  <div class="filter-chip" onclick="loadNews('gaming', this)">🎮 Gaming</div>
+  <div class="filter-chip" onclick="loadNews('india', this)">🇮🇳 India Tech</div>
+</div>
+
+<div class="container">
+  <div class="live-badge"><div class="live-dot"></div> Live Feed</div>
+  <div id="news-container">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <p>Fetching latest tech news...</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>📰 News powered by GNews · Updated in real time</p>
+  <p style="margin-top:6px">
+    <a href="https://unboxwithprapul.in">🏠 Home</a> ·
+    <a href="https://www.instagram.com/unboxwithprapul" target="_blank">📸 Instagram</a> ·
+    <a href="https://unboxwithprapul.in/privacy.html">Privacy Policy</a>
+  </p>
+</footer>
+
+<script>
+  const GNEWS_KEY = 'YOUR_GNEWS_API_KEY';
+
+  const queries = {
+    all: 'technology gadgets',
+    phones: 'smartphone mobile phone',
+    ai: 'artificial intelligence AI tech',
+    laptops: 'laptop computer tech',
+    gaming: 'gaming console PC game',
+    india: 'India technology gadgets'
+  };
+
+  const emojis = {
+    all: '💻', phones: '📱', ai: '🤖', laptops: '💻', gaming: '🎮', india: '🇮🇳'
+  };
+
+  function timeAgo(dateStr) {
+    const now = new Date();
+    const then = new Date(dateStr);
+    const diff = Math.floor((now - then) / 1000);
+    if (diff < 60) return 'Just now';
+    if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+    if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+    return Math.floor(diff/86400) + 'd ago';
+  }
+
+  function getDomain(url) {
+    try { return new URL(url).hostname.replace('www.', ''); } catch { return 'Tech News'; }
+  }
+
+  function renderNews(articles, category) {
+    const container = document.getElementById('news-container');
+    if (!articles || articles.length === 0) {
+      container.innerHTML = `<div class="error-box"><p>No news found. <a href="#" onclick="loadNews('all')">Try All News</a></p></div>`;
+      return;
+    }
+
+    let html = '<div class="news-grid">';
+    articles.forEach((article, i) => {
+      const domain = getDomain(article.url);
+      const time = timeAgo(article.publishedAt);
+      const emoji = emojis[category] || '📰';
+
+      if (i === 0) {
+        // Featured card
+        html += `
+          <a class="news-card featured" href="${article.url}" target="_blank" rel="noopener">
+            ${article.image
+              ? `<img class="news-img" src="${article.image}" alt="${article.title}" onerror="this.parentNode.querySelector('.news-img-placeholder') ? '' : this.style.display='none'"/>`
+              : `<div class="news-img-placeholder">${emoji}</div>`
+            }
+            <div class="news-body">
+              <div>
+                <div class="news-source">${domain}</div>
+                <div class="news-title">${article.title}</div>
+              </div>
+              <div class="news-time">⏱ ${time}</div>
+            </div>
+          </a>`;
+      } else {
+        html += `
+          <a class="news-card" href="${article.url}" target="_blank" rel="noopener" style="animation-delay:${i*0.05}s">
+            ${article.image
+              ? `<img class="news-img" src="${article.image}" alt="${article.title}" onerror="this.style.display='none'"/>`
+              : `<div class="news-img-placeholder">${emoji}</div>`
+            }
+            <div class="news-body">
+              <div>
+                <div class="news-source">${domain}</div>
+                <div class="news-title">${article.title}</div>
+              </div>
+              <div class="news-time">⏱ ${time}</div>
+            </div>
+          </a>`;
+      }
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  async function loadNews(category, chip) {
+    // Update active chip
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    if (chip) chip.classList.add('active');
+
+    const container = document.getElementById('news-container');
+    container.innerHTML = `<div class="loading"><div class="loading-spinner"></div><p>Loading ${category} news...</p></div>`;
+
+    const query = queries[category] || 'technology';
+
+    try {
+      const res = await fetch(`https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=10&apikey=${GNEWS_KEY}`);
+      const data = await res.json();
+
+      if (data.articles && data.articles.length > 0) {
+        renderNews(data.articles, category);
+      } else {
+        // Fallback to RSS if API fails
+        loadRSSFallback(category);
+      }
+    } catch (err) {
+      loadRSSFallback(category);
+    }
+  }
+
+  async function loadRSSFallback(category) {
+    const container = document.getElementById('news-container');
+    // Use RSS2JSON as fallback (free)
+    const feeds = {
+      all: 'https://feeds.feedburner.com/TechCrunch',
+      phones: 'https://www.gsmarena.com/rss-news-comments.php3',
+      ai: 'https://feeds.feedburner.com/TechCrunch',
+      laptops: 'https://feeds.feedburner.com/TechCrunch',
+      gaming: 'https://feeds.feedburner.com/TechCrunch',
+      india: 'https://feeds.feedburner.com/gadgets360-latest'
+    };
+
+    const feed = feeds[category] || feeds.all;
+
+    try {
+      const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed)}&count=10`);
+      const data = await res.json();
+
+      if (data.items && data.items.length > 0) {
+        const articles = data.items.map(item => ({
+          title: item.title,
+          url: item.link,
+          image: item.thumbnail || item.enclosure?.link || null,
+          publishedAt: item.pubDate,
+          source: { name: data.feed?.title || 'Tech News' }
+        }));
+        renderNews(articles, category);
+      } else {
+        container.innerHTML = `
+          <div class="error-box">
+            <p style="font-size:32px;margin-bottom:12px">📡</p>
+            <p style="font-weight:700;margin-bottom:6px">News feed temporarily unavailable</p>
+            <p>Check out the latest tech news directly:</p>
+            <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+              <a href="https://techcrunch.com" target="_blank" style="display:block;padding:10px;background:#f5f5f0;border-radius:8px;font-weight:700;color:#111;text-decoration:none;">TechCrunch →</a>
+              <a href="https://gadgets360.com" target="_blank" style="display:block;padding:10px;background:#f5f5f0;border-radius:8px;font-weight:700;color:#111;text-decoration:none;">Gadgets360 →</a>
+              <a href="https://theverge.com" target="_blank" style="display:block;padding:10px;background:#f5f5f0;border-radius:8px;font-weight:700;color:#111;text-decoration:none;">The Verge →</a>
+              <a href="https://gsmarena.com" target="_blank" style="display:block;padding:10px;background:#f5f5f0;border-radius:8px;font-weight:700;color:#111;text-decoration:none;">GSMArena →</a>
+            </div>
+          </div>`;
+      }
+    } catch(e) {
+      container.innerHTML = `<div class="error-box"><p>Unable to load news. Please try again later.</p></div>`;
+    }
+  }
+
+  // Load on page open
+  loadNews('all', document.querySelector('.filter-chip.active'));
+</script>
+</body>
+</html>
