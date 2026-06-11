@@ -6,7 +6,7 @@
   const niceDate = (value) => {
     if(!value) return '';
     const d = new Date(value + 'T00:00:00');
-    return d.toLocaleDateString('en-IN', {day:'numeric', month:'short', year:'numeric'});
+    return d.toLocaleDateString('en', {day:'numeric', month:'short', year:'numeric'});
   };
   const sortPosts = (posts) => [...posts].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
   const postUrl = (post) => post.url || `posts/${post.slug}.html`;

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-IN">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,34 +17,41 @@
 </header>
 <main class="container studio-layout">
   <aside class="studio-panel">
-    <h1 style="font-size:1.7rem">Studio</h1>
-    <p class="help-text">Write, edit, preview and publish blog posts to your GitHub repo. Token is used only in your browser.</p>
+    <h1 style="font-size:1.45rem">Studio</h1>
+    <p class="help-text">Write, edit, preview and publish articles to your GitHub repo. The token stays only in your browser while this page is open.</p>
     <button class="btn btn-secondary" id="loadPostsBtn" type="button">Load existing posts</button>
     <label for="existingPosts">Edit existing post</label>
     <select id="existingPosts"><option value="">Create new post</option></select>
     <div class="mini-list" id="miniList" aria-live="polite"></div>
 
     <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
-    <h2 style="font-size:1.15rem">GitHub publish settings</h2>
-    <label for="owner">Owner</label><input id="owner" value="prapuljain">
-    <label for="repo">Repository</label><input id="repo" value="unboxwithprapul">
-    <label for="branch">Branch</label><input id="branch" value="main">
-    <label for="token">GitHub token</label><input id="token" type="password" placeholder="Paste token only when publishing">
-    <p class="help-text">Use a fine-grained GitHub token with Contents: Read and Write. Never paste the token inside website code.</p>
+    <h2 style="font-size:1.1rem">GitHub publish settings</h2>
+    <label for="owner">Owner</label><input id="owner" value="prapuljain" autocomplete="off">
+    <label for="repo">Repository</label><input id="repo" value="unboxwithprapul" autocomplete="off">
+    <label for="branch">Branch</label><input id="branch" value="main" autocomplete="off">
+    <label for="token">GitHub token</label><input id="token" type="password" placeholder="Paste token only when publishing" autocomplete="off">
+    <p class="help-text">Use a fine-grained GitHub token with Repository contents: Read and Write. Do not save the token inside any website file.</p>
   </aside>
 
   <section class="studio-panel">
     <h2>Article editor</h2>
+    <div class="studio-tip">Best article image size: 1200 × 675 px, JPG/PNG/WebP, under 5 MB. You can upload a featured image here and Studio will publish it to <strong>assets/img/uploads/</strong>.</div>
     <div class="grid grid-2">
-      <div><label for="title">Title</label><input id="title" placeholder="Example: Best phone features to check before buying"></div>
+      <div><label for="title">Title</label><input id="title" placeholder="Example: AI phone features that actually matter"></div>
       <div><label for="slug">Slug</label><input id="slug" placeholder="auto-created-from-title"></div>
       <div><label for="category">Category</label><select id="category"><option>News</option><option>News Explainer</option><option>Review</option><option>Buying Guide</option><option>Guide</option><option>Comparison</option></select></div>
       <div><label for="date">Date</label><input id="date" type="date"></div>
       <div><label for="author">Author</label><input id="author" value="Prapul Jain A S"></div>
-      <div><label for="image">Image path</label><input id="image" value="assets/img/og-default.svg"></div>
+      <div><label for="image">Image path or URL</label><input id="image" value="assets/img/og-default.svg" placeholder="assets/img/uploads/article-image.webp"></div>
     </div>
-    <label for="excerpt">Short summary / meta description</label><textarea id="excerpt" style="min-height:84px" placeholder="Write 1-2 lines explaining the article."></textarea>
-    <label for="tags">Tags, comma separated</label><input id="tags" placeholder="smartphones, AI, India">
+    <label for="imageFile">Upload featured image</label>
+    <input id="imageFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml">
+    <img id="imagePreview" class="image-preview" alt="Selected article image preview">
+    <p class="help-text" id="imageHelp">Choose an image, or paste an external image URL/path in the image field.</p>
+
+    <label for="excerpt">Short summary / meta description</label>
+    <textarea id="excerpt" style="min-height:84px" placeholder="Write 1-2 lines explaining the article."></textarea>
+    <label for="tags">Tags, comma separated</label><input id="tags" placeholder="smartphones, AI, gadgets">
     <label><input id="featured" type="checkbox"> Mark as featured</label>
     <label for="content">Article body</label>
     <textarea id="content" placeholder="# Main point
@@ -54,7 +61,10 @@ Write your article here.
 ## Section heading
 
 - Bullet point
-- Bullet point"></textarea>
+- Bullet point
+
+You can also add a body image after uploading it manually:
+![Image description](assets/img/uploads/example.webp)"></textarea>
 
     <div class="studio-actions">
       <button class="btn btn-primary" id="previewBtn" type="button">Preview</button>
@@ -62,10 +72,10 @@ Write your article here.
       <button class="btn btn-primary" id="publishBtn" type="button">Publish to GitHub</button>
       <button class="btn btn-secondary" id="resetBtn" type="button">Clear</button>
     </div>
-    <p class="help-text">Publish updates: article page, data/posts.json, sitemap.xml, news-sitemap.xml and rss.xml.</p>
-    <h2 style="font-size:1.15rem;margin-top:20px">Preview</h2>
+    <p class="help-text">Publish updates: article page, data/posts.json, sitemap.xml, news-sitemap.xml, rss.xml and selected image if you uploaded one.</p>
+    <h2 style="font-size:1.1rem;margin-top:20px">Preview</h2>
     <div class="preview-box" id="preview"></div>
-    <h2 style="font-size:1.15rem;margin-top:20px">Log</h2>
+    <h2 style="font-size:1.1rem;margin-top:20px">Log</h2>
     <div class="log-box" id="log">Ready.</div>
   </section>
 </main>
@@ -75,6 +85,7 @@ Write your article here.
   const SITE_NAME = 'UnboxWithPrapul';
   const STATIC_PAGES = ['', 'news.html', 'reviews.html', 'guides.html', 'videos.html', 'about.html', 'contact.html', 'editorial-policy.html', 'corrections-policy.html', 'privacy.html'];
   let posts = [];
+  let selectedImage = null;
   const $ = id => document.getElementById(id);
   const log = msg => { $('log').textContent += '\n' + msg; $('log').scrollTop = $('log').scrollHeight; };
   const escapeHTML = (value='') => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
@@ -83,27 +94,77 @@ Write your article here.
   const today = () => new Date().toISOString().slice(0,10);
   $('date').value = today();
 
+  function inlineMarkdown(text){
+    let safe = escapeHTML(text || '');
+    safe = safe.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    safe = safe.replace(/\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    return safe;
+  }
+
+  function articleRelativeImage(url){
+    const value = String(url || '').trim();
+    if(!value) return '';
+    if(value.startsWith('http') || value.startsWith('data:') || value.startsWith('../') || value.startsWith('/')) return value;
+    return '../' + value.replace(/^\.\//,'');
+  }
+
   function markdownToHtml(markdown){
     const lines = (markdown || '').trim().split(/\r?\n/);
     let out = [], para = [], inList = false;
-    const flushPara = () => { if(para.length){ out.push('<p>' + escapeHTML(para.join(' ').trim()) + '</p>'); para = []; } };
+    const flushPara = () => { if(para.length){ out.push('<p>' + inlineMarkdown(para.join(' ').trim()) + '</p>'); para = []; } };
     const closeList = () => { if(inList){ out.push('</ul>'); inList = false; } };
     for(const raw of lines){
       const line = raw.trimEnd();
       if(!line.trim()){ flushPara(); closeList(); continue; }
+      const img = line.match(/^!\[(.*?)\]\((.*?)\)$/);
+      if(img){ flushPara(); closeList(); out.push('<img src="'+escapeHTML(articleRelativeImage(img[2]))+'" alt="'+escapeHTML(img[1])+'">'); continue; }
       if(line.startsWith('### ')){ flushPara(); closeList(); out.push('<h3>'+escapeHTML(line.slice(4).trim())+'</h3>'); continue; }
       if(line.startsWith('## ')){ flushPara(); closeList(); out.push('<h2>'+escapeHTML(line.slice(3).trim())+'</h2>'); continue; }
       if(line.startsWith('# ')){ flushPara(); closeList(); out.push('<h2>'+escapeHTML(line.slice(2).trim())+'</h2>'); continue; }
-      if(line.startsWith('- ')){ flushPara(); if(!inList){ out.push('<ul>'); inList = true; } out.push('<li>'+escapeHTML(line.slice(2).trim())+'</li>'); continue; }
+      if(line.startsWith('- ')){ flushPara(); if(!inList){ out.push('<ul>'); inList = true; } out.push('<li>'+inlineMarkdown(line.slice(2).trim())+'</li>'); continue; }
       para.push(line.trim());
     }
     flushPara(); closeList();
     return out.join('\n');
   }
 
+  function getImagePathForSelectedFile(file){
+    const titleSlug = slugify($('slug').value.trim() || $('title').value.trim() || 'article-image');
+    const name = file.name || 'image.jpg';
+    const extMatch = name.toLowerCase().match(/\.(png|jpe?g|webp|gif|svg)$/);
+    const ext = extMatch ? extMatch[1].replace('jpeg','jpg') : 'jpg';
+    return `assets/img/uploads/${titleSlug}.${ext}`;
+  }
+
+  function readFileAsDataURL(file){
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ''));
+      reader.onerror = () => reject(new Error('Could not read selected image.'));
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function handleImageSelection(event){
+    const file = event.target.files && event.target.files[0];
+    if(!file){ selectedImage = null; return; }
+    if(!file.type.startsWith('image/')){ log('Selected file is not an image.'); event.target.value = ''; return; }
+    if(file.size > 5 * 1024 * 1024){ log('Image is bigger than 5 MB. Please compress it first.'); event.target.value = ''; return; }
+    const dataUrl = await readFileAsDataURL(file);
+    const path = getImagePathForSelectedFile(file);
+    selectedImage = {file, path, dataUrl, base64:dataUrl.split(',')[1] || ''};
+    $('image').value = path;
+    const preview = $('imagePreview');
+    preview.src = dataUrl;
+    preview.style.display = 'block';
+    $('imageHelp').textContent = 'Selected image will publish to: ' + path;
+    log('Image selected: ' + path);
+  }
+
   function getPostFromForm(){
     const title = $('title').value.trim();
     const slug = slugify($('slug').value.trim() || title);
+    if(selectedImage){ selectedImage.path = $('image').value.trim() || getImagePathForSelectedFile(selectedImage.file); }
     return {
       title,
       slug,
@@ -131,6 +192,7 @@ Write your article here.
     const articleType = (post.category || '').toLowerCase().includes('news') ? 'NewsArticle' : 'Article';
     const url = `${SITE}/posts/${post.slug}.html`;
     const imageUrl = post.image.startsWith('http') ? post.image : `${SITE}/${post.image.replace(/^\//,'')}`;
+    const articleImgSrc = post.image.startsWith('http') ? post.image : `../${post.image.replace(/^\//,'')}`;
     const data = {
       '@context':'https://schema.org', '@type':articleType, headline:post.title, description:post.excerpt,
       image:[imageUrl], datePublished:post.date, dateModified:post.updated || post.date,
@@ -139,7 +201,7 @@ Write your article here.
     };
     const tagHtml = (post.tags || []).slice(0,6).map(t=>`<span class="badge">${escapeHTML(t)}</span>`).join('');
     return `<!doctype html>
-<html lang="en-IN">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -159,16 +221,16 @@ Write your article here.
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="container nav-wrap"><a class="logo" href="../index.html"><img src="../assets/img/logo.svg" alt=""><span>UnboxWithPrapul<small>Gadget news for India</small></span></a><button class="nav-toggle" aria-expanded="false" aria-label="Open menu">Menu</button><nav class="site-nav" aria-label="Main navigation"><a href="../index.html">Home</a><a href="../news.html">News</a><a href="../reviews.html">Reviews</a><a href="../guides.html">Guides</a><a href="../videos.html">Videos</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav></div></header>
-<main id="main" class="article-shell"><article><div class="meta"><span class="badge">${escapeHTML(post.category)}</span><span>${escapeHTML(post.date)}</span><span>By ${escapeHTML(post.author)}</span></div><h1>${escapeHTML(post.title)}</h1><p class="lead">${escapeHTML(post.excerpt)}</p><img class="article-hero-img" src="../${escapeHTML(post.image)}" alt="${escapeHTML(post.title)}"><div class="article-content">${markdownToHtml(post.content)}</div><div class="article-note"><strong>Prapul note:</strong> This article is written to help Indian buyers understand tech in simple language. Always compare price, warranty and service support before buying any gadget.</div><div class="share-row">${tagHtml}<a class="btn btn-secondary" href="../news.html">More articles</a></div></article></main>
-<footer class="site-footer"><div class="container"><div class="footer-grid"><div><div class="footer-title">UnboxWithPrapul</div><p>Simple gadget news, reviews and buying advice for Indian tech buyers.</p></div><div><div class="footer-title">Sections</div><div class="footer-links"><a href="../news.html">News</a><a href="../reviews.html">Reviews</a><a href="../guides.html">Buying Guides</a><a href="../videos.html">Videos</a></div></div><div><div class="footer-title">Trust</div><div class="footer-links"><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../editorial-policy.html">Editorial Policy</a><a href="../corrections-policy.html">Corrections Policy</a><a href="../privacy.html">Privacy Policy</a></div></div></div><div class="copyright">© <span data-year></span> ${SITE_NAME}. All rights reserved.</div></div></footer><script src="../assets/js/main.js" defer><\/script>
+<header class="site-header"><div class="container nav-wrap"><a class="logo" href="../index.html"><img src="../assets/img/logo.svg" alt=""><span>UnboxWithPrapul<small>Global gadget news</small></span></a><button class="nav-toggle" aria-expanded="false" aria-label="Open menu">Menu</button><nav class="site-nav" aria-label="Main navigation"><a href="../index.html">Home</a><a href="../news.html">News</a><a href="../reviews.html">Reviews</a><a href="../guides.html">Guides</a><a href="../videos.html">Videos</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav></div></header>
+<main id="main" class="article-shell"><article><div class="meta"><span class="badge">${escapeHTML(post.category)}</span><span>${escapeHTML(post.date)}</span><span>By ${escapeHTML(post.author)}</span></div><h1>${escapeHTML(post.title)}</h1><p class="lead">${escapeHTML(post.excerpt)}</p><img class="article-hero-img" src="${escapeHTML(articleImgSrc)}" alt="${escapeHTML(post.title)}"><div class="article-content">${markdownToHtml(post.content)}</div><div class="article-note"><strong>Prapul note:</strong> This article is written to help readers understand tech in simple language. Always compare price, warranty, software support and service options before buying any gadget.</div><div class="share-row">${tagHtml}<a class="btn btn-secondary" href="../news.html">More articles</a></div></article></main>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><div class="footer-title">UnboxWithPrapul</div><p>Simple gadget news, reviews and buying advice for curious tech readers worldwide.</p></div><div><div class="footer-title">Sections</div><div class="footer-links"><a href="../news.html">News</a><a href="../reviews.html">Reviews</a><a href="../guides.html">Buying Guides</a><a href="../videos.html">Videos</a></div></div><div><div class="footer-title">Trust</div><div class="footer-links"><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../editorial-policy.html">Editorial Policy</a><a href="../corrections-policy.html">Corrections Policy</a><a href="../privacy.html">Privacy Policy</a></div></div></div><div class="copyright">© <span data-year></span> ${SITE_NAME}. All rights reserved.</div></div></footer><script src="../assets/js/main.js" defer><\/script>
 </body>
 </html>`;
   }
 
   function sitemapXml(allPosts){
     const urls = [];
-    for(const p of STATIC_PAGES){ urls.push(`  <url><loc>${SITE}/${p}</loc><lastmod>${today()}</lastmod><changefreq>${p==='' || p==='news.html' ? 'daily':'weekly'}</changefreq><priority>${p===''?'1.0':'0.8'}</priority></url>`.replace(`${SITE}/</loc>`,`${SITE}/</loc>`)); }
+    for(const p of STATIC_PAGES){ urls.push(`  <url><loc>${SITE}/${p}</loc><lastmod>${today()}</lastmod><changefreq>${p==='' || p==='news.html' ? 'daily':'weekly'}</changefreq><priority>${p===''?'1.0':'0.8'}</priority></url>`); }
     for(const p of allPosts){ urls.push(`  <url><loc>${SITE}/posts/${xmlEscape(p.slug)}.html</loc><lastmod>${xmlEscape(p.updated || p.date)}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`); }
     return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
   }
@@ -180,15 +242,16 @@ Write your article here.
 
   function rssXml(allPosts){
     const items = allPosts.slice(0,20).map(p => {
-      const pub = new Date((p.date || today()) + 'T09:00:00+05:30').toUTCString();
+      const pub = new Date((p.date || today()) + 'T09:00:00+00:00').toUTCString();
       return `    <item>\n      <title>${xmlEscape(p.title)}</title>\n      <link>${SITE}/posts/${xmlEscape(p.slug)}.html</link>\n      <guid>${SITE}/posts/${xmlEscape(p.slug)}.html</guid>\n      <pubDate>${pub}</pubDate>\n      <description>${xmlEscape(p.excerpt)}</description>\n    </item>`;
     }).join('\n');
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>${SITE_NAME}</title>\n    <link>${SITE}/</link>\n    <description>Simple gadget news, reviews and buying guides for Indian buyers.</description>\n${items}\n  </channel>\n</rss>\n`;
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>${SITE_NAME}</title>\n    <link>${SITE}/</link>\n    <description>Simple gadget news, reviews and buying guides for readers worldwide.</description>\n${items}\n  </channel>\n</rss>\n`;
   }
 
   function preview(){
     const post = getPostFromForm();
-    $('preview').innerHTML = `<div class="meta"><span class="badge">${escapeHTML(post.category)}</span><span>${escapeHTML(post.date)}</span></div><h1 style="font-size:2rem">${escapeHTML(post.title || 'Untitled article')}</h1><p>${escapeHTML(post.excerpt)}</p><div class="article-content">${markdownToHtml(post.content)}</div>`;
+    const previewSrc = selectedImage?.dataUrl || (post.image ? post.image : 'assets/img/og-default.svg');
+    $('preview').innerHTML = `<div class="meta"><span class="badge">${escapeHTML(post.category)}</span><span>${escapeHTML(post.date)}</span></div><h1 style="font-size:1.6rem">${escapeHTML(post.title || 'Untitled article')}</h1><p>${escapeHTML(post.excerpt)}</p>${previewSrc ? `<img class="article-hero-img" src="${escapeHTML(previewSrc)}" alt="">` : ''}<div class="article-content">${markdownToHtml(post.content)}</div>`;
   }
 
   async function loadPosts(){
@@ -210,6 +273,7 @@ Write your article here.
 
   function fillForm(slug){
     const p = posts.find(x => x.slug === slug); if(!p) return;
+    selectedImage = null; $('imageFile').value = ''; $('imagePreview').style.display = 'none'; $('imageHelp').textContent = 'Choose an image, or paste an external image URL/path in the image field.';
     $('title').value = p.title || ''; $('slug').value = p.slug || ''; $('category').value = p.category || 'News'; $('date').value = p.date || today(); $('author').value = p.author || 'Prapul Jain A S'; $('image').value = p.image || 'assets/img/og-default.svg'; $('excerpt').value = p.excerpt || ''; $('tags').value = (p.tags || []).join(', '); $('featured').checked = !!p.featured; $('content').value = p.content || '';
     $('existingPosts').value = slug;
     preview(); log('Loaded post into editor: ' + p.title);
@@ -217,6 +281,9 @@ Write your article here.
 
   function downloadText(filename, text){
     const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
+    downloadBlob(filename, blob);
+  }
+  function downloadBlob(filename, blob){
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
   }
 
@@ -227,6 +294,7 @@ Write your article here.
     return {
       post,
       allPosts,
+      image:selectedImage,
       files: {
         [`posts/${post.slug}.html`]: articleHtml(post),
         'data/posts.json': JSON.stringify(allPosts, null, 2),
@@ -247,28 +315,36 @@ Write your article here.
   function toBase64(str){
     const bytes = new TextEncoder().encode(str); let bin = ''; bytes.forEach(b => bin += String.fromCharCode(b)); return btoa(bin);
   }
-  async function githubPutFile(owner, repo, branch, path, text, token, message){
+  async function githubPutBase64File(owner, repo, branch, path, base64, token, message){
     const sha = await githubGetSha(owner, repo, branch, path, token);
-    const body = {message, content: toBase64(text), branch}; if(sha) body.sha = sha;
+    const body = {message, content: base64, branch}; if(sha) body.sha = sha;
     const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path).replace(/%2F/g,'/')}`;
     const res = await fetch(url, {method:'PUT', headers:{Authorization:`Bearer ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json'}, body:JSON.stringify(body)});
     if(!res.ok){ const text = await res.text(); throw new Error(`Failed ${path}: ${res.status} ${text}`); }
   }
+  async function githubPutTextFile(owner, repo, branch, path, text, token, message){
+    return githubPutBase64File(owner, repo, branch, path, toBase64(text), token, message);
+  }
 
   $('title').addEventListener('input', () => { if(!$('slug').dataset.manual){ $('slug').value = slugify($('title').value); } });
   $('slug').addEventListener('input', () => $('slug').dataset.manual = '1');
+  $('imageFile').addEventListener('change', handleImageSelection);
   $('previewBtn').addEventListener('click', preview);
   $('loadPostsBtn').addEventListener('click', loadPosts);
   $('existingPosts').addEventListener('change', e => e.target.value ? fillForm(e.target.value) : null);
-  $('resetBtn').addEventListener('click', () => { document.querySelectorAll('input, textarea').forEach(el => { if(el.id !== 'owner' && el.id !== 'repo' && el.id !== 'branch' && el.id !== 'author') el.value = ''; }); $('category').value = 'News'; $('author').value = 'Prapul Jain A S'; $('date').value = today(); $('image').value = 'assets/img/og-default.svg'; $('featured').checked = false; $('preview').innerHTML = ''; log('Editor cleared.'); });
+  $('resetBtn').addEventListener('click', () => {
+    ['title','slug','image','excerpt','tags','content'].forEach(id => $(id).value = '');
+    $('category').value = 'News'; $('author').value = 'Prapul Jain A S'; $('date').value = today(); $('image').value = 'assets/img/og-default.svg'; $('featured').checked = false; $('preview').innerHTML = ''; $('imageFile').value = ''; $('imagePreview').style.display = 'none'; selectedImage = null; $('imageHelp').textContent = 'Choose an image, or paste an external image URL/path in the image field.'; delete $('slug').dataset.manual; log('Editor cleared.');
+  });
   $('downloadBtn').addEventListener('click', () => {
     try{
-      const {post, files} = generateFiles();
+      const {post, files, image} = generateFiles();
       downloadText(`${post.slug}.html`, files[`posts/${post.slug}.html`]);
       downloadText('posts.json', files['data/posts.json']);
       downloadText('sitemap.xml', files['sitemap.xml']);
       downloadText('news-sitemap.xml', files['news-sitemap.xml']);
       downloadText('rss.xml', files['rss.xml']);
+      if(image){ downloadBlob(image.path.split('/').pop(), image.file); log('Image downloaded too. Upload it to: ' + image.path); }
       log('Downloaded generated files. Upload article HTML into /posts/ and posts.json into /data/.');
     }catch(e){ log('Download failed: ' + e.message); }
   });
@@ -276,11 +352,15 @@ Write your article here.
     try{
       const owner = $('owner').value.trim(), repo = $('repo').value.trim(), branch = $('branch').value.trim(), token = $('token').value.trim();
       if(!owner || !repo || !branch || !token) throw new Error('GitHub owner, repo, branch and token are required.');
-      const {post, allPosts, files} = generateFiles();
+      const {post, allPosts, files, image} = generateFiles();
       $('log').textContent = 'Publishing...';
+      if(image){
+        log('Uploading image ' + image.path + ' ...');
+        await githubPutBase64File(owner, repo, branch, image.path, image.base64, token, `Upload image for: ${post.title}`);
+      }
       for(const [path, text] of Object.entries(files)){
         log('Updating ' + path + ' ...');
-        await githubPutFile(owner, repo, branch, path, text, token, `Publish article: ${post.title}`);
+        await githubPutTextFile(owner, repo, branch, path, text, token, `Publish article: ${post.title}`);
       }
       posts = allPosts; populateExisting();
       log('Done. Wait for GitHub Pages deployment, then open: ' + SITE + '/posts/' + post.slug + '.html');
