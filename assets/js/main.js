@@ -10,6 +10,10 @@
   const sortPosts = (posts) => [...posts].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
   const postUrl = (post) => post.url || (post.slug ? `posts/${post.slug}/` : '#');
   const imageUrl = (post) => post.image || 'assets/img/og-default.svg';
+  const readingTime = (post) => {
+    const words = String(post.content || post.excerpt || '').trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.ceil(words / 220)) + ' min read';
+  };
 
   function card(post){
     return `
@@ -18,7 +22,7 @@
           <img src="${escapeHTML(imageUrl(post))}" alt="${escapeHTML(post.title)}" loading="lazy" onerror="this.onerror=null;this.src='assets/img/og-default.svg';">
         </a>
         <div class="content">
-          <div class="meta"><span class="badge">${escapeHTML(post.category || 'Tech')}</span><span>${niceDate(post.date)}</span><span>${escapeHTML(post.author || 'Prapul')}</span></div>
+          <div class="meta"><span class="badge">${escapeHTML(post.category || 'Tech')}</span><span>${niceDate(post.date)}</span><span>${readingTime(post)}</span></div>
           <h3><a href="${escapeHTML(postUrl(post))}">${escapeHTML(post.title)}</a></h3>
           <p>${escapeHTML(post.excerpt || '')}</p>
           <a class="read-more" href="${escapeHTML(postUrl(post))}">Read article →</a>
@@ -39,7 +43,7 @@
   function renderList(el, posts){
     const type = el.dataset.postList || 'latest';
     const limit = Number(el.dataset.limit || 99);
-    const picked = filterPosts(sortPosts(posts), type).slice(0, limit);
+    const picked = filterPosts(sortPosts(posts), type).slice(0, limit || 99);
     el.innerHTML = picked.length ? picked.map(card).join('') : '<div class="empty-state">No articles yet.</div>';
   }
 
@@ -49,7 +53,7 @@
     return await res.json();
   }
 
-  document.addEventListener('DOMContentLoaded', async () => {
+  function initNavigation(){
     const navToggle = $('.nav-toggle');
     const nav = $('.site-nav');
     if(navToggle && nav){
@@ -60,14 +64,38 @@
     }
     const year = $('[data-year]');
     if(year) year.textContent = new Date().getFullYear();
+  }
+
+  function initOutboundTracking(){
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest && event.target.closest('a[href]');
+      if(!link) return;
+      let url;
+      try { url = new URL(link.href, location.href); } catch { return; }
+      const outbound = url.hostname && url.hostname !== location.hostname;
+      if(outbound && typeof window.gtag === 'function'){
+        window.gtag('event', 'click', {
+          event_category: 'outbound',
+          event_label: link.href,
+          link_url: link.href,
+          link_domain: url.hostname,
+          transport_type: 'beacon'
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    initNavigation();
+    initOutboundTracking();
 
     const lists = $$('[data-post-list]');
-    if(!lists.length) return;
+    const newsList = $('[data-live-news-list]');
+    if(!lists.length && !newsList) return;
     try{
       const posts = await loadPosts();
       lists.forEach(el => renderList(el, posts));
 
-      const newsList = $('[data-live-news-list]');
       const search = $('[data-news-search]');
       const buttons = $$('.filter-btn[data-filter]');
       let currentFilter = 'all';
@@ -82,6 +110,8 @@
         newsList.innerHTML = filtered.length ? filtered.map(card).join('') : '<div class="empty-state">No matching articles found.</div>';
       }
       if(newsList){
+        const params = new URLSearchParams(location.search);
+        if(params.get('q') && search) search.value = params.get('q');
         applyNewsFilters();
         search?.addEventListener('input', applyNewsFilters);
         buttons.forEach(btn => btn.addEventListener('click', () => {
@@ -93,6 +123,7 @@
       }
     }catch(err){
       lists.forEach(el => el.innerHTML = '<div class="empty-state">Posts could not be loaded. Check data/posts.json.</div>');
+      if(newsList) newsList.innerHTML = '<div class="empty-state">Posts could not be loaded. Check data/posts.json.</div>';
       console.error(err);
     }
   });
