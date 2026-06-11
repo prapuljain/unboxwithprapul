@@ -3,370 +3,368 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UnboxWithPrapul Studio</title>
 <meta name="robots" content="noindex,nofollow">
+<title>UnboxWithPrapul Admin Studio</title>
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+:root{--bg:#f6f3ec;--paper:#fff;--dark:#111;--muted:#6c6258;--line:#e8dfd4;--orange:#ff4500;--gold:#ff9f1c;--soft:#fff1e8;--green:#0a7d49;--red:#b42318;--shadow:0 18px 55px rgba(20,14,8,.12);--radius:22px;--max:1240px}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 5% 0,rgba(255,69,0,.12),transparent 28%),linear-gradient(180deg,#f7f2eb,#fffdf8);color:#16110e;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit}button,input,textarea,select{font:inherit}.wrap{width:min(var(--max),calc(100% - 28px));margin:auto}.top{position:sticky;top:0;z-index:20;background:rgba(17,17,17,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}.top-inner{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:11px;color:#fff;font-weight:950;text-decoration:none}.brand img{width:40px;height:40px;border-radius:14px;box-shadow:0 12px 28px rgba(255,69,0,.28)}.brand span{display:block;line-height:1.05}.brand small{display:block;color:#aaa;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;margin-top:4px}.top-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:8px 12px;font-size:.82rem;font-weight:850;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#eee}.pill.ok{background:rgba(10,125,73,.12);color:#c7ffdf;border-color:rgba(10,125,73,.34)}.pill.warn{background:rgba(255,69,0,.16);color:#ffd4c2;border-color:rgba(255,69,0,.28)}.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:950;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .14s ease,opacity .14s ease,box-shadow .14s ease;text-decoration:none}.btn:hover{transform:translateY(-1px)}.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}.btn-primary{background:linear-gradient(135deg,var(--orange),var(--gold));color:#fff;box-shadow:0 14px 30px rgba(255,69,0,.22)}.btn-dark{background:#111;color:#fff}.btn-ghost{background:#fff;color:#111;border:1px solid var(--line)}.btn-danger{background:#fff1f0;color:var(--red);border:1px solid #ffd5d0}.hero{padding:28px 0 16px}.hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#111 56%,#2b0b00);color:#fff;border-radius:28px;padding:28px;border:1px solid rgba(255,255,255,.09);box-shadow:var(--shadow)}.hero-card:after{content:"";position:absolute;right:-80px;top:-120px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,69,0,.35),transparent 70%);animation:float 7s ease-in-out infinite}.hero h1{margin:0 0 8px;font-size:clamp(2rem,5vw,3.8rem);line-height:1;letter-spacing:-.05em}.hero p{margin:0;max-width:760px;color:#d7d0ca;font-weight:700}.grid{display:grid;grid-template-columns:360px minmax(0,1fr);gap:18px;align-items:start;padding:14px 0 50px}.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.panel h2{font-size:1.05rem;margin:0 0 12px;letter-spacing:-.02em}.panel h3{font-size:.95rem;margin:18px 0 8px}.help{font-size:.86rem;color:var(--muted);font-weight:650;margin:8px 0 0}.field{margin:12px 0}.field label{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:900;margin-bottom:6px;color:#221b16;font-size:.9rem}.field small{color:var(--muted);font-weight:700}input,textarea,select{width:100%;border:1.5px solid var(--line);border-radius:15px;padding:11px 12px;background:#fff;color:#111;outline:none}input:focus,textarea:focus,select:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,69,0,.1)}textarea{min-height:300px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92rem;line-height:1.6}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.login-card{width:min(720px,calc(100% - 28px));margin:26px auto 46px}.notice{border-radius:18px;padding:13px 14px;background:var(--soft);border:1px solid rgba(255,69,0,.22);color:#4b2a1b;font-weight:750}.notice strong{color:#111}.post-list{display:grid;gap:8px;max-height:420px;overflow:auto;padding-right:4px}.post-item{border:1px solid var(--line);border-radius:16px;padding:11px;background:#fff;cursor:pointer}.post-item:hover,.post-item.active{border-color:rgba(255,69,0,.5);background:var(--soft)}.post-item strong{display:block;line-height:1.2}.post-item span{color:var(--muted);font-size:.78rem;font-weight:800}.preview-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:16px;border:1px solid var(--line);background:#111;display:none}.preview{border:1px solid var(--line);background:#fffdf9;border-radius:18px;padding:18px;min-height:180px}.preview h1{font-size:1.7rem;line-height:1.05}.preview .meta{display:flex;flex-wrap:wrap;gap:8px;color:#7c756d;font-weight:850;font-size:.78rem}.badge{display:inline-flex;border-radius:999px;background:var(--soft);color:var(--orange);border:1px solid rgba(255,69,0,.2);padding:4px 9px;font-size:.72rem;font-weight:950;text-transform:uppercase}.log{white-space:pre-wrap;background:#111;color:#ffd4c2;border-radius:18px;padding:14px;min-height:150px;max-height:260px;overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.84rem}.admin-only{display:none}.locked .admin-only{display:none}.unlocked .admin-only{display:block}.unlocked #loginPanel{display:none}.file-box{border:1.5px dashed #d9cfc3;border-radius:18px;padding:14px;background:#fffdf9}.file-queue{display:grid;gap:7px;margin-top:10px}.queue-item{border:1px solid var(--line);border-radius:14px;padding:8px 10px;background:#fff;display:flex;justify-content:space-between;gap:12px;font-size:.84rem;font-weight:750}.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.status-line{font-weight:850;color:#4a4038}.danger-zone{border-color:#ffd4ce;background:#fff9f8}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f3eee7;border:1px solid #e3d9ce;border-radius:8px;padding:1px 6px}.hidden{display:none!important}@keyframes float{50%{transform:translateY(18px)}}@media(max-width:980px){.grid,.split,.row{grid-template-columns:1fr}.top-inner{align-items:flex-start;flex-direction:column;padding:10px 0}.hero-card{padding:22px}.grid{padding-top:6px}}@media(max-width:520px){.wrap{width:min(100% - 20px,var(--max))}.btn{width:100%}.top-actions{width:100%}.pill{width:100%;justify-content:center}.panel{padding:14px}.hero h1{font-size:2.25rem}}
+</style>
 </head>
-<body class="studio-body">
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a class="logo" href="index.html"><img src="assets/img/logo.svg" alt=""><span>UnboxWithPrapul<small>Creator Studio</small></span></a>
-    <nav class="site-nav open" aria-label="Studio navigation"><a href="index.html">View site</a><a href="news.html">News</a></nav>
+<body class="locked">
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="/" target="_blank" rel="noopener"><img src="assets/img/logo.svg" alt=""><span>UnboxWithPrapul<small>Admin Studio</small></span></a>
+    <div class="top-actions"><span id="statusPill" class="pill warn">Locked</span><a class="btn btn-ghost" href="/" target="_blank" rel="noopener">Open site</a><button id="logoutBtn" class="btn btn-danger hidden" type="button">Logout</button></div>
   </div>
 </header>
-<main class="container studio-layout">
-  <aside class="studio-panel">
-    <h1 style="font-size:1.45rem">Studio</h1>
-    <p class="help-text">Write, edit, preview and publish articles to your GitHub repo. The token stays only in your browser while this page is open.</p>
-    <button class="btn btn-secondary" id="loadPostsBtn" type="button">Load existing posts</button>
-    <label for="existingPosts">Edit existing post</label>
-    <select id="existingPosts"><option value="">Create new post</option></select>
-    <div class="mini-list" id="miniList" aria-live="polite"></div>
+<section class="hero"><div class="wrap"><div class="hero-card"><h1>Creator Studio</h1><p>Write, edit, upload images/files and publish clean tech articles to your GitHub repo.</p></div></div></section>
+<main class="wrap">
+  <section id="loginPanel" class="panel login-card">
+    <h2>Admin login</h2>
+    <div class="notice"><strong>Only your GitHub token can publish.</strong> This page is hidden from navigation and blocked from search indexing. It will show the editor only after the token belongs to <span class="kbd">prapuljain</span> and has access to this repository.</div>
+    <div class="field"><label for="token">GitHub fine-grained token</label><input id="token" type="password" autocomplete="off" placeholder="github_pat_..."></div>
+    <label class="help"><input id="rememberSession" type="checkbox"> Keep token only until this browser tab/session closes</label>
+    <div class="actions"><button id="loginBtn" class="btn btn-primary" type="button">Login and load posts</button></div>
+    <p class="help">Do not save the token inside your website code. Treat it like a password.</p>
+  </section>
 
-    <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
-    <h2 style="font-size:1.1rem">GitHub publish settings</h2>
-    <label for="owner">Owner</label><input id="owner" value="prapuljain" autocomplete="off">
-    <label for="repo">Repository</label><input id="repo" value="unboxwithprapul" autocomplete="off">
-    <label for="branch">Branch</label><input id="branch" value="main" autocomplete="off">
-    <label for="token">GitHub token</label><input id="token" type="password" placeholder="Paste token only when publishing" autocomplete="off">
-    <p class="help-text">Use a fine-grained GitHub token with Repository contents: Read and Write. Do not save the token inside any website file.</p>
-  </aside>
+  <section class="grid admin-only">
+    <aside class="panel">
+      <h2>Posts</h2>
+      <div class="actions" style="margin-top:0"><button id="newBtn" class="btn btn-primary" type="button">New article</button><button id="refreshBtn" class="btn btn-ghost" type="button">Refresh</button></div>
+      <div class="field"><label for="postSearch">Search posts</label><input id="postSearch" placeholder="Search title, slug, tag..."></div>
+      <div id="postList" class="post-list"></div>
+      <h3>Media upload</h3>
+      <div class="file-box">
+        <div class="field"><label for="mediaFile">Upload file/image only</label><input id="mediaFile" type="file" accept="image/*,.pdf,.txt,.zip,.doc,.docx,.xls,.xlsx"></div>
+        <div class="field"><label for="mediaPath">Target path <small>auto-filled</small></label><input id="mediaPath" placeholder="assets/img/uploads/file.webp"></div>
+        <div class="actions"><button id="uploadMediaBtn" class="btn btn-dark" type="button">Upload file</button></div>
+        <p class="help">For images use <span class="kbd">assets/img/uploads/</span>. For other files use <span class="kbd">assets/files/uploads/</span>.</p>
+      </div>
+    </aside>
 
-  <section class="studio-panel">
-    <h2>Article editor</h2>
-    <div class="studio-tip">Best article image size: 1200 × 675 px, JPG/PNG/WebP, under 5 MB. You can upload a featured image here and Studio will publish it to <strong>assets/img/uploads/</strong>.</div>
-    <div class="grid grid-2">
-      <div><label for="title">Title</label><input id="title" placeholder="Example: AI phone features that actually matter"></div>
-      <div><label for="slug">Slug</label><input id="slug" placeholder="auto-created-from-title"></div>
-      <div><label for="category">Category</label><select id="category"><option>News</option><option>News Explainer</option><option>Review</option><option>Buying Guide</option><option>Guide</option><option>Comparison</option></select></div>
-      <div><label for="date">Date</label><input id="date" type="date"></div>
-      <div><label for="author">Author</label><input id="author" value="Prapul Jain A S"></div>
-      <div><label for="image">Image path or URL</label><input id="image" value="assets/img/og-default.svg" placeholder="assets/img/uploads/article-image.webp"></div>
-    </div>
-    <label for="imageFile">Upload featured image</label>
-    <input id="imageFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml">
-    <img id="imagePreview" class="image-preview" alt="Selected article image preview">
-    <p class="help-text" id="imageHelp">Choose an image, or paste an external image URL/path in the image field.</p>
-
-    <label for="excerpt">Short summary / meta description</label>
-    <textarea id="excerpt" style="min-height:84px" placeholder="Write 1-2 lines explaining the article."></textarea>
-    <label for="tags">Tags, comma separated</label><input id="tags" placeholder="smartphones, AI, gadgets">
-    <label><input id="featured" type="checkbox"> Mark as featured</label>
-    <label for="content">Article body</label>
-    <textarea id="content" placeholder="# Main point
-
-Write your article here.
-
-## Section heading
-
-- Bullet point
-- Bullet point
-
-You can also add a body image after uploading it manually:
-![Image description](assets/img/uploads/example.webp)"></textarea>
-
-    <div class="studio-actions">
-      <button class="btn btn-primary" id="previewBtn" type="button">Preview</button>
-      <button class="btn btn-secondary" id="downloadBtn" type="button">Download generated files</button>
-      <button class="btn btn-primary" id="publishBtn" type="button">Publish to GitHub</button>
-      <button class="btn btn-secondary" id="resetBtn" type="button">Clear</button>
-    </div>
-    <p class="help-text">Publish updates: article page, data/posts.json, sitemap.xml, news-sitemap.xml, rss.xml and selected image if you uploaded one.</p>
-    <h2 style="font-size:1.1rem;margin-top:20px">Preview</h2>
-    <div class="preview-box" id="preview"></div>
-    <h2 style="font-size:1.1rem;margin-top:20px">Log</h2>
-    <div class="log-box" id="log">Ready.</div>
+    <section class="panel">
+      <div class="split">
+        <div>
+          <h2 id="editorTitle">New article</h2>
+          <p class="help" id="modeText">Create a new post. If the same slug exists, Studio updates it instead of duplicating it.</p>
+        </div>
+        <div class="status-line" id="articleUrlBox">Clean URL: —</div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="title">Title</label><input id="title" placeholder="Example: NVIDIA AI laptops explained"></div>
+        <div class="field"><label for="slug">Slug <small>clean URL</small></label><input id="slug" placeholder="auto-created-from-title"></div>
+        <div class="field"><label for="category">Category</label><select id="category"><option>News</option><option>News Explainer</option><option>Review</option><option>Buying Guide</option><option>Guide</option><option>Comparison</option><option>Video</option></select></div>
+        <div class="field"><label for="date">Publish date</label><input id="date" type="date"></div>
+        <div class="field"><label for="author">Author</label><input id="author" value="Prapul Jain A S"></div>
+        <div class="field"><label for="tags">Tags</label><input id="tags" placeholder="Apple, AI, smartphones"></div>
+      </div>
+      <div class="field"><label for="excerpt">Short summary / meta description</label><textarea id="excerpt" style="min-height:86px" placeholder="Write 1-2 lines that make people want to read."></textarea></div>
+      <div class="row">
+        <div class="field"><label for="image">Featured image path or URL</label><input id="image" value="assets/img/og-default.svg" placeholder="assets/img/uploads/my-image.webp"></div>
+        <div class="field"><label for="imageFile">Upload featured image <small>1200 × 675 best</small></label><input id="imageFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml"></div>
+      </div>
+      <img id="imagePreview" class="preview-img" alt="Featured image preview">
+      <p class="help" id="imageHelp">Choose an image or paste an image path/URL.</p>
+      <div class="file-box" style="margin-top:14px">
+        <h3 style="margin-top:0">Insert image inside article body</h3>
+        <div class="row">
+          <div class="field"><label for="bodyImageFile">Body image</label><input id="bodyImageFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml"></div>
+          <div class="field"><label for="bodyImageAlt">Image alt text</label><input id="bodyImageAlt" placeholder="Describe the image"></div>
+        </div>
+        <button id="insertBodyImageBtn" class="btn btn-ghost" type="button">Insert image into article</button>
+        <div id="mediaQueue" class="file-queue"></div>
+      </div>
+      <div class="field"><label><span>Mark as featured</span><input id="featured" type="checkbox" style="width:auto"></label></div>
+      <div class="field"><label for="content">Article body <small>Markdown supported</small></label><textarea id="content" placeholder="# Main point\n\nWrite your article here.\n\n## Section heading\n\n- Bullet point\n- Bullet point"></textarea></div>
+      <div class="actions"><button id="previewBtn" class="btn btn-ghost" type="button">Preview</button><button id="publishBtn" class="btn btn-primary" type="button">Publish / Update</button><button id="downloadBtn" class="btn btn-ghost" type="button">Download files</button><button id="clearBtn" class="btn btn-danger" type="button">Clear</button></div>
+      <p class="help">Publish creates one GitHub commit only. It updates article pages, <span class="kbd">data/posts.json</span>, sitemap, news sitemap, RSS and uploaded images/files.</p>
+      <h3>Preview</h3><div id="preview" class="preview"></div>
+      <h3>Log</h3><div id="log" class="log">Login required.</div>
+    </section>
   </section>
 </main>
 <script>
 (function(){
   const SITE = 'https://unboxwithprapul.in';
   const SITE_NAME = 'UnboxWithPrapul';
+  const OWNER = 'prapuljain';
+  const REPO = 'unboxwithprapul';
+  const BRANCH = 'main';
+  const ADMIN_LOGIN = 'prapuljain';
   const STATIC_PAGES = ['', 'news.html', 'reviews.html', 'guides.html', 'videos.html', 'about.html', 'contact.html', 'editorial-policy.html', 'corrections-policy.html', 'privacy.html'];
-  let posts = [];
-  let selectedImage = null;
   const $ = id => document.getElementById(id);
+  const state = {token:'', user:null, posts:[], editingSlug:'', selectedFeatured:null, mediaQueue:[], selectedMediaOnly:null, busy:false};
+  const today = () => new Date().toISOString().slice(0,10);
   const log = msg => { $('log').textContent += '\n' + msg; $('log').scrollTop = $('log').scrollHeight; };
+  const setLog = msg => { $('log').textContent = msg; };
+  const setStatus = (text, ok=false) => { const p=$('statusPill'); p.textContent=text; p.className='pill '+(ok?'ok':'warn'); };
   const escapeHTML = (value='') => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
   const xmlEscape = (value='') => String(value).replace(/[<>&'"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;',"'":'&apos;','"':'&quot;'}[c]));
-  const slugify = text => (text || 'article').toLowerCase().trim().replace(/[^a-z0-9\s-]/g,'').replace(/[\s-]+/g,'-').replace(/^-|-$/g,'') || 'article';
-  const today = () => new Date().toISOString().slice(0,10);
-  $('date').value = today();
+  const slugify = text => (text || 'article').toLowerCase().trim().replace(/&/g,' and ').replace(/[^a-z0-9\s-]/g,'').replace(/[\s-]+/g,'-').replace(/^-|-$/g,'') || 'article';
+  const cleanPostUrl = slug => `posts/${slug}/`;
+  const articleFilePath = slug => `posts/${slug}/index.html`;
+  const oldArticlePath = slug => `posts/${slug}.html`;
+  const getCleanUrl = slug => `${SITE}/posts/${slug}/`;
 
-  function inlineMarkdown(text){
-    let safe = escapeHTML(text || '');
-    safe = safe.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    safe = safe.replace(/\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-    return safe;
+  function encodeUtf8Base64(str){ const bytes = new TextEncoder().encode(str); let bin=''; bytes.forEach(b=>bin+=String.fromCharCode(b)); return btoa(bin); }
+  function decodeUtf8Base64(b64){ const bin = atob(String(b64).replace(/\n/g,'')); const bytes = Uint8Array.from(bin, c => c.charCodeAt(0)); return new TextDecoder().decode(bytes); }
+  function niceDate(value){ if(!value) return ''; return new Date(value+'T00:00:00').toLocaleDateString('en',{day:'numeric',month:'short',year:'numeric'}); }
+  function safeFileName(name){
+    const parts = String(name||'file').split('.');
+    const ext = parts.length>1 ? '.' + parts.pop().toLowerCase().replace(/[^a-z0-9]/g,'') : '';
+    const base = slugify(parts.join('.')) || 'file';
+    return base + ext;
   }
+  function articleRelativeImage(url){ const value=String(url||'').trim(); if(!value) return ''; if(value.startsWith('http')||value.startsWith('data:')||value.startsWith('/')||value.startsWith('../')) return value; return '../../'+value.replace(/^\.\//,''); }
+  function rootRelativeImage(url){ const value=String(url||'').trim(); if(!value) return ''; if(value.startsWith('http')||value.startsWith('data:')||value.startsWith('/')) return value; return value.replace(/^\.\//,''); }
 
-  function articleRelativeImage(url){
-    const value = String(url || '').trim();
-    if(!value) return '';
-    if(value.startsWith('http') || value.startsWith('data:') || value.startsWith('../') || value.startsWith('/')) return value;
-    return '../' + value.replace(/^\.\//,'');
-  }
-
-  function markdownToHtml(markdown){
-    const lines = (markdown || '').trim().split(/\r?\n/);
-    let out = [], para = [], inList = false;
-    const flushPara = () => { if(para.length){ out.push('<p>' + inlineMarkdown(para.join(' ').trim()) + '</p>'); para = []; } };
-    const closeList = () => { if(inList){ out.push('</ul>'); inList = false; } };
-    for(const raw of lines){
-      const line = raw.trimEnd();
-      if(!line.trim()){ flushPara(); closeList(); continue; }
-      const img = line.match(/^!\[(.*?)\]\((.*?)\)$/);
-      if(img){ flushPara(); closeList(); out.push('<img src="'+escapeHTML(articleRelativeImage(img[2]))+'" alt="'+escapeHTML(img[1])+'">'); continue; }
-      if(line.startsWith('### ')){ flushPara(); closeList(); out.push('<h3>'+escapeHTML(line.slice(4).trim())+'</h3>'); continue; }
-      if(line.startsWith('## ')){ flushPara(); closeList(); out.push('<h2>'+escapeHTML(line.slice(3).trim())+'</h2>'); continue; }
-      if(line.startsWith('# ')){ flushPara(); closeList(); out.push('<h2>'+escapeHTML(line.slice(2).trim())+'</h2>'); continue; }
-      if(line.startsWith('- ')){ flushPara(); if(!inList){ out.push('<ul>'); inList = true; } out.push('<li>'+inlineMarkdown(line.slice(2).trim())+'</li>'); continue; }
-      para.push(line.trim());
+  async function api(path, options={}){
+    const headers = Object.assign({'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}, options.headers||{});
+    if(state.token) headers.Authorization = `Bearer ${state.token}`;
+    const res = await fetch(`https://api.github.com${path}`, Object.assign({}, options, {headers}));
+    const text = await res.text();
+    let data = null; try{ data = text ? JSON.parse(text) : null; }catch{ data = text; }
+    if(!res.ok){
+      const message = data && data.message ? data.message : text;
+      throw new Error(`${res.status}: ${message}`);
     }
-    flushPara(); closeList();
-    return out.join('\n');
+    return data;
   }
 
-  function getImagePathForSelectedFile(file){
-    const titleSlug = slugify($('slug').value.trim() || $('title').value.trim() || 'article-image');
-    const name = file.name || 'image.jpg';
-    const extMatch = name.toLowerCase().match(/\.(png|jpe?g|webp|gif|svg)$/);
-    const ext = extMatch ? extMatch[1].replace('jpeg','jpg') : 'jpg';
-    return `assets/img/uploads/${titleSlug}.${ext}`;
+  function setBusy(busy, label){
+    state.busy = busy;
+    ['publishBtn','uploadMediaBtn','loginBtn','refreshBtn','downloadBtn'].forEach(id => { if($(id)) $(id).disabled = busy; });
+    if(label) setStatus(label, false);
   }
 
-  function readFileAsDataURL(file){
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(String(reader.result || ''));
-      reader.onerror = () => reject(new Error('Could not read selected image.'));
-      reader.readAsDataURL(file);
+  async function login(){
+    try{
+      const token = $('token').value.trim() || sessionStorage.getItem('uwp_token') || '';
+      if(!token) throw new Error('Paste your GitHub token first.');
+      state.token = token;
+      setBusy(true, 'Checking token...');
+      setLog('Checking GitHub token...');
+      const user = await api('/user');
+      if(String(user.login||'').toLowerCase() !== ADMIN_LOGIN.toLowerCase()) throw new Error(`This token belongs to ${user.login}, not ${ADMIN_LOGIN}.`);
+      await api(`/repos/${OWNER}/${REPO}`);
+      state.user = user;
+      if($('rememberSession').checked) sessionStorage.setItem('uwp_token', token); else sessionStorage.removeItem('uwp_token');
+      document.body.classList.remove('locked'); document.body.classList.add('unlocked');
+      $('logoutBtn').classList.remove('hidden');
+      setStatus('Logged in: '+user.login, true);
+      setLog('Login OK. Loading posts from GitHub...');
+      await loadPostsFromGitHub();
+    }catch(e){ setLog('Login failed: '+e.message); setStatus('Locked', false); state.token=''; }
+    finally{ setBusy(false); }
+  }
+
+  function logout(){
+    state.token=''; state.user=null; sessionStorage.removeItem('uwp_token'); $('token').value='';
+    document.body.classList.add('locked'); document.body.classList.remove('unlocked'); $('logoutBtn').classList.add('hidden'); setStatus('Locked', false); setLog('Logged out.');
+  }
+
+  async function readRepoText(path){
+    const data = await api(`/repos/${OWNER}/${REPO}/contents/${encodeURIComponent(path).replace(/%2F/g,'/')}?ref=${encodeURIComponent(BRANCH)}`);
+    return decodeUtf8Base64(data.content || '');
+  }
+  async function loadPostsFromGitHub(){
+    const text = await readRepoText('data/posts.json');
+    let arr = JSON.parse(text || '[]');
+    arr = dedupeAndNormalize(arr);
+    state.posts = arr;
+    renderPostList();
+    setLog(`Loaded ${arr.length} posts from GitHub. Select one to edit or create a new article.`);
+    clearForm();
+  }
+
+  function dedupeAndNormalize(arr){
+    const map = new Map();
+    (Array.isArray(arr)?arr:[]).forEach(p => {
+      const slug = slugify(p.slug || p.title || 'article');
+      const normalized = Object.assign({}, p, {slug, url: cleanPostUrl(slug)});
+      if(!map.has(slug)) map.set(slug, normalized);
+      else {
+        const old = map.get(slug);
+        const newer = String(normalized.updated || normalized.date || '').localeCompare(String(old.updated || old.date || '')) >= 0 ? normalized : old;
+        map.set(slug, newer);
+      }
     });
+    return Array.from(map.values()).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
   }
 
-  async function handleImageSelection(event){
-    const file = event.target.files && event.target.files[0];
-    if(!file){ selectedImage = null; return; }
-    if(!file.type.startsWith('image/')){ log('Selected file is not an image.'); event.target.value = ''; return; }
-    if(file.size > 5 * 1024 * 1024){ log('Image is bigger than 5 MB. Please compress it first.'); event.target.value = ''; return; }
-    const dataUrl = await readFileAsDataURL(file);
-    const path = getImagePathForSelectedFile(file);
-    selectedImage = {file, path, dataUrl, base64:dataUrl.split(',')[1] || ''};
-    $('image').value = path;
-    const preview = $('imagePreview');
-    preview.src = dataUrl;
-    preview.style.display = 'block';
-    $('imageHelp').textContent = 'Selected image will publish to: ' + path;
-    log('Image selected: ' + path);
+  function renderPostList(){
+    const q = ($('postSearch').value||'').trim().toLowerCase();
+    const filtered = state.posts.filter(p => !q || [p.title,p.slug,p.category,p.excerpt,(p.tags||[]).join(' ')].join(' ').toLowerCase().includes(q));
+    $('postList').innerHTML = filtered.length ? filtered.map(p => `<div class="post-item ${p.slug===state.editingSlug?'active':''}" data-slug="${escapeHTML(p.slug)}"><strong>${escapeHTML(p.title)}</strong><span>${escapeHTML(p.category||'Tech')} • ${niceDate(p.date)} • /posts/${escapeHTML(p.slug)}/</span></div>`).join('') : '<p class="help">No posts found.</p>';
+    document.querySelectorAll('.post-item').forEach(el => el.addEventListener('click', () => fillForm(el.dataset.slug)));
+  }
+
+  function fillForm(slug){
+    const p = state.posts.find(x => x.slug === slug); if(!p) return;
+    state.editingSlug = slug; state.selectedFeatured=null; state.mediaQueue=[];
+    $('title').value=p.title||''; $('slug').value=p.slug||''; $('category').value=p.category||'News'; $('date').value=p.date||today(); $('author').value=p.author||'Prapul Jain A S'; $('tags').value=(p.tags||[]).join(', '); $('excerpt').value=p.excerpt||''; $('image').value=p.image||'assets/img/og-default.svg'; $('featured').checked=!!p.featured; $('content').value=p.content||''; $('imageFile').value=''; $('bodyImageFile').value=''; $('bodyImageAlt').value=''; $('imagePreview').src=rootRelativeImage(p.image||'assets/img/og-default.svg'); $('imagePreview').style.display='block'; $('imageHelp').textContent='Current image: '+(p.image||'assets/img/og-default.svg'); $('editorTitle').textContent='Editing article'; updateArticleUrlBox(); renderQueue(); preview(); renderPostList(); log('Loaded article: '+p.title);
+  }
+
+  function clearForm(){
+    state.editingSlug=''; state.selectedFeatured=null; state.mediaQueue=[];
+    $('title').value=''; $('slug').value=''; $('category').value='News'; $('date').value=today(); $('author').value='Prapul Jain A S'; $('tags').value=''; $('excerpt').value=''; $('image').value='assets/img/og-default.svg'; $('imageFile').value=''; $('bodyImageFile').value=''; $('bodyImageAlt').value=''; $('featured').checked=false; $('content').value=''; $('imagePreview').style.display='none'; $('imageHelp').textContent='Choose an image or paste an image path/URL.'; $('editorTitle').textContent='New article'; $('modeText').textContent='Create a new post. If the same slug exists, Studio updates it instead of duplicating it.'; delete $('slug').dataset.manual; updateArticleUrlBox(); renderQueue(); $('preview').innerHTML=''; renderPostList();
+  }
+
+  function getFeaturedPath(file){
+    const ext = (file.name.match(/\.(png|jpe?g|webp|gif|svg)$/i)?.[1] || 'jpg').toLowerCase().replace('jpeg','jpg');
+    const slug = slugify($('slug').value || $('title').value || 'article-image');
+    return `assets/img/uploads/${slug}.${ext}`;
+  }
+  function fileToDataURL(file){ return new Promise((resolve,reject)=>{ const r=new FileReader(); r.onload=()=>resolve(String(r.result||'')); r.onerror=()=>reject(new Error('Could not read file.')); r.readAsDataURL(file); }); }
+  async function handleFeaturedImage(){
+    const file = $('imageFile').files && $('imageFile').files[0]; if(!file) return;
+    if(!file.type.startsWith('image/')) throw new Error('Featured file must be an image.');
+    if(file.size > 5*1024*1024) throw new Error('Featured image is bigger than 5 MB.');
+    const dataUrl = await fileToDataURL(file); const path = getFeaturedPath(file);
+    state.selectedFeatured = {path, file, base64:dataUrl.split(',')[1] || '', dataUrl};
+    $('image').value=path; $('imagePreview').src=dataUrl; $('imagePreview').style.display='block'; $('imageHelp').textContent='Selected image will publish to: '+path;
+  }
+  function mediaPathFor(file){
+    const name = safeFileName(file.name);
+    const isImg = file.type.startsWith('image/');
+    return `${isImg?'assets/img/uploads':'assets/files/uploads'}/${name}`;
+  }
+  async function handleMediaOnly(){
+    const file = $('mediaFile').files && $('mediaFile').files[0];
+    if(!file){ state.selectedMediaOnly=null; $('mediaPath').value=''; return; }
+    if(file.size > 10*1024*1024) { $('mediaFile').value=''; throw new Error('File is bigger than 10 MB.'); }
+    $('mediaPath').value = mediaPathFor(file);
+    const dataUrl = await fileToDataURL(file);
+    state.selectedMediaOnly = {path:$('mediaPath').value, file, base64:dataUrl.split(',')[1] || ''};
+  }
+  async function insertBodyImage(){
+    const file = $('bodyImageFile').files && $('bodyImageFile').files[0]; if(!file) { log('Choose a body image first.'); return; }
+    if(!file.type.startsWith('image/')) { log('Body file must be an image.'); return; }
+    if(file.size > 5*1024*1024){ log('Body image is bigger than 5 MB.'); return; }
+    const slug = slugify($('slug').value || $('title').value || 'article');
+    const ext = (file.name.match(/\.(png|jpe?g|webp|gif|svg)$/i)?.[1] || 'jpg').toLowerCase().replace('jpeg','jpg');
+    const count = state.mediaQueue.length + 1;
+    const path = `assets/img/uploads/${slug}-body-${count}.${ext}`;
+    const dataUrl = await fileToDataURL(file);
+    const alt = $('bodyImageAlt').value.trim() || file.name.replace(/\.[^.]+$/,'');
+    state.mediaQueue.push({path, file, base64:dataUrl.split(',')[1] || '', dataUrl, alt});
+    $('content').value = ($('content').value.trim() + `\n\n![${alt}](${path})\n`).trim();
+    $('bodyImageFile').value=''; $('bodyImageAlt').value=''; renderQueue(); preview(); log('Inserted body image: '+path);
+  }
+  function renderQueue(){
+    $('mediaQueue').innerHTML = state.mediaQueue.length ? state.mediaQueue.map((m,i)=>`<div class="queue-item"><span>${escapeHTML(m.path)}</span><button class="btn btn-danger" data-remove-media="${i}" type="button">Remove</button></div>`).join('') : '';
+    document.querySelectorAll('[data-remove-media]').forEach(btn=>btn.addEventListener('click',()=>{ state.mediaQueue.splice(Number(btn.dataset.removeMedia),1); renderQueue(); }));
   }
 
   function getPostFromForm(){
     const title = $('title').value.trim();
     const slug = slugify($('slug').value.trim() || title);
-    if(selectedImage){ selectedImage.path = $('image').value.trim() || getImagePathForSelectedFile(selectedImage.file); }
-    return {
-      title,
-      slug,
-      category: $('category').value.trim() || 'News',
-      date: $('date').value || today(),
-      updated: today(),
-      author: $('author').value.trim() || 'Prapul Jain A S',
-      excerpt: $('excerpt').value.trim(),
-      image: $('image').value.trim() || 'assets/img/og-default.svg',
-      tags: $('tags').value.split(',').map(t=>t.trim()).filter(Boolean),
-      featured: $('featured').checked,
-      sources: [],
-      url: `posts/${slug}.html`,
-      content: $('content').value.trim()
-    };
+    return {title, slug, category:$('category').value || 'News', date:$('date').value || today(), updated:today(), author:$('author').value.trim() || 'Prapul Jain A S', excerpt:$('excerpt').value.trim(), image:$('image').value.trim() || 'assets/img/og-default.svg', tags:$('tags').value.split(',').map(t=>t.trim()).filter(Boolean), featured:$('featured').checked, sources:[], url:cleanPostUrl(slug), content:$('content').value.trim()};
+  }
+  function updateArticleUrlBox(){ const slug = slugify($('slug').value || $('title').value || 'article'); $('articleUrlBox').textContent = 'Clean URL: '+getCleanUrl(slug); }
+  function upsertPost(post){
+    const map = new Map(state.posts.map(p => [p.slug, Object.assign({}, p, {url:cleanPostUrl(p.slug)})]));
+    map.set(post.slug, post);
+    return dedupeAndNormalize(Array.from(map.values())).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
   }
 
-  function updatePostsArray(newPost){
-    const map = new Map(posts.map(p => [p.slug, p]));
-    map.set(newPost.slug, newPost);
-    return Array.from(map.values()).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  function inlineMarkdown(text){ let safe=escapeHTML(text||''); safe=safe.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>'); safe=safe.replace(/\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>'); return safe; }
+  function markdownToHtml(markdown, article=false){
+    const lines=(markdown||'').trim().split(/\r?\n/); let out=[], para=[], inList=false;
+    const flush=()=>{ if(para.length){ out.push('<p>'+inlineMarkdown(para.join(' ').trim())+'</p>'); para=[]; }};
+    const close=()=>{ if(inList){ out.push('</ul>'); inList=false; }};
+    for(const raw of lines){ const line=raw.trimEnd(); if(!line.trim()){ flush(); close(); continue; }
+      const img=line.match(/^!\[(.*?)\]\((.*?)\)$/); if(img){ flush(); close(); const src=article?articleRelativeImage(img[2]):(state.mediaQueue.find(m=>m.path===img[2])?.dataUrl || rootRelativeImage(img[2])); out.push('<img src="'+escapeHTML(src)+'" alt="'+escapeHTML(img[1])+'">'); continue; }
+      if(line.startsWith('### ')){ flush(); close(); out.push('<h3>'+escapeHTML(line.slice(4).trim())+'</h3>'); continue; }
+      if(line.startsWith('## ')){ flush(); close(); out.push('<h2>'+escapeHTML(line.slice(3).trim())+'</h2>'); continue; }
+      if(line.startsWith('# ')){ flush(); close(); out.push('<h2>'+escapeHTML(line.slice(2).trim())+'</h2>'); continue; }
+      if(line.startsWith('- ') || line.startsWith('• ')){ flush(); if(!inList){ out.push('<ul>'); inList=true; } out.push('<li>'+inlineMarkdown(line.slice(2).trim())+'</li>'); continue; }
+      para.push(line.trim());
+    } flush(); close(); return out.join('\n');
   }
-
-  function articleHtml(post){
-    const articleType = (post.category || '').toLowerCase().includes('news') ? 'NewsArticle' : 'Article';
-    const url = `${SITE}/posts/${post.slug}.html`;
-    const imageUrl = post.image.startsWith('http') ? post.image : `${SITE}/${post.image.replace(/^\//,'')}`;
-    const articleImgSrc = post.image.startsWith('http') ? post.image : `../${post.image.replace(/^\//,'')}`;
-    const data = {
-      '@context':'https://schema.org', '@type':articleType, headline:post.title, description:post.excerpt,
-      image:[imageUrl], datePublished:post.date, dateModified:post.updated || post.date,
-      author:{'@type':'Person', name:post.author}, publisher:{'@type':'Organization', name:SITE_NAME, logo:{'@type':'ImageObject', url:`${SITE}/assets/img/logo.svg`}},
-      mainEntityOfPage:{'@type':'WebPage','@id':url}
-    };
-    const tagHtml = (post.tags || []).slice(0,6).map(t=>`<span class="badge">${escapeHTML(t)}</span>`).join('');
-    return `<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${escapeHTML(post.title)} - ${SITE_NAME}</title>
-<meta name="description" content="${escapeHTML(post.excerpt)}">
-<link rel="canonical" href="${url}">
-<meta property="og:site_name" content="${SITE_NAME}">
-<meta property="og:type" content="article">
-<meta property="og:title" content="${escapeHTML(post.title)}">
-<meta property="og:description" content="${escapeHTML(post.excerpt)}">
-<meta property="og:url" content="${url}">
-<meta property="og:image" content="${imageUrl}">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/styles.css">
-<script type="application/ld+json">${JSON.stringify(data)}<\/script>
-</head>
-<body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="container nav-wrap"><a class="logo" href="../index.html"><img src="../assets/img/logo.svg" alt=""><span>UnboxWithPrapul<small>Global gadget news</small></span></a><button class="nav-toggle" aria-expanded="false" aria-label="Open menu">Menu</button><nav class="site-nav" aria-label="Main navigation"><a href="../index.html">Home</a><a href="../news.html">News</a><a href="../reviews.html">Reviews</a><a href="../guides.html">Guides</a><a href="../videos.html">Videos</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav></div></header>
-<main id="main" class="article-shell"><article><div class="meta"><span class="badge">${escapeHTML(post.category)}</span><span>${escapeHTML(post.date)}</span><span>By ${escapeHTML(post.author)}</span></div><h1>${escapeHTML(post.title)}</h1><p class="lead">${escapeHTML(post.excerpt)}</p><img class="article-hero-img" src="${escapeHTML(articleImgSrc)}" alt="${escapeHTML(post.title)}"><div class="article-content">${markdownToHtml(post.content)}</div><div class="article-note"><strong>Prapul note:</strong> This article is written to help readers understand tech in simple language. Always compare price, warranty, software support and service options before buying any gadget.</div><div class="share-row">${tagHtml}<a class="btn btn-secondary" href="../news.html">More articles</a></div></article></main>
-<footer class="site-footer"><div class="container"><div class="footer-grid"><div><div class="footer-title">UnboxWithPrapul</div><p>Simple gadget news, reviews and buying advice for curious tech readers worldwide.</p></div><div><div class="footer-title">Sections</div><div class="footer-links"><a href="../news.html">News</a><a href="../reviews.html">Reviews</a><a href="../guides.html">Buying Guides</a><a href="../videos.html">Videos</a></div></div><div><div class="footer-title">Trust</div><div class="footer-links"><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../editorial-policy.html">Editorial Policy</a><a href="../corrections-policy.html">Corrections Policy</a><a href="../privacy.html">Privacy Policy</a></div></div></div><div class="copyright">© <span data-year></span> ${SITE_NAME}. All rights reserved.</div></div></footer><script src="../assets/js/main.js" defer><\/script>
-</body>
-</html>`;
-  }
-
-  function sitemapXml(allPosts){
-    const urls = [];
-    for(const p of STATIC_PAGES){ urls.push(`  <url><loc>${SITE}/${p}</loc><lastmod>${today()}</lastmod><changefreq>${p==='' || p==='news.html' ? 'daily':'weekly'}</changefreq><priority>${p===''?'1.0':'0.8'}</priority></url>`); }
-    for(const p of allPosts){ urls.push(`  <url><loc>${SITE}/posts/${xmlEscape(p.slug)}.html</loc><lastmod>${xmlEscape(p.updated || p.date)}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`); }
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
-  }
-
-  function newsSitemapXml(allPosts){
-    const items = allPosts.filter(p => (p.category || '').toLowerCase().includes('news')).map(p => `  <url>\n    <loc>${SITE}/posts/${xmlEscape(p.slug)}.html</loc>\n    <news:news>\n      <news:publication><news:name>${SITE_NAME}</news:name><news:language>en</news:language></news:publication>\n      <news:publication_date>${xmlEscape(p.date)}</news:publication_date>\n      <news:title>${xmlEscape(p.title)}</news:title>\n    </news:news>\n  </url>`);
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n${items.join('\n')}\n</urlset>\n`;
-  }
-
-  function rssXml(allPosts){
-    const items = allPosts.slice(0,20).map(p => {
-      const pub = new Date((p.date || today()) + 'T09:00:00+00:00').toUTCString();
-      return `    <item>\n      <title>${xmlEscape(p.title)}</title>\n      <link>${SITE}/posts/${xmlEscape(p.slug)}.html</link>\n      <guid>${SITE}/posts/${xmlEscape(p.slug)}.html</guid>\n      <pubDate>${pub}</pubDate>\n      <description>${xmlEscape(p.excerpt)}</description>\n    </item>`;
-    }).join('\n');
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>${SITE_NAME}</title>\n    <link>${SITE}/</link>\n    <description>Simple gadget news, reviews and buying guides for readers worldwide.</description>\n${items}\n  </channel>\n</rss>\n`;
-  }
-
   function preview(){
-    const post = getPostFromForm();
-    const previewSrc = selectedImage?.dataUrl || (post.image ? post.image : 'assets/img/og-default.svg');
-    $('preview').innerHTML = `<div class="meta"><span class="badge">${escapeHTML(post.category)}</span><span>${escapeHTML(post.date)}</span></div><h1 style="font-size:1.6rem">${escapeHTML(post.title || 'Untitled article')}</h1><p>${escapeHTML(post.excerpt)}</p>${previewSrc ? `<img class="article-hero-img" src="${escapeHTML(previewSrc)}" alt="">` : ''}<div class="article-content">${markdownToHtml(post.content)}</div>`;
+    const p=getPostFromForm(); const src=state.selectedFeatured?.dataUrl || rootRelativeImage(p.image || 'assets/img/og-default.svg');
+    $('preview').innerHTML=`<div class="meta"><span class="badge">${escapeHTML(p.category)}</span><span>${escapeHTML(p.date)}</span><span>By ${escapeHTML(p.author)}</span></div><h1>${escapeHTML(p.title||'Untitled article')}</h1><p>${escapeHTML(p.excerpt)}</p>${src?`<img class="preview-img" src="${escapeHTML(src)}" style="display:block" alt="">`:''}<div>${markdownToHtml(p.content,false)}</div>`;
   }
 
-  async function loadPosts(){
-    $('log').textContent = 'Loading posts...';
-    try{
-      const res = await fetch('data/posts.json?v=' + Date.now(), {cache:'no-store'});
-      posts = res.ok ? await res.json() : [];
-      populateExisting();
-      log(`Loaded ${posts.length} posts.`);
-    }catch(e){ posts = []; log('Could not load posts. You can still create a new one.'); }
+  function articleHtml(p){
+    const articleType = (p.category||'').toLowerCase().includes('news') ? 'NewsArticle' : 'Article';
+    const url = getCleanUrl(p.slug);
+    const imageAbs = p.image.startsWith('http') ? p.image : `${SITE}/${p.image.replace(/^\//,'')}`;
+    const articleImgSrc = p.image.startsWith('http') ? p.image : `../../${p.image.replace(/^\//,'')}`;
+    const data = {'@context':'https://schema.org','@type':articleType,headline:p.title,description:p.excerpt,image:[imageAbs],datePublished:p.date,dateModified:p.updated||p.date,author:{'@type':'Person',name:p.author},publisher:{'@type':'Organization',name:SITE_NAME,logo:{'@type':'ImageObject',url:`${SITE}/assets/img/logo.svg`}},mainEntityOfPage:{'@type':'WebPage','@id':url}};
+    const tagHtml=(p.tags||[]).slice(0,6).map(t=>`<span class="badge">${escapeHTML(t)}</span>`).join('');
+    return `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${escapeHTML(p.title)} - ${SITE_NAME}</title><meta name="description" content="${escapeHTML(p.excerpt)}"><link rel="canonical" href="${url}"><meta property="og:site_name" content="${SITE_NAME}"><meta property="og:type" content="article"><meta property="og:title" content="${escapeHTML(p.title)}"><meta property="og:description" content="${escapeHTML(p.excerpt)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${imageAbs}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/styles.css"><script type="application/ld+json">${JSON.stringify(data)}<\/script></head>
+<body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container nav-wrap"><a class="logo" href="../../"><img src="../../assets/img/logo.svg" alt=""><span>UnboxWithPrapul<small>Global gadget news</small></span></a><button class="nav-toggle" aria-expanded="false" aria-label="Open menu">Menu</button><nav class="site-nav" aria-label="Main navigation"><a href="../../">Home</a><a href="../../news.html">News</a><a href="../../reviews.html">Reviews</a><a href="../../guides.html">Guides</a><a href="../../videos.html">Videos</a><a href="../../about.html">About</a><a href="../../contact.html">Contact</a></nav></div></header><main id="main" class="article-shell"><article><div class="meta"><span class="badge">${escapeHTML(p.category)}</span><span>${escapeHTML(p.date)}</span><span>By ${escapeHTML(p.author)}</span></div><h1>${escapeHTML(p.title)}</h1><p class="lead">${escapeHTML(p.excerpt)}</p><img class="article-hero-img" src="${escapeHTML(articleImgSrc)}" alt="${escapeHTML(p.title)}" onerror="this.onerror=null;this.src='../../assets/img/og-default.svg';"><div class="article-content">${markdownToHtml(p.content,true)}</div><div class="article-note"><strong>Prapul note:</strong> This article is written to help readers understand tech in simple language. Always compare price, warranty, software support and service options before buying any gadget.</div><div class="share-row">${tagHtml}<a class="btn btn-secondary" href="../../news.html">More articles</a></div></article></main><footer class="site-footer"><div class="container"><div class="footer-grid"><div><div class="footer-title">UnboxWithPrapul</div><p>Simple gadget news, reviews and buying advice for curious tech readers worldwide.</p></div><div><div class="footer-title">Sections</div><div class="footer-links"><a href="../../news.html">News</a><a href="../../reviews.html">Reviews</a><a href="../../guides.html">Buying Guides</a><a href="../../videos.html">Videos</a></div></div><div><div class="footer-title">Trust</div><div class="footer-links"><a href="../../about.html">About</a><a href="../../contact.html">Contact</a><a href="../../editorial-policy.html">Editorial Policy</a><a href="../../corrections-policy.html">Corrections Policy</a><a href="../../privacy.html">Privacy Policy</a></div></div></div><div class="copyright">© <span data-year></span> ${SITE_NAME}. All rights reserved.</div></div></footer><script src="../../assets/js/main.js" defer><\/script></body></html>`;
   }
-
-  function populateExisting(){
-    const select = $('existingPosts');
-    select.innerHTML = '<option value="">Create new post</option>' + posts.map(p => `<option value="${escapeHTML(p.slug)}">${escapeHTML(p.title)}</option>`).join('');
-    $('miniList').innerHTML = posts.map(p => `<div class="mini-post" data-slug="${escapeHTML(p.slug)}"><strong>${escapeHTML(p.title)}</strong><br><span class="help-text">${escapeHTML(p.category)} • ${escapeHTML(p.date)}</span></div>`).join('');
-    document.querySelectorAll('.mini-post').forEach(el => el.addEventListener('click', () => fillForm(el.dataset.slug)));
-  }
-
-  function fillForm(slug){
-    const p = posts.find(x => x.slug === slug); if(!p) return;
-    selectedImage = null; $('imageFile').value = ''; $('imagePreview').style.display = 'none'; $('imageHelp').textContent = 'Choose an image, or paste an external image URL/path in the image field.';
-    $('title').value = p.title || ''; $('slug').value = p.slug || ''; $('category').value = p.category || 'News'; $('date').value = p.date || today(); $('author').value = p.author || 'Prapul Jain A S'; $('image').value = p.image || 'assets/img/og-default.svg'; $('excerpt').value = p.excerpt || ''; $('tags').value = (p.tags || []).join(', '); $('featured').checked = !!p.featured; $('content').value = p.content || '';
-    $('existingPosts').value = slug;
-    preview(); log('Loaded post into editor: ' + p.title);
-  }
-
-  function downloadText(filename, text){
-    const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
-    downloadBlob(filename, blob);
-  }
-  function downloadBlob(filename, blob){
-    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
-  }
-
+  function redirectHtml(slug){ return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=./${slug}/"><link rel="canonical" href="${getCleanUrl(slug)}"><title>Redirecting...</title></head><body><p>Redirecting to <a href="./${slug}/">${getCleanUrl(slug)}</a></p><script>location.replace('./${slug}/');<\/script></body></html>`; }
+  function sitemapXml(all){ const urls=[]; STATIC_PAGES.forEach(p=>urls.push(`  <url><loc>${SITE}/${p}</loc><lastmod>${today()}</lastmod><changefreq>${p===''||p==='news.html'?'daily':'weekly'}</changefreq><priority>${p===''?'1.0':'0.8'}</priority></url>`)); all.forEach(p=>urls.push(`  <url><loc>${getCleanUrl(xmlEscape(p.slug))}</loc><lastmod>${xmlEscape(p.updated||p.date)}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`)); return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`; }
+  function newsSitemapXml(all){ const items=all.filter(p=>(p.category||'').toLowerCase().includes('news')).map(p=>`  <url>\n    <loc>${getCleanUrl(xmlEscape(p.slug))}</loc>\n    <news:news>\n      <news:publication><news:name>${SITE_NAME}</news:name><news:language>en</news:language></news:publication>\n      <news:publication_date>${xmlEscape(p.date)}</news:publication_date>\n      <news:title>${xmlEscape(p.title)}</news:title>\n    </news:news>\n  </url>`); return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n${items.join('\n')}\n</urlset>\n`; }
+  function rssXml(all){ const items=all.slice(0,20).map(p=>{ const pub=new Date((p.date||today())+'T09:00:00+00:00').toUTCString(); return `    <item>\n      <title>${xmlEscape(p.title)}</title>\n      <link>${getCleanUrl(xmlEscape(p.slug))}</link>\n      <guid>${getCleanUrl(xmlEscape(p.slug))}</guid>\n      <pubDate>${pub}</pubDate>\n      <description>${xmlEscape(p.excerpt)}</description>\n    </item>`; }).join('\n'); return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>${SITE_NAME}</title>\n    <link>${SITE}/</link>\n    <description>Simple gadget news, reviews and buying guides for readers worldwide.</description>\n${items}\n  </channel>\n</rss>\n`; }
   function generateFiles(){
-    const post = getPostFromForm();
-    if(!post.title || !post.excerpt || !post.content) throw new Error('Title, summary and content are required.');
-    const allPosts = updatePostsArray(post);
-    return {
-      post,
-      allPosts,
-      image:selectedImage,
-      files: {
-        [`posts/${post.slug}.html`]: articleHtml(post),
-        'data/posts.json': JSON.stringify(allPosts, null, 2),
-        'sitemap.xml': sitemapXml(allPosts),
-        'news-sitemap.xml': newsSitemapXml(allPosts),
-        'rss.xml': rssXml(allPosts)
-      }
-    };
+    const post=getPostFromForm(); if(!post.title||!post.excerpt||!post.content) throw new Error('Title, summary and article body are required.');
+    const allPosts=upsertPost(post);
+    const files = {'data/posts.json': JSON.stringify(allPosts,null,2), 'sitemap.xml': sitemapXml(allPosts), 'news-sitemap.xml': newsSitemapXml(allPosts), 'rss.xml': rssXml(allPosts)};
+    allPosts.forEach(p => { files[articleFilePath(p.slug)] = articleHtml(p); files[oldArticlePath(p.slug)] = redirectHtml(p.slug); });
+    const binaries=[];
+    if(state.selectedFeatured) binaries.push({path:state.selectedFeatured.path, base64:state.selectedFeatured.base64});
+    state.mediaQueue.forEach(m => binaries.push({path:m.path, base64:m.base64}));
+    return {post, allPosts, files, binaries};
   }
 
-  async function githubGetSha(owner, repo, branch, path, token){
-    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path).replace(/%2F/g,'/')}?ref=${encodeURIComponent(branch)}`;
-    const res = await fetch(url, {headers:{Authorization:`Bearer ${token}`, Accept:'application/vnd.github+json'}});
-    if(res.status === 404) return null;
-    if(!res.ok) throw new Error(`Could not read ${path}: ${res.status}`);
-    const json = await res.json(); return json.sha;
-  }
-  function toBase64(str){
-    const bytes = new TextEncoder().encode(str); let bin = ''; bytes.forEach(b => bin += String.fromCharCode(b)); return btoa(bin);
-  }
-  async function githubPutBase64File(owner, repo, branch, path, base64, token, message){
-    const sha = await githubGetSha(owner, repo, branch, path, token);
-    const body = {message, content: base64, branch}; if(sha) body.sha = sha;
-    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path).replace(/%2F/g,'/')}`;
-    const res = await fetch(url, {method:'PUT', headers:{Authorization:`Bearer ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json'}, body:JSON.stringify(body)});
-    if(!res.ok){ const text = await res.text(); throw new Error(`Failed ${path}: ${res.status} ${text}`); }
-  }
-  async function githubPutTextFile(owner, repo, branch, path, text, token, message){
-    return githubPutBase64File(owner, repo, branch, path, toBase64(text), token, message);
+  async function createCommit(files, binaries, message){
+    const ref = await api(`/repos/${OWNER}/${REPO}/git/ref/heads/${encodeURIComponent(BRANCH)}`);
+    const latestSha = ref.object.sha;
+    const commit = await api(`/repos/${OWNER}/${REPO}/git/commits/${latestSha}`);
+    const entries=[];
+    for(const [path, content] of Object.entries(files)){
+      const blob = await api(`/repos/${OWNER}/${REPO}/git/blobs`, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({content, encoding:'utf-8'})});
+      entries.push({path, mode:'100644', type:'blob', sha:blob.sha});
+    }
+    for(const file of binaries){
+      const blob = await api(`/repos/${OWNER}/${REPO}/git/blobs`, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({content:file.base64, encoding:'base64'})});
+      entries.push({path:file.path, mode:'100644', type:'blob', sha:blob.sha});
+    }
+    const tree = await api(`/repos/${OWNER}/${REPO}/git/trees`, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({base_tree:commit.tree.sha, tree:entries})});
+    const newCommit = await api(`/repos/${OWNER}/${REPO}/git/commits`, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({message, tree:tree.sha, parents:[latestSha]})});
+    await api(`/repos/${OWNER}/${REPO}/git/refs/heads/${encodeURIComponent(BRANCH)}`, {method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({sha:newCommit.sha, force:false})});
+    return newCommit.sha;
   }
 
-  $('title').addEventListener('input', () => { if(!$('slug').dataset.manual){ $('slug').value = slugify($('title').value); } });
-  $('slug').addEventListener('input', () => $('slug').dataset.manual = '1');
-  $('imageFile').addEventListener('change', handleImageSelection);
-  $('previewBtn').addEventListener('click', preview);
-  $('loadPostsBtn').addEventListener('click', loadPosts);
-  $('existingPosts').addEventListener('change', e => e.target.value ? fillForm(e.target.value) : null);
-  $('resetBtn').addEventListener('click', () => {
-    ['title','slug','image','excerpt','tags','content'].forEach(id => $(id).value = '');
-    $('category').value = 'News'; $('author').value = 'Prapul Jain A S'; $('date').value = today(); $('image').value = 'assets/img/og-default.svg'; $('featured').checked = false; $('preview').innerHTML = ''; $('imageFile').value = ''; $('imagePreview').style.display = 'none'; selectedImage = null; $('imageHelp').textContent = 'Choose an image, or paste an external image URL/path in the image field.'; delete $('slug').dataset.manual; log('Editor cleared.');
-  });
-  $('downloadBtn').addEventListener('click', () => {
+  async function publish(){
+    if(state.busy) return;
     try{
-      const {post, files, image} = generateFiles();
-      downloadText(`${post.slug}.html`, files[`posts/${post.slug}.html`]);
-      downloadText('posts.json', files['data/posts.json']);
-      downloadText('sitemap.xml', files['sitemap.xml']);
-      downloadText('news-sitemap.xml', files['news-sitemap.xml']);
-      downloadText('rss.xml', files['rss.xml']);
-      if(image){ downloadBlob(image.path.split('/').pop(), image.file); log('Image downloaded too. Upload it to: ' + image.path); }
-      log('Downloaded generated files. Upload article HTML into /posts/ and posts.json into /data/.');
-    }catch(e){ log('Download failed: ' + e.message); }
-  });
-  $('publishBtn').addEventListener('click', async () => {
+      setBusy(true, 'Publishing...'); setLog('Preparing article...'); preview();
+      const {post, allPosts, files, binaries} = generateFiles();
+      log(`Creating one commit with ${Object.keys(files).length} text files and ${binaries.length} uploaded file(s)...`);
+      const sha = await createCommit(files, binaries, `Publish/update article: ${post.title}`);
+      state.posts = allPosts; state.editingSlug = post.slug; state.selectedFeatured=null; state.mediaQueue=[]; renderPostList(); renderQueue();
+      setStatus('Published', true); log(`Done. Commit: ${sha.slice(0,7)}\nOpen article after GitHub Pages deploys: ${getCleanUrl(post.slug)}`);
+    }catch(e){ setStatus('Publish failed', false); log('Publish failed: '+e.message); }
+    finally{ setBusy(false); }
+  }
+  async function uploadMediaOnly(){
+    if(state.busy) return;
     try{
-      const owner = $('owner').value.trim(), repo = $('repo').value.trim(), branch = $('branch').value.trim(), token = $('token').value.trim();
-      if(!owner || !repo || !branch || !token) throw new Error('GitHub owner, repo, branch and token are required.');
-      const {post, allPosts, files, image} = generateFiles();
-      $('log').textContent = 'Publishing...';
-      if(image){
-        log('Uploading image ' + image.path + ' ...');
-        await githubPutBase64File(owner, repo, branch, image.path, image.base64, token, `Upload image for: ${post.title}`);
-      }
-      for(const [path, text] of Object.entries(files)){
-        log('Updating ' + path + ' ...');
-        await githubPutTextFile(owner, repo, branch, path, text, token, `Publish article: ${post.title}`);
-      }
-      posts = allPosts; populateExisting();
-      log('Done. Wait for GitHub Pages deployment, then open: ' + SITE + '/posts/' + post.slug + '.html');
-    }catch(e){ log('Publish failed: ' + e.message); }
-  });
-  loadPosts();
+      const file = state.selectedMediaOnly; if(!file) throw new Error('Choose a file first.');
+      file.path = $('mediaPath').value.trim() || file.path; if(!file.path) throw new Error('Target path is required.');
+      setBusy(true, 'Uploading file...'); setLog('Uploading file to '+file.path+' ...');
+      const sha = await createCommit({}, [{path:file.path, base64:file.base64}], `Upload file: ${file.path}`);
+      setStatus('File uploaded', true); log(`Done. Commit: ${sha.slice(0,7)}\nFile path: ${file.path}`); $('mediaFile').value=''; $('mediaPath').value=''; state.selectedMediaOnly=null;
+    }catch(e){ setStatus('Upload failed', false); log('File upload failed: '+e.message); }
+    finally{ setBusy(false); }
+  }
+  function downloadText(filename, text){ const blob=new Blob([text],{type:'text/plain;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=filename; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1200); }
+  function downloadFiles(){ try{ const {post, files} = generateFiles(); downloadText(`${post.slug}-generated-files.json`, JSON.stringify(files,null,2)); log('Downloaded generated files JSON.'); }catch(e){ log('Download failed: '+e.message); } }
+
+  $('loginBtn').addEventListener('click', login); $('logoutBtn').addEventListener('click', logout); $('refreshBtn').addEventListener('click', loadPostsFromGitHub); $('newBtn').addEventListener('click', clearForm); $('postSearch').addEventListener('input', renderPostList);
+  $('title').addEventListener('input', () => { if(!$('slug').dataset.manual){ $('slug').value=slugify($('title').value); } updateArticleUrlBox(); }); $('slug').addEventListener('input', () => { $('slug').dataset.manual='1'; $('slug').value=slugify($('slug').value); updateArticleUrlBox(); });
+  $('imageFile').addEventListener('change', () => handleFeaturedImage().catch(e=>log(e.message))); $('mediaFile').addEventListener('change', () => handleMediaOnly().catch(e=>log(e.message))); $('insertBodyImageBtn').addEventListener('click', insertBodyImage); $('previewBtn').addEventListener('click', preview); $('publishBtn').addEventListener('click', publish); $('uploadMediaBtn').addEventListener('click', uploadMediaOnly); $('downloadBtn').addEventListener('click', downloadFiles); $('clearBtn').addEventListener('click', clearForm);
+  ['category','date','author','tags','excerpt','image','featured','content'].forEach(id => $(id).addEventListener('input', updateArticleUrlBox));
+  $('date').value=today(); updateArticleUrlBox();
+  const saved = sessionStorage.getItem('uwp_token'); if(saved){ $('token').value=saved; $('rememberSession').checked=true; }
 })();
 </script>
 </body>

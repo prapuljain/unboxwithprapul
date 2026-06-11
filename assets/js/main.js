@@ -1,5 +1,4 @@
 (function(){
-  const SITE = 'https://unboxwithprapul.in';
   const $ = (sel, root=document) => root.querySelector(sel);
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
   const escapeHTML = (value='') => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
@@ -9,17 +8,17 @@
     return d.toLocaleDateString('en', {day:'numeric', month:'short', year:'numeric'});
   };
   const sortPosts = (posts) => [...posts].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
-  const postUrl = (post) => post.url || `posts/${post.slug}.html`;
+  const postUrl = (post) => post.url || (post.slug ? `posts/${post.slug}/` : '#');
   const imageUrl = (post) => post.image || 'assets/img/og-default.svg';
 
   function card(post){
     return `
       <article class="article-card">
         <a class="thumb" href="${escapeHTML(postUrl(post))}" aria-label="Read ${escapeHTML(post.title)}">
-          <img src="${escapeHTML(imageUrl(post))}" alt="${escapeHTML(post.title)}" loading="lazy">
+          <img src="${escapeHTML(imageUrl(post))}" alt="${escapeHTML(post.title)}" loading="lazy" onerror="this.onerror=null;this.src='assets/img/og-default.svg';">
         </a>
         <div class="content">
-          <div class="meta"><span class="badge">${escapeHTML(post.category || 'Tech')}</span><span>${niceDate(post.date)}</span></div>
+          <div class="meta"><span class="badge">${escapeHTML(post.category || 'Tech')}</span><span>${niceDate(post.date)}</span><span>${escapeHTML(post.author || 'Prapul')}</span></div>
           <h3><a href="${escapeHTML(postUrl(post))}">${escapeHTML(post.title)}</a></h3>
           <p>${escapeHTML(post.excerpt || '')}</p>
           <a class="read-more" href="${escapeHTML(postUrl(post))}">Read article →</a>
@@ -41,7 +40,7 @@
     const type = el.dataset.postList || 'latest';
     const limit = Number(el.dataset.limit || 99);
     const picked = filterPosts(sortPosts(posts), type).slice(0, limit);
-    el.innerHTML = picked.length ? picked.map(card).join('') : '<div class="empty-state">No articles here yet. Add your first article from studio.html.</div>';
+    el.innerHTML = picked.length ? picked.map(card).join('') : '<div class="empty-state">No articles yet.</div>';
   }
 
   async function loadPosts(){

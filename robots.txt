@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /studio.html
 Allow: /
 
 Sitemap: https://unboxwithprapul.in/sitemap.xml

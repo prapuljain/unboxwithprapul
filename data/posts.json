@@ -1,25 +1,5 @@
 [
   {
-    "title": "AI Phones Explained: Features That Actually Matter",
-    "slug": "ai-phones-features-that-matter-india",
-    "category": "News Explainer",
-    "date": "2026-06-11",
-    "updated": "2026-06-11",
-    "author": "Prapul Jain A S",
-    "excerpt": "A simple explanation of useful AI phone features, what is practical, and what is only marketing noise.",
-    "image": "assets/img/ai-phone.svg",
-    "tags": [
-      "AI phones",
-      "smartphones",
-      "global tech",
-      "buying advice"
-    ],
-    "featured": true,
-    "sources": [],
-    "content": "# AI phones are becoming common, but not every AI feature is useful\n\nEvery new phone now talks about AI. Some features genuinely save time, while some are mainly marketing words. The important question is simple: does the feature help in daily use?\n\n## AI features that are actually useful\n\n- Better photo cleanup for removing unwanted objects from images.\n- Voice notes that can be converted into text.\n- Call summaries and note summaries for students, creators and working users.\n- Smarter battery and performance control in the background.\n- On-device translation for travel, study and work.\n\n## Features you should check before buying\n\nDo not buy only because the phone says \"AI\" on the box. Check whether the feature works offline, whether it supports your language and accent, and whether it will remain free after software updates.\n\n## Prapul's take\n\nAI is a good bonus, not the main reason to buy a phone. First check display quality, battery, camera, processor, storage, software updates and service support. After that, compare the AI features.\n\n## Quick buying advice\n\nIf two phones are similar in price, choose the one with longer software support and more useful AI tools. But if a non-AI phone gives better hardware for the same money, it can still be the smarter buy.",
-    "url": "posts/ai-phones-features-that-matter-india.html"
-  },
-  {
     "title": "Apple's New Siri AI: Everything You Need to Know",
     "slug": "apples-new-siri-ai-everything-you-need-to-know",
     "category": "News",
@@ -37,8 +17,28 @@
     ],
     "featured": false,
     "sources": [],
-    "url": "posts/apples-new-siri-ai-everything-you-need-to-know.html",
-    "content": "Apple has officially revealed the next generation of Siri, powered by advanced artificial intelligence technologies. The new Siri is designed to understand conversations more naturally and remember context between requests.\n\nAccording to Apple, users will be able to perform multi-step actions, ask follow-up questions, and interact with apps more intelligently than before.\n\nKey highlights:\n\n• Improved conversational abilities\n• Better understanding of context\n• Cross-app task execution\n• Smarter voice interactions\n• Enhanced privacy protections\n\nWhy it matters:\n\nThe AI race is becoming increasingly competitive, with Google, Microsoft, OpenAI, and Apple all investing heavily in intelligent assistants. Apple's upgrade aims to make Siri more useful in everyday life while maintaining the company's privacy-first approach.\n\nPrapul's Take:\n\nThis is one of the biggest Siri updates in years. If Apple delivers on its promises, Siri could finally become a serious competitor to Google Gemini and ChatGPT-powered assistants."
+    "content": "Apple has officially revealed the next generation of Siri, powered by advanced artificial intelligence technologies. The new Siri is designed to understand conversations more naturally and remember context between requests.\n\nAccording to Apple, users will be able to perform multi-step actions, ask follow-up questions, and interact with apps more intelligently than before.\n\n## Key highlights\n\n- Improved conversational abilities\n- Better understanding of context\n- Cross-app task execution\n- Smarter voice interactions\n- Enhanced privacy protections\n\n## Why it matters\n\nThe AI race is becoming increasingly competitive, with Google, Microsoft, OpenAI and Apple all investing heavily in intelligent assistants. Apple's upgrade aims to make Siri more useful in everyday life while maintaining the company's privacy-first approach.\n\n## Prapul's take\n\nThis is one of the biggest Siri updates in years. If Apple delivers on its promises, Siri could finally become a serious competitor to Google Gemini and ChatGPT-powered assistants.",
+    "url": "posts/apples-new-siri-ai-everything-you-need-to-know/"
+  },
+  {
+    "title": "AI Phones Explained: Features That Actually Matter",
+    "slug": "ai-phones-features-that-matter-india",
+    "category": "News Explainer",
+    "date": "2026-06-11",
+    "updated": "2026-06-11",
+    "author": "Prapul Jain A S",
+    "excerpt": "A simple explanation of useful AI phone features, what is practical, and what is only marketing noise.",
+    "image": "assets/img/ai-phone.svg",
+    "tags": [
+      "AI phones",
+      "smartphones",
+      "global tech",
+      "buying advice"
+    ],
+    "featured": true,
+    "sources": [],
+    "content": "# AI phones are becoming common, but not every AI feature is useful\n\nEvery new phone now talks about AI. Some features genuinely save time, while some are mainly marketing words. The important question is simple: does the feature help in daily use?\n\n## AI features that are actually useful\n\n- Better photo cleanup for removing unwanted objects from images.\n- Voice notes that can be converted into text.\n- Call summaries and note summaries for students, creators and working users.\n- Smarter battery and performance control in the background.\n- On-device translation for travel, study and work.\n\n## Features you should check before buying\n\nDo not buy only because the phone says \"AI\" on the box. Check whether the feature works offline, whether it supports your language and accent, and whether it will remain free after software updates.\n\n## Prapul's take\n\nAI is a good bonus, not the main reason to buy a phone. First check display quality, battery, camera, processor, storage, software updates and service support. After that, compare the AI features.\n\n## Quick buying advice\n\nIf two phones are similar in price, choose the one with longer software support and more useful AI tools. But if a non-AI phone gives better hardware for the same money, it can still be the smarter buy.",
+    "url": "posts/ai-phones-features-that-matter-india/"
   },
   {
     "title": "Budget Smartphone Buying Checklist",
@@ -58,7 +58,7 @@
     "featured": true,
     "sources": [],
     "content": "# Start with your real use, not only specifications\n\nA good budget phone is not the phone with the longest specification sheet. It is the phone that performs well for your daily needs.\n\n## Check these things first\n\n- Display: Choose a bright screen if you use the phone outdoors.\n- Battery: 5000 mAh or more is usually comfortable for daily use.\n- Charging: Faster charging is useful, but heat control is also important.\n- Processor: Choose based on gaming, camera processing and long-term smoothness.\n- Storage: Prefer 128 GB or more if you record many videos.\n- Software updates: A cheaper phone with poor updates may feel old quickly.\n- Service support: Check warranty and service options available in your region.\n\n## Camera tip\n\nDo not trust only megapixels. A 50 MP camera can be better or worse depending on sensor quality, image processing and stabilization.\n\n## Prapul's take\n\nFor most everyday users, display, battery, clean software and service support matter more than flashy extra cameras.",
-    "url": "posts/budget-smartphone-buying-checklist-india.html"
+    "url": "posts/budget-smartphone-buying-checklist-india/"
   },
   {
     "title": "AMOLED vs LCD: Which Display Should You Choose?",
@@ -78,7 +78,7 @@
     "featured": false,
     "sources": [],
     "content": "# The display affects your experience every day\n\nThe screen is the part of a gadget you look at the most. That is why display quality matters more than many people think.\n\n## AMOLED advantages\n\nAMOLED screens usually offer deeper blacks, higher contrast and more attractive colors. They are great for movies, social media and always-on display features.\n\n## LCD advantages\n\nLCD screens can still be good, especially in budget devices. A high-quality LCD can look better than a poor-quality AMOLED panel.\n\n## What should you choose?\n\nChoose AMOLED if you watch a lot of videos, want punchy colors and like premium-looking screens. Choose a good LCD if your budget is tight and the device gives better processor, battery or software support.\n\n## Prapul's take\n\nDo not choose only by display type. Check brightness, refresh rate, touch response and reviews before deciding.",
-    "url": "posts/amoled-vs-lcd-display-guide.html"
+    "url": "posts/amoled-vs-lcd-display-guide/"
   },
   {
     "title": "Fast Charging Explained: Wattage, Heat and Battery Health",
@@ -98,6 +98,6 @@
     "featured": false,
     "sources": [],
     "content": "# Fast charging is convenient, but heat matters\n\nFast charging saves time. But the long-term experience depends on battery quality, charging technology and heat management.\n\n## What wattage means\n\nHigher wattage usually means faster charging, but only when the phone, charger and cable all support that speed. A 67 W charger will not always charge every phone at 67 W.\n\n## Heat is the main thing to watch\n\nBattery health can reduce faster when the phone becomes too hot regularly. Avoid heavy gaming while charging. Remove thick cases if the phone heats too much.\n\n## Should you buy only for fast charging?\n\nFast charging is useful, but it should not be the only reason to buy a phone. Battery backup, software updates, display and service support are still very important.\n\n## Prapul's take\n\nA balanced phone with good battery backup and safe fast charging is better than a phone that only promotes very high charging wattage.",
-    "url": "posts/fast-charging-wattage-heat-battery-health.html"
+    "url": "posts/fast-charging-wattage-heat-battery-health/"
   }
 ]
