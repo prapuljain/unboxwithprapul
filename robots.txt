@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://unboxwithprapul.in/sitemap.xml
+Sitemap: https://unboxwithprapul.in/news-sitemap.xml

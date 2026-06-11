@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UnboxWithPrapul Studio</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="studio-body">
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="logo" href="index.html"><img src="assets/img/logo.svg" alt=""><span>UnboxWithPrapul<small>Creator Studio</small></span></a>
+    <nav class="site-nav open" aria-label="Studio navigation"><a href="index.html">View site</a><a href="news.html">News</a></nav>
+  </div>
+</header>
+<main class="container studio-layout">
+  <aside class="studio-panel">
+    <h1 style="font-size:1.7rem">Studio</h1>
+    <p class="help-text">Write, edit, preview and publish blog posts to your GitHub repo. Token is used only in your browser.</p>
+    <button class="btn btn-secondary" id="loadPostsBtn" type="button">Load existing posts</button>
+    <label for="existingPosts">Edit existing post</label>
+    <select id="existingPosts"><option value="">Create new post</option></select>
+    <div class="mini-list" id="miniList" aria-live="polite"></div>
+
+    <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+    <h2 style="font-size:1.15rem">GitHub publish settings</h2>
+    <label for="owner">Owner</label><input id="owner" value="prapuljain">
+    <label for="repo">Repository</label><input id="repo" value="unboxwithprapul">
+    <label for="branch">Branch</label><input id="branch" value="main">
+    <label for="token">GitHub token</label><input id="token" type="password" placeholder="Paste token only when publishing">
+    <p class="help-text">Use a fine-grained GitHub token with Contents: Read and Write. Never paste the token inside website code.</p>
+  </aside>
+
+  <section class="studio-panel">
+    <h2>Article editor</h2>
+    <div class="grid grid-2">
+      <div><label for="title">Title</label><input id="title" placeholder="Example: Best phone features to check before buying"></div>
+      <div><label for="slug">Slug</label><input id="slug" placeholder="auto-created-from-title"></div>
+      <div><label for="category">Category</label><select id="category"><option>News</option><option>News Explainer</option><option>Review</option><option>Buying Guide</option><option>Guide</option><option>Comparison</option></select></div>
+      <div><label for="date">Date</label><input id="date" type="date"></div>
+      <div><label for="author">Author</label><input id="author" value="Prapul Jain A S"></div>
+      <div><label for="image">Image path</label><input id="image" value="assets/img/og-default.svg"></div>
+    </div>
+    <label for="excerpt">Short summary / meta description</label><textarea id="excerpt" style="min-height:84px" placeholder="Write 1-2 lines explaining the article."></textarea>
+    <label for="tags">Tags, comma separated</label><input id="tags" placeholder="smartphones, AI, India">
+    <label><input id="featured" type="checkbox"> Mark as featured</label>
+    <label for="content">Article body</label>
+    <textarea id="content" placeholder="# Main point
+
+Write your article here.
+
+## Section heading
+
+- Bullet point
+- Bullet point"></textarea>
+
+    <div class="studio-actions">
+      <button class="btn btn-primary" id="previewBtn" type="button">Preview</button>
+      <button class="btn btn-secondary" id="downloadBtn" type="button">Download generated files</button>
+      <button class="btn btn-primary" id="publishBtn" type="button">Publish to GitHub</button>
+      <button class="btn btn-secondary" id="resetBtn" type="button">Clear</button>
+    </div>
+    <p class="help-text">Publish updates: article page, data/posts.json, sitemap.xml, news-sitemap.xml and rss.xml.</p>
+    <h2 style="font-size:1.15rem;margin-top:20px">Preview</h2>
+    <div class="preview-box" id="preview"></div>
+    <h2 style="font-size:1.15rem;margin-top:20px">Log</h2>
+    <div class="log-box" id="log">Ready.</div>
+  </section>
+</main>
+<script>
+(function(){
+  const SITE = 'https://unboxwithprapul.in';
+  const SITE_NAME = 'UnboxWithPrapul';
+  const STATIC_PAGES = ['', 'news.html', 'reviews.html', 'guides.html', 'videos.html', 'about.html', 'contact.html', 'editorial-policy.html', 'corrections-policy.html', 'privacy.html'];
+  let posts = [];
+  const $ = id => document.getElementById(id);
+  const log = msg => { $('log').textContent += '\n' + msg; $('log').scrollTop = $('log').scrollHeight; };
+  const escapeHTML = (value='') => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  const xmlEscape = (value='') => String(value).replace(/[<>&'"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;',"'":'&apos;','"':'&quot;'}[c]));
+  const slugify = text => (text || 'article').toLowerCase().trim().replace(/[^a-z0-9\s-]/g,'').replace(/[\s-]+/g,'-').replace(/^-|-$/g,'') || 'article';
+  const today = () => new Date().toISOString().slice(0,10);
+  $('date').value = today();
+
+  function markdownToHtml(markdown){
+    const lines = (markdown || '').trim().split(/\r?\n/);
+    let out = [], para = [], inList = false;
+    const flushPara = () => { if(para.length){ out.push('<p>' + escapeHTML(para.join(' ').trim()) + '</p>'); para = []; } };
+    const closeList = () => { if(inList){ out.push('</ul>'); inList = false; } };
+    for(const raw of lines){
+      const line = raw.trimEnd();
+      if(!line.trim()){ flushPara(); closeList(); continue; }
+      if(line.startsWith('### ')){ flushPara(); closeList(); out.push('<h3>'+escapeHTML(line.slice(4).trim())+'</h3>'); continue; }
+      if(line.startsWith('## ')){ flushPara(); closeList(); out.push('<h2>'+escapeHTML(line.slice(3).trim())+'</h2>'); continue; }
+      if(line.startsWith('# ')){ flushPara(); closeList(); out.push('<h2>'+escapeHTML(line.slice(2).trim())+'</h2>'); continue; }
+      if(line.startsWith('- ')){ flushPara(); if(!inList){ out.push('<ul>'); inList = true; } out.push('<li>'+escapeHTML(line.slice(2).trim())+'</li>'); continue; }
+      para.push(line.trim());
+    }
+    flushPara(); closeList();
+    return out.join('\n');
+  }
+
+  function getPostFromForm(){
+    const title = $('title').value.trim();
+    const slug = slugify($('slug').value.trim() || title);
+    return {
+      title,
+      slug,
+      category: $('category').value.trim() || 'News',
+      date: $('date').value || today(),
+      updated: today(),
+      author: $('author').value.trim() || 'Prapul Jain A S',
+      excerpt: $('excerpt').value.trim(),
+      image: $('image').value.trim() || 'assets/img/og-default.svg',
+      tags: $('tags').value.split(',').map(t=>t.trim()).filter(Boolean),
+      featured: $('featured').checked,
+      sources: [],
+      url: `posts/${slug}.html`,
+      content: $('content').value.trim()
+    };
+  }
+
+  function updatePostsArray(newPost){
+    const map = new Map(posts.map(p => [p.slug, p]));
+    map.set(newPost.slug, newPost);
+    return Array.from(map.values()).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  }
+
+  function articleHtml(post){
+    const articleType = (post.category || '').toLowerCase().includes('news') ? 'NewsArticle' : 'Article';
+    const url = `${SITE}/posts/${post.slug}.html`;
+    const imageUrl = post.image.startsWith('http') ? post.image : `${SITE}/${post.image.replace(/^\//,'')}`;
+    const data = {
+      '@context':'https://schema.org', '@type':articleType, headline:post.title, description:post.excerpt,
+      image:[imageUrl], datePublished:post.date, dateModified:post.updated || post.date,
+      author:{'@type':'Person', name:post.author}, publisher:{'@type':'Organization', name:SITE_NAME, logo:{'@type':'ImageObject', url:`${SITE}/assets/img/logo.svg`}},
+      mainEntityOfPage:{'@type':'WebPage','@id':url}
+    };
+    const tagHtml = (post.tags || []).slice(0,6).map(t=>`<span class="badge">${escapeHTML(t)}</span>`).join('');
+    return `<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${escapeHTML(post.title)} - ${SITE_NAME}</title>
+<meta name="description" content="${escapeHTML(post.excerpt)}">
+<link rel="canonical" href="${url}">
+<meta property="og:site_name" content="${SITE_NAME}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="${escapeHTML(post.title)}">
+<meta property="og:description" content="${escapeHTML(post.excerpt)}">
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${imageUrl}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script type="application/ld+json">${JSON.stringify(data)}<\/script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="container nav-wrap"><a class="logo" href="../index.html"><img src="../assets/img/logo.svg" alt=""><span>UnboxWithPrapul<small>Gadget news for India</small></span></a><button class="nav-toggle" aria-expanded="false" aria-label="Open menu">Menu</button><nav class="site-nav" aria-label="Main navigation"><a href="../index.html">Home</a><a href="../news.html">News</a><a href="../reviews.html">Reviews</a><a href="../guides.html">Guides</a><a href="../videos.html">Videos</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav></div></header>
+<main id="main" class="article-shell"><article><div class="meta"><span class="badge">${escapeHTML(post.category)}</span><span>${escapeHTML(post.date)}</span><span>By ${escapeHTML(post.author)}</span></div><h1>${escapeHTML(post.title)}</h1><p class="lead">${escapeHTML(post.excerpt)}</p><img class="article-hero-img" src="../${escapeHTML(post.image)}" alt="${escapeHTML(post.title)}"><div class="article-content">${markdownToHtml(post.content)}</div><div class="article-note"><strong>Prapul note:</strong> This article is written to help Indian buyers understand tech in simple language. Always compare price, warranty and service support before buying any gadget.</div><div class="share-row">${tagHtml}<a class="btn btn-secondary" href="../news.html">More articles</a></div></article></main>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><div class="footer-title">UnboxWithPrapul</div><p>Simple gadget news, reviews and buying advice for Indian tech buyers.</p></div><div><div class="footer-title">Sections</div><div class="footer-links"><a href="../news.html">News</a><a href="../reviews.html">Reviews</a><a href="../guides.html">Buying Guides</a><a href="../videos.html">Videos</a></div></div><div><div class="footer-title">Trust</div><div class="footer-links"><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../editorial-policy.html">Editorial Policy</a><a href="../corrections-policy.html">Corrections Policy</a><a href="../privacy.html">Privacy Policy</a></div></div></div><div class="copyright">© <span data-year></span> ${SITE_NAME}. All rights reserved.</div></div></footer><script src="../assets/js/main.js" defer><\/script>
+</body>
+</html>`;
+  }
+
+  function sitemapXml(allPosts){
+    const urls = [];
+    for(const p of STATIC_PAGES){ urls.push(`  <url><loc>${SITE}/${p}</loc><lastmod>${today()}</lastmod><changefreq>${p==='' || p==='news.html' ? 'daily':'weekly'}</changefreq><priority>${p===''?'1.0':'0.8'}</priority></url>`.replace(`${SITE}/</loc>`,`${SITE}/</loc>`)); }
+    for(const p of allPosts){ urls.push(`  <url><loc>${SITE}/posts/${xmlEscape(p.slug)}.html</loc><lastmod>${xmlEscape(p.updated || p.date)}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`); }
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
+  }
+
+  function newsSitemapXml(allPosts){
+    const items = allPosts.filter(p => (p.category || '').toLowerCase().includes('news')).map(p => `  <url>\n    <loc>${SITE}/posts/${xmlEscape(p.slug)}.html</loc>\n    <news:news>\n      <news:publication><news:name>${SITE_NAME}</news:name><news:language>en</news:language></news:publication>\n      <news:publication_date>${xmlEscape(p.date)}</news:publication_date>\n      <news:title>${xmlEscape(p.title)}</news:title>\n    </news:news>\n  </url>`);
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n${items.join('\n')}\n</urlset>\n`;
+  }
+
+  function rssXml(allPosts){
+    const items = allPosts.slice(0,20).map(p => {
+      const pub = new Date((p.date || today()) + 'T09:00:00+05:30').toUTCString();
+      return `    <item>\n      <title>${xmlEscape(p.title)}</title>\n      <link>${SITE}/posts/${xmlEscape(p.slug)}.html</link>\n      <guid>${SITE}/posts/${xmlEscape(p.slug)}.html</guid>\n      <pubDate>${pub}</pubDate>\n      <description>${xmlEscape(p.excerpt)}</description>\n    </item>`;
+    }).join('\n');
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>${SITE_NAME}</title>\n    <link>${SITE}/</link>\n    <description>Simple gadget news, reviews and buying guides for Indian buyers.</description>\n${items}\n  </channel>\n</rss>\n`;
+  }
+
+  function preview(){
+    const post = getPostFromForm();
+    $('preview').innerHTML = `<div class="meta"><span class="badge">${escapeHTML(post.category)}</span><span>${escapeHTML(post.date)}</span></div><h1 style="font-size:2rem">${escapeHTML(post.title || 'Untitled article')}</h1><p>${escapeHTML(post.excerpt)}</p><div class="article-content">${markdownToHtml(post.content)}</div>`;
+  }
+
+  async function loadPosts(){
+    $('log').textContent = 'Loading posts...';
+    try{
+      const res = await fetch('data/posts.json?v=' + Date.now(), {cache:'no-store'});
+      posts = res.ok ? await res.json() : [];
+      populateExisting();
+      log(`Loaded ${posts.length} posts.`);
+    }catch(e){ posts = []; log('Could not load posts. You can still create a new one.'); }
+  }
+
+  function populateExisting(){
+    const select = $('existingPosts');
+    select.innerHTML = '<option value="">Create new post</option>' + posts.map(p => `<option value="${escapeHTML(p.slug)}">${escapeHTML(p.title)}</option>`).join('');
+    $('miniList').innerHTML = posts.map(p => `<div class="mini-post" data-slug="${escapeHTML(p.slug)}"><strong>${escapeHTML(p.title)}</strong><br><span class="help-text">${escapeHTML(p.category)} • ${escapeHTML(p.date)}</span></div>`).join('');
+    document.querySelectorAll('.mini-post').forEach(el => el.addEventListener('click', () => fillForm(el.dataset.slug)));
+  }
+
+  function fillForm(slug){
+    const p = posts.find(x => x.slug === slug); if(!p) return;
+    $('title').value = p.title || ''; $('slug').value = p.slug || ''; $('category').value = p.category || 'News'; $('date').value = p.date || today(); $('author').value = p.author || 'Prapul Jain A S'; $('image').value = p.image || 'assets/img/og-default.svg'; $('excerpt').value = p.excerpt || ''; $('tags').value = (p.tags || []).join(', '); $('featured').checked = !!p.featured; $('content').value = p.content || '';
+    $('existingPosts').value = slug;
+    preview(); log('Loaded post into editor: ' + p.title);
+  }
+
+  function downloadText(filename, text){
+    const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
+  }
+
+  function generateFiles(){
+    const post = getPostFromForm();
+    if(!post.title || !post.excerpt || !post.content) throw new Error('Title, summary and content are required.');
+    const allPosts = updatePostsArray(post);
+    return {
+      post,
+      allPosts,
+      files: {
+        [`posts/${post.slug}.html`]: articleHtml(post),
+        'data/posts.json': JSON.stringify(allPosts, null, 2),
+        'sitemap.xml': sitemapXml(allPosts),
+        'news-sitemap.xml': newsSitemapXml(allPosts),
+        'rss.xml': rssXml(allPosts)
+      }
+    };
+  }
+
+  async function githubGetSha(owner, repo, branch, path, token){
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path).replace(/%2F/g,'/')}?ref=${encodeURIComponent(branch)}`;
+    const res = await fetch(url, {headers:{Authorization:`Bearer ${token}`, Accept:'application/vnd.github+json'}});
+    if(res.status === 404) return null;
+    if(!res.ok) throw new Error(`Could not read ${path}: ${res.status}`);
+    const json = await res.json(); return json.sha;
+  }
+  function toBase64(str){
+    const bytes = new TextEncoder().encode(str); let bin = ''; bytes.forEach(b => bin += String.fromCharCode(b)); return btoa(bin);
+  }
+  async function githubPutFile(owner, repo, branch, path, text, token, message){
+    const sha = await githubGetSha(owner, repo, branch, path, token);
+    const body = {message, content: toBase64(text), branch}; if(sha) body.sha = sha;
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path).replace(/%2F/g,'/')}`;
+    const res = await fetch(url, {method:'PUT', headers:{Authorization:`Bearer ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json'}, body:JSON.stringify(body)});
+    if(!res.ok){ const text = await res.text(); throw new Error(`Failed ${path}: ${res.status} ${text}`); }
+  }
+
+  $('title').addEventListener('input', () => { if(!$('slug').dataset.manual){ $('slug').value = slugify($('title').value); } });
+  $('slug').addEventListener('input', () => $('slug').dataset.manual = '1');
+  $('previewBtn').addEventListener('click', preview);
+  $('loadPostsBtn').addEventListener('click', loadPosts);
+  $('existingPosts').addEventListener('change', e => e.target.value ? fillForm(e.target.value) : null);
+  $('resetBtn').addEventListener('click', () => { document.querySelectorAll('input, textarea').forEach(el => { if(el.id !== 'owner' && el.id !== 'repo' && el.id !== 'branch' && el.id !== 'author') el.value = ''; }); $('category').value = 'News'; $('author').value = 'Prapul Jain A S'; $('date').value = today(); $('image').value = 'assets/img/og-default.svg'; $('featured').checked = false; $('preview').innerHTML = ''; log('Editor cleared.'); });
+  $('downloadBtn').addEventListener('click', () => {
+    try{
+      const {post, files} = generateFiles();
+      downloadText(`${post.slug}.html`, files[`posts/${post.slug}.html`]);
+      downloadText('posts.json', files['data/posts.json']);
+      downloadText('sitemap.xml', files['sitemap.xml']);
+      downloadText('news-sitemap.xml', files['news-sitemap.xml']);
+      downloadText('rss.xml', files['rss.xml']);
+      log('Downloaded generated files. Upload article HTML into /posts/ and posts.json into /data/.');
+    }catch(e){ log('Download failed: ' + e.message); }
+  });
+  $('publishBtn').addEventListener('click', async () => {
+    try{
+      const owner = $('owner').value.trim(), repo = $('repo').value.trim(), branch = $('branch').value.trim(), token = $('token').value.trim();
+      if(!owner || !repo || !branch || !token) throw new Error('GitHub owner, repo, branch and token are required.');
+      const {post, allPosts, files} = generateFiles();
+      $('log').textContent = 'Publishing...';
+      for(const [path, text] of Object.entries(files)){
+        log('Updating ' + path + ' ...');
+        await githubPutFile(owner, repo, branch, path, text, token, `Publish article: ${post.title}`);
+      }
+      posts = allPosts; populateExisting();
+      log('Done. Wait for GitHub Pages deployment, then open: ' + SITE + '/posts/' + post.slug + '.html');
+    }catch(e){ log('Publish failed: ' + e.message); }
+  });
+  loadPosts();
+})();
+</script>
+</body>
+</html>

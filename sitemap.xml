@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://unboxwithprapul.in/</loc>
-    <lastmod>2026-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://unboxwithprapul.in/</loc><lastmod>2026-06-11</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://unboxwithprapul.in/news.html</loc><lastmod>2026-06-11</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://unboxwithprapul.in/reviews.html</loc><lastmod>2026-06-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://unboxwithprapul.in/guides.html</loc><lastmod>2026-06-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://unboxwithprapul.in/videos.html</loc><lastmod>2026-06-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://unboxwithprapul.in/about.html</loc><lastmod>2026-06-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://unboxwithprapul.in/contact.html</loc><lastmod>2026-06-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://unboxwithprapul.in/editorial-policy.html</loc><lastmod>2026-06-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://unboxwithprapul.in/corrections-policy.html</loc><lastmod>2026-06-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://unboxwithprapul.in/privacy.html</loc><lastmod>2026-06-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://unboxwithprapul.in/posts/ai-phones-features-that-matter-india.html</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://unboxwithprapul.in/posts/budget-smartphone-buying-checklist-india.html</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://unboxwithprapul.in/posts/amoled-vs-lcd-display-guide.html</loc><lastmod>2026-06-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://unboxwithprapul.in/posts/fast-charging-wattage-heat-battery-health.html</loc><lastmod>2026-06-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
