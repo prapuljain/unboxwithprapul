@@ -2,14 +2,38 @@
   const $ = (sel, root=document) => root.querySelector(sel);
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
   const escapeHTML = (value='') => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  const rootPath = (value='') => {
+    value = String(value || '').trim();
+    if(!value) return '';
+    if(/^(https?:|data:|mailto:|tel:)/i.test(value)) return value;
+    if(value.startsWith('/')) return value;
+    if(value.startsWith('../')) return '/' + value.replace(/^(\.\.\/)+/,'');
+    return '/' + value.replace(/^\.\//,'');
+  };
   const niceDate = (value) => {
     if(!value) return '';
     const d = new Date(value + 'T00:00:00');
     return d.toLocaleDateString('en', {day:'numeric', month:'short', year:'numeric'});
   };
-  const sortPosts = (posts) => [...posts].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
-  const postUrl = (post) => post.url || (post.slug ? `posts/${post.slug}/` : '#');
-  const imageUrl = (post) => post.image || 'assets/img/og-default.svg';
+  const cleanSlug = (post) => String(post?.slug || post?.title || '').trim().toLowerCase();
+  function dedupePosts(posts){
+    const map = new Map();
+    (Array.isArray(posts) ? posts : []).forEach((p, index) => {
+      if(!p || typeof p !== 'object') return;
+      const key = cleanSlug(p) || ('post-' + index);
+      const normalized = Object.assign({}, p);
+      if(normalized.slug) normalized.url = `/posts/${normalized.slug}/`;
+      if(!map.has(key)){ map.set(key, normalized); return; }
+      const old = map.get(key);
+      const oldScore = String(old.updated || old.date || '') + String(old.title || '');
+      const newScore = String(normalized.updated || normalized.date || '') + String(normalized.title || '');
+      map.set(key, newScore >= oldScore ? Object.assign({}, old, normalized) : old);
+    });
+    return Array.from(map.values());
+  }
+  const sortPosts = (posts) => dedupePosts(posts).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  const postUrl = (post) => post?.slug ? `/posts/${post.slug}/` : rootPath(post?.url || '#');
+  const imageUrl = (post) => rootPath(post?.image || 'assets/img/og-default.svg');
   const readingTime = (post) => {
     const words = String(post.content || post.excerpt || '').trim().split(/\s+/).filter(Boolean).length;
     return Math.max(1, Math.ceil(words / 220)) + ' min read';
@@ -19,7 +43,7 @@
     return `
       <article class="article-card">
         <a class="thumb" href="${escapeHTML(postUrl(post))}" aria-label="Read ${escapeHTML(post.title)}">
-          <img src="${escapeHTML(imageUrl(post))}" alt="${escapeHTML(post.title)}" loading="lazy" onerror="this.onerror=null;this.src='assets/img/og-default.svg';">
+          <img src="${escapeHTML(imageUrl(post))}" alt="${escapeHTML(post.title)}" loading="lazy" onerror="this.onerror=null;this.src='/assets/img/og-default.svg';">
         </a>
         <div class="content">
           <div class="meta"><span class="badge">${escapeHTML(post.category || 'Tech')}</span><span>${niceDate(post.date)}</span><span>${readingTime(post)}</span></div>
@@ -48,9 +72,9 @@
   }
 
   async function loadPosts(){
-    const res = await fetch('data/posts.json?v=' + Date.now(), {cache:'no-store'});
+    const res = await fetch('/data/posts.json?v=' + Date.now(), {cache:'no-store'});
     if(!res.ok) throw new Error('Could not load data/posts.json');
-    return await res.json();
+    return dedupePosts(await res.json());
   }
 
   function initNavigation(){
